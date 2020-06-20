@@ -1,0 +1,84 @@
+<view id="searchNearby">
+  <view class="nearbyStoreList">
+    <view
+      onTap="goSeller"
+      class="list"
+      data-id="{{item.id}}"
+      a:for="{{nearySeller}}"
+      a:key="index"
+    >
+      <view class="sellerCard">
+        <view class="sellerCardLeft">
+          <image
+            class="sellerImg"
+            src="{{item.logo}}"
+            lazy-load="false"
+            onError=""
+            onLoad=""
+          ></image>
+        </view>
+        <view class="sellerCardCenter">
+          <view class="title">
+            <text class="titleText">{{item.name}}</text>
+          </view>
+          <view class="address">
+            <text class="addressText">{{item.area}}{{item.address}}</text>
+          </view>
+          <view class="status">
+            <view class="borrow" style="background-color:{{ item.borrow_num>0?'#DEFFF3':'#F7F7F7' }}">
+              <image
+                class="borrowImage"
+                src="{{item.borrow_num>0?'/static/img/kejie.png':'/static/img/kejie1.png'}}"
+                lazy-load="false"
+                onError=""
+                onLoad=""
+              ></image>
+              <text class="borrowText" style="color:{{ item.borrow_num>0?'#00D286':'#999999' }}">可借({{item.borrow_num}})</text>
+            </view>
+            <view class="repay" style="background-color:{{ item.borrow_num>0?'#E9FFFF':'#F7F7F7' }}">
+              <image
+                class="repayImage"
+                src="{{ item.return_num>0?'/static/img/kehuan.png':'/static/img/kehuan1.png' }}"
+                lazy-load="false"
+                onError=""
+                onLoad=""
+              ></image>
+              <text class="repayText" style="color:{{ item.borrow_num>0?'#00D6D6':'#999999' }}">可还({{item.return_num}})</text>
+            </view>
+            <view class="isopen" a:if="{{item.openStatus}}">
+              <text class="isopenText">营业中</text>
+            </view>
+            <view class="isclose" a:if="{{!item.openStatus}}">
+              <text class="iscloseText">休业中</text>
+            </view>
+          </view>
+        </view>
+        <view class="sellerCardRight">
+          <view class="top">
+						{{item.distance}}m
+					</view>
+          <view class="buttom">
+            <image
+              class="position"
+              onTap="openLocation"
+              data-index="{{ index }}"
+              src="/static/img/dingwei.png"
+              lazy-load="false"
+              onError=""
+              onLoad=""
+            ></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view
+      class="buttomText"
+      hover-class="none"
+      hover-stop-propagation="false"
+    >暂时没有更多了</view>
+  </view>
+  <view class="noOrder" a:if="{{total==0}}">
+    <image src="/static/img/ic_noorder.png"></image>
+    <text>暂无数据</text>
+  </view>
+</view>

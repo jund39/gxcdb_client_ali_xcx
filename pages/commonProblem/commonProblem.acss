@@ -1,0 +1,40 @@
+#commonProblem {
+    flex-direction: column;
+    width: 100%;
+}
+
+#commonProblem .problem {
+    padding: 20rpx 30rpx;
+    color: #333;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    line-height: 42rpx;
+    padding-bottom: 10rpx;
+    border-bottom: 1rpx solid #efefef;
+    background-color: #fff;
+}
+
+#commonProblem .customerService {
+    width: 100%;
+    height: 76rpx;
+    background-color: #fff;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0rpx;
+    border-top: 1rpx solid #efefef;
+}
+
+#commonProblem .customerService image {
+    width: 36rpx;
+    height: 36rpx;
+    text-align: center;
+    align-items: center;
+    margin: 0rpx 20rpx;
+}
+
+#commonProblem .customerService text {
+    font-size: 30rpx;
+    color: #898989;
+}

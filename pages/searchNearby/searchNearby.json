@@ -1,0 +1,8 @@
+{
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "usingComponents": {},
+  "defaultTitle": "附近网点",
+  "titleBarColor": "#ffffff"
+}

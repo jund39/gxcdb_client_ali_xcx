@@ -1,0 +1,20 @@
+<view id="commonProblem">
+  <view
+    onTap="goDetail"
+    class="problem"
+    data-id="{{item.id}}"
+    a:for="{{question}}"
+    a:key="{{index}}"
+  >
+    <text>{{item.title}}</text>
+    <text>></text>
+  </view>
+  <view
+    onTap="makePhoneCall"
+    class="customerService"
+    data-tel="{{tel}}"
+  >
+    <image src="/static/img/ic_kefu.png"></image>
+    <text>联系客服</text>
+  </view>
+</view>

@@ -1,0 +1,129 @@
+{
+  "entryPagePath": "pages/indexAlipay/indexAlipay.html",
+  "pages": [
+    "pages/indexAlipay/indexAlipay",
+    "pages/authorization/authorization",
+    "pages/viewDetails/viewDetails",
+    "pages/successfulPayment/successfulPayment",
+    "pages/seller/seller",
+    "pages/searchNearby/searchNearby",
+    "pages/returnSuccess/returnSuccess",
+    "pages/refundsDeposit/refundsDeposit",
+    "pages/problemDetail/problemDetail",
+    "pages/onLoan/onLoan",
+    "pages/myOrder/myOrder",
+    "pages/leaseDetail/leaseDetail",
+    "pages/commonProblem/commonProblem",
+    "pages/chargingTime/chargingTime",
+    "pages/billRecord/billRecord",
+    "pages/aboutUs/aboutUs",
+    "pages/appeal/appeal",
+    "pages/user/user"
+  ],
+  "page": {
+    "pages/indexAlipay/indexAlipay.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/authorization/authorization.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/viewDetails/viewDetails.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/successfulPayment/successfulPayment.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/seller/seller.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/searchNearby/searchNearby.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/returnSuccess/returnSuccess.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/refundsDeposit/refundsDeposit.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/problemDetail/problemDetail.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/onLoan/onLoan.html": {
+      "window": {
+        "navigationBarTitleText": "租借成功",
+        "usingComponents": {}
+      }
+    },
+    "pages/myOrder/myOrder.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/leaseDetail/leaseDetail.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/commonProblem/commonProblem.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/chargingTime/chargingTime.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/billRecord/billRecord.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/aboutUs/aboutUs.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/appeal/appeal.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    },
+    "pages/user/user.html": {
+      "window": {
+        "usingComponents": {}
+      }
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于获取您附近可借取的充电宝"
+    }
+  },
+  "global": {
+    "window": {
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#fff",
+      "navigationBarTitleText": "众云共享",
+      "navigationBarTextStyle": "black"
+    }
+  }
+}

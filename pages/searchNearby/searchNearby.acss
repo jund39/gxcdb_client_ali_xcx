@@ -1,0 +1,205 @@
+page {
+    height: 100%;
+    background-color: #F7F7F7;
+}
+
+#searchNearby {
+    width: 100%;
+}
+
+.sellerCard {
+    margin-top: 20rpx;
+    background-color: #FFFFFF;
+    width: 750rpx;
+    display: flex;
+    flex-direction: row;
+    padding: 20rpx;
+    justify-content: space-between;
+}
+
+.sellerImg {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 10rpx;
+    margin-left: 4rpx;
+    margin-right: 20rpx;
+}
+
+.sellerCardCenter {
+    width: 500rpx;
+}
+
+.address {
+    margin: 4rpx;
+}
+
+.title {
+    color: #333232;
+    font-size: 30rpx;
+    font-weight: bold;
+    font-family: PingFang SC;
+    margin-top: 4rpx;
+}
+
+.addressText {
+    width: 444rpx;
+    height: 24rpx;
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #999999;
+}
+
+.status {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10rpx;
+}
+
+.borrow {
+    width: 110rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+    background: #DEFFF3;
+    border-radius: 6rpx;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.repay {
+    width: 110rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+    background: #E9FFFF;
+    border-radius: 6rpx;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.isopen {
+    width: 74rpx;
+    height: 40rpx;
+    border-radius: 6rpx;
+    background: #FFF2EB;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.isclose {
+    width: 74rpx;
+    height: 40rpx;
+    border-radius: 6rpx;
+    background: #F7F7F7;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.borrowImage,
+.repayImage {
+    width: 24rpx;
+    height: 24rpx;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.borrowText {
+    height: 100%;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #00D286;
+    display: inline-block;
+}
+
+.repayText {
+    height: 100%;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #00D6D6;
+    display: inline-block;
+}
+
+.isopenText {
+    height: 100%;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #F25000;
+    display: inline-block;
+}
+
+.iscloseText {
+    height: 100%;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #999999;
+    display: inline-block;
+}
+
+.sellerCardRight {
+    padding-right: 36rpx;
+}
+
+.top {
+    width: 58rpx;
+    height: 19rpx;
+    font-size: 24rpx;
+    text-align: right;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: rgba(51, 50, 50, 1);
+    margin-top: 12rpx;
+}
+
+.position {
+    width: 60rpx;
+    height: 60rpx;
+    margin-top: 33rpx;
+}
+
+.buttomText {
+    padding-top: 30rpx;
+    font-size: 24rpx;
+    text-align: center;
+    color: #999999;
+    font-family: PingFang SC;
+    font-weight: bold;
+}
+
+#searchNearby .noOrder {
+    padding-top: 180rpx;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+#searchNearby .noOrder image {
+    width: 430rpx;
+    height: 250rpx;
+}
+
+#searchNearby .noOrder text {
+    font-size: 28rpx;
+    color: #666;
+    margin-top: 80rpx;
+}

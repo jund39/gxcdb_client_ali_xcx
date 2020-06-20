@@ -1,0 +1,57 @@
+page {
+    height: 100%;
+    background-color: #F7F7F7;
+}
+
+#viewDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.orderStatus,
+.orderDetails {
+    padding: 20rpx;
+    margin: 20rpx;
+    background-color: #FFFFFF;
+    border-radius: 30rpx;
+    width: 670rpx;
+}
+
+.detatil {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15rpx;
+    margin-bottom: 15rpx;
+}
+
+.detatilLeft {
+    color: #C3C3C3;
+    font-size: 34rpx;
+
+}
+
+.detatilRight {
+    color: #757575;
+    font-size: 34rpx;
+}
+
+.orderStatusAmount {
+    text-align: center;
+}
+
+.payInfo {
+    border-top: 6rpx solid #FBFBFB;
+}
+
+.amount {
+    color: #333333;
+    font-size: 68rpx;
+}
+
+.amountText {
+    color: #767676;
+    font-size: 34rpx;
+    margin: 1 rpx;
+    display: block;
+}

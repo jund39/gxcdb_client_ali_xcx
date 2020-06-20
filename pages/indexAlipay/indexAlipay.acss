@@ -1,0 +1,372 @@
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+
+#map .maps {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#map .icon_center {
+    position: absolute;
+    left: 47vw;
+    top: 43.8vh;
+    width: 48rpx;
+    height: 79rpx;
+}
+
+#map .kefu {
+    position: fixed;
+    top: 45vh;
+    left: 22rpx;
+    width: 70rpx;
+    background-color: #fff;
+    border-radius: 45rpx;
+}
+#map .customer_service {
+    width: 70rpx;
+    height: 70rpx;
+}
+#map .position {
+    width: 70rpx;
+    height: 70rpx;
+}
+#map .scan_code {
+    position: fixed;
+    left: 284rpx;
+    top: 74vh;
+    width: 182rpx;
+    height: 182rpx;
+}
+
+#map .search_warp {
+    position: absolute;
+    left: 20rpx;
+    top: 24rpx;
+    width: 710rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+
+#map .search_bg {
+    position: absolute;
+    left: 20rpx;
+    top: 24rpx;
+    display: flex;
+    align-items: center;
+    width: 710rpx;
+    height: 82rpx;
+    background:rgba(0,0,0,0);
+}
+#map .userBox {
+  width: 82rpx;
+  height: 82rpx;
+  display: flex;
+  border-radius: 90rpx;
+  background-color: #fff;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
+  /* box-shadow:0px 1px 0px 1px red; */
+}
+#map .search_box {
+  width: 75%;
+  height: 82rpx;
+  background-color: #fff;
+  border-radius: 45rpx;
+  display: flex;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+#map .listBox {
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
+}
+
+#map .search_user {
+    width: 56rpx;
+    height: 56rpx;
+    margin: 0 10rpx;
+    border-radius: 100%;
+}
+
+#map .search_line.left {
+    width: 1rpx;
+    height: 56rpx;
+    background-color: #e4e4e4;
+}
+
+#map .search_icon_search {
+    width: 72rpx;
+    height: 82rpx;
+}
+
+#map .search_text {
+    flex: 1;
+    height: 82rpx;
+    line-height: 82rpx;
+    font-size: 28rpx;
+    color: #b5b5b5;
+}
+
+#map .search_line.right {
+    width: 2rpx;
+    height: 56rpx;
+    background-color: #e4e4e4;
+}
+
+#map .search_icon_list {
+    width: 56rpx;
+    height: 82rpx;
+    margin: 0 10rpx;
+}
+
+#map .search_nearby {
+    position: absolute;
+    left: 110rpx;
+    top: 24rpx;
+    width: 615rpx;
+    height: 82rpx;
+    background-color: rgba(255,255,255,0);
+}
+
+#map .sel_bg {
+    position: absolute;
+    left: 20rpx;
+    bottom: 30rpx;
+    width: 710rpx;
+    height: 260rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+}
+
+#map .sel_img {
+    position: absolute;
+    left: 57rpx;
+    bottom: 140rpx;
+    width: 114rpx;
+    height: 114rpx;
+    border-radius: 10rpx;
+}
+
+#map .sel_name {
+    position: absolute;
+    left: 202rpx;
+    bottom: 218rpx;
+    font-size: 30rpx;
+    line-height: 42rpx;
+    color: #000;
+}
+
+#map .sel_address {
+    position: absolute;
+    left: 202rpx;
+    bottom: 174rpx;
+    width: 480rpx;
+    font-size: 22rpx;
+    line-height: 42rpx;
+    color: #afafaf;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#map .sel_time {
+    position: absolute;
+    left: 202rpx;
+    bottom: 134rpx;
+    font-size: 22rpx;
+    line-height: 42rpx;
+    color: #666;
+}
+
+#map .sel_line.bottom {
+    position: absolute;
+    left: 50rpx;
+    bottom: 114rpx;
+    width: 640rpx;
+    height: 2rpx;
+    background-color: #e4e4e4;
+}
+
+#map .sel_jie {
+    position: absolute;
+    left: 50rpx;
+    bottom: 60rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+
+#map .sel_jie_num {
+    position: absolute;
+    left: 100rpx;
+    bottom: 62rpx;
+    font-size: 20rpx;
+    color: #343434;
+}
+
+#map .sel_huan {
+    position: absolute;
+    left: 140rpx;
+    bottom: 60rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+
+#map .sel_huan_num {
+    position: absolute;
+    left: 190rpx;
+    bottom: 62rpx;
+    font-size: 20rpx;
+    color: #343434;
+}
+
+#map .sel_line.right {
+    position: absolute;
+    left: 228rpx;
+    bottom: 64rpx;
+    width: 2rpx;
+    height: 20rpx;
+    background-color: #e4e4e4;
+}
+
+#map .sel_fly_img {
+    position: absolute;
+    left: 260rpx;
+    bottom: 62rpx;
+    width: 20rpx;
+    height: 20rpx;
+}
+
+#map .sel_fly_num {
+    position: absolute;
+    left: 308rpx;
+    bottom: 62rpx;
+    font-size: 22rpx;
+    color: #666;
+}
+
+#map .sel_goSeller {
+    position: absolute;
+    left: 20rpx;
+    bottom: 30rpx;
+    width: 710rpx;
+    height: 260rpx;
+    border-radius: 20rpx;
+    background-color: rgba(255,255,255,0);
+}
+
+#map .seller_address {
+    position: absolute;
+    left: 30rpx;
+    bottom: 30rpx;
+    width: 690rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+}
+
+#map .seller_t {
+    display: flex;
+    width: 630rpx;
+    margin: 30rpx 30rpx 24rpx 30rpx;
+    border-bottom: 1rpx solid #e4e4e4;
+}
+
+#map .seller_img {
+    width: 114rpx;
+    height: 114rpx;
+    margin-right: 30rpx;
+    margin-bottom: 20rpx;
+    border-radius: 10rpx;
+}
+
+#map .seller_info {
+    flex: 1;
+    margin-bottom: 20rpx;
+}
+
+#map .seller_info .name {
+    font-size: 30rpx;
+    line-height: 42rpx;
+    color: #000;
+}
+
+#map .seller_info .address {
+    font-size: 22rpx;
+    line-height: 42rpx;
+    color: #afafaf;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#map .seller_info .time {
+    font-size: 22rpx;
+    line-height: 42rpx;
+    color: #666;
+}
+
+#map .seller_f {
+    display: flex;
+    width: 80%;
+    margin: 0 30rpx 30rpx;
+}
+
+#map .device_status {
+    width: 180rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-right: 1rpx solid #e4e4e4;
+}
+
+#map .device_status .img {
+    width: 28rpx;
+    height: 28rpx;
+}
+
+#map .device_status .num {
+    font-size: 20rpx;
+    color: #343434;
+}
+
+#map .device_distance {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 44rpx;
+}
+
+#map .device_distance .img {
+    width: 20rpx;
+    height: 20rpx;
+    margin-right: 16rpx;
+}
+
+#map .device_distance .num {
+    font-size: 22rpx;
+    color: #666;
+}
+
+#map .seller_click {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 690rpx;
+    height: 100%;
+}

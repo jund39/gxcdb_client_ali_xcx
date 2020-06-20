@@ -1,0 +1,83 @@
+<view id="viewDetails">
+  <view class="orderStatus">
+    <view class="detatil">
+      <view class="detatilLeft">订单状态</view>
+      <view class="detatilRight">
+        <text style="color:#F5804C" a:if="{{type==1}}">租赁中</text>
+        <text style="color:#F5804C" a:if="{{type==2&&info.pay_status==0}}">待支付</text>
+        <text style="color:#A6A6A6" a:if="{{type==2&&info.pay_status==1}}">已完成</text>
+        <text style="color:#F5804C" a:if="{{type==2&&info.pay_status==2}}">违约</text>
+        <text style="color:#A6A6A6" a:if="{{type==3}}">已撤销</text>
+        <text style="color:#F5804C" a:if="{{type==4}}">已超时</text>
+      </view>
+    </view>
+    <view class="orderStatusContent">
+      <view class="orderStatusAmount">
+        <text class="amount" a:if="{{type==1}}">
+                    待结算...
+                </text>
+        <text class="amount" a:elif="{{type==2&&info.pay_status==1}}">
+          <text style="font-size:38rpx">￥</text>{{info.amount}}
+                </text>
+        <text class="amount" a:else>--.--</text>
+        <text class="amountText">租借总费用</text>
+      </view>
+      <view class="detatil">
+        <view class="detatilLeft">优惠减免</view>
+        <view class="detatilRight">-¥0.00</view>
+      </view>
+      <view class="detatil">
+        <view class="detatilLeft" a:if="{{type==2&&info.pay_status==1}}">租借费用</view>
+        <view class="detatilLeft" a:else>租借预计费用</view>
+        <view class="detatilRight" a:if="{{type==3}}">¥0.00</view>
+        <view class="detatilRight" a:else>￥{{info.billing_unit}}</view>
+      </view>
+      <view class="detatil">
+        <view class="detatilLeft">收费标准</view>
+        <view class="detatilRight">{{info.billing}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="orderDetails">
+    <view class="detatil">
+      <view class="detatilLeft">订单编号</view>
+      <view class="detatilRight">{{info.order_no}}</view>
+    </view>
+    <view class="detatil">
+      <view class="detatilLeft">设备编号</view>
+      <view class="detatilRight">{{info.device_id?info.device_id:''}}</view>
+    </view>
+    <view class="detatil">
+      <view class="detatilLeft">租借地点</view>
+      <view class="detatilRight">{{info.address}}</view>
+    </view>
+    <view class="detatil">
+      <view class="detatilLeft">开始租借</view>
+      <view class="detatilRight">{{info.start_time}}</view>
+    </view>
+    <view a:if="{{type==2&&info.pay_status==1}}">
+      <view class="detatil">
+        <view class="detatilLeft">归还地点</view>
+        <view class="detatilRight">{{info.address}}</view>
+      </view>
+      <view class="detatil">
+        <view class="detatilLeft">结束租借</view>
+        <view class="detatilRight">{{info.end_time}}</view>
+      </view>
+    </view>
+    <view class="detatil">
+      <view class="detatilLeft">租借时长</view>
+      <view class="detatilRight">{{info.use_time}}</view>
+    </view>
+    <view class="payInfo">
+      <view class="detatil" a:if="{{type==2&&info.pay_status==1}}">
+        <view class="detatilLeft">支付方式</view>
+        <view class="detatilRight">微信支付</view>
+      </view>
+      <view class="detatil">
+        <view class="detatilLeft">扫码渠道</view>
+        <view class="detatilRight">{{info.app_type}}</view>
+      </view>
+    </view>
+  </view>
+</view>

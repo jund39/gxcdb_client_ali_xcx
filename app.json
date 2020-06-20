@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/indexAlipay/indexAlipay",
+    "pages/authorization/authorization",
+    "pages/viewDetails/viewDetails",
+    "pages/successfulPayment/successfulPayment",
+    "pages/seller/seller",
+    "pages/searchNearby/searchNearby",
+    "pages/returnSuccess/returnSuccess",
+    "pages/refundsDeposit/refundsDeposit",
+    "pages/problemDetail/problemDetail",
+    "pages/onLoan/onLoan",
+    "pages/myOrder/myOrder",
+    "pages/leaseDetail/leaseDetail",
+    "pages/commonProblem/commonProblem",
+    "pages/chargingTime/chargingTime",
+    "pages/billRecord/billRecord",
+    "pages/aboutUs/aboutUs",
+    "pages/appeal/appeal",
+    "pages/user/user"
+  ],
+  "window": {
+    "titleBarColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF",
+    "defaultTitle": "众云共享"
+  },
+  "sitemapLocation": "sitemap.json"
+}

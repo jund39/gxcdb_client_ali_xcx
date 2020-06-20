@@ -1,0 +1,19 @@
+<view id="aboutUs">
+  <view class="about">
+    <view class="aboutImg">
+      <image src="{{data.logo}}"></image>
+    </view>
+    <view class="contactAddress">
+      <image src="/static/img/ic_mail.png"></image>
+      <text>公司简介</text>
+    </view>
+    <view class="city">{{data.introduce}}</view>
+    <view class="contactAddress">
+      <image src="/static/img/ic_contactaddress.png"></image>
+      <text>联系地址</text>
+    </view>
+    <view class="city">联系人:{{data.contacts}}</view>
+    <view class="city">电话:{{data.service_tel}}</view>
+    <view class="city">地址:{{data.address}}</view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "usingComponents": {},
+  "defaultTitle": "众云共享已租借时间",
+  "titleBarColor": "#ffffff"
+}

@@ -1,0 +1,164 @@
+<view id="leaseDetail">
+  <view
+    class="head"
+    hover-class="none"
+    hover-stop-propagation="false"
+  >
+    <image
+      class="battery"
+      src="/static/img/battery.png"
+      lazy-load="false"
+      onError=""
+      onLoad=""
+    ></image>
+    <view
+      class="headTitle"
+      hover-class="none"
+      hover-stop-propagation="false"
+    >
+			已租借时长
+		</view>
+    <view
+      class="headTime"
+      hover-class="none"
+      hover-stop-propagation="false"
+    >
+      <view class="time_list" a:if="{{time>0}}">
+        <view class="list" a:if="{{day>0}}">{{day}}天</view>
+        <view class="list">{{hour}}时</view>
+        <view class="list">{{minute}}分</view>
+        <view class="list">{{second}}秒</view>
+      </view>
+    </view>
+    <view
+      class="amount"
+      hover-class="none"
+      hover-stop-propagation="false"
+    >
+			预计充电费用:
+      <!-- WX2MY: 属性space、decode不被支持，请调整 -->
+      <text
+        class="amountNum"
+        selectable="false"
+        space="false"
+        decode="false"
+      >&nbsp;&nbsp;{{ amount }}元</text>
+    </view>
+  </view>
+  <view
+    class="body"
+    hover-class="none"
+    hover-stop-propagation="false"
+  >
+    <view
+      class="bodyText"
+      hover-class="none"
+      hover-stop-propagation="false"
+    >
+			归还说明：找到任意一家共享充电宝网点，将充电宝插入即可。如报归还失败，请前往个人中心申诉页面进行申诉。
+		</view>
+    <navigator class="bodyButtom" url="/pages/appeal/appeal">
+			前往申诉
+      <image
+        class="textImg"
+        style="width:23rpx;height:23rpx;margin-left:10rpx"
+        src="/static/img/arrows.png"
+      ></image>
+    </navigator>
+    <view
+      class="nearbyTitle"
+      hover-class="none"
+      hover-stop-propagation="false"
+    >
+      <image
+        class="textImg"
+        style="width:30rpx;height:30rpx"
+        src="/static/img/position.png"
+      ></image>附近网点
+		</view>
+  </view>
+  <view
+    class="buttom"
+    hover-class="none"
+    hover-stop-propagation="false"
+  >
+    <view class="nearbyStoreList">
+      <view
+        onTap="goSeller"
+        class="list"
+        data-id="{{item.id}}"
+        a:for="{{nearySeller}}"
+        a:key="index"
+      >
+        <view class="sellerCard">
+          <view class="sellerCardLeft">
+            <image
+              class="sellerImg"
+              src="{{item.logo}}"
+              lazy-load="false"
+              onError=""
+              onLoad=""
+            ></image>
+          </view>
+          <view class="sellerCardCenter">
+            <view class="title">
+              <text class="titleText">{{item.name}}</text>
+            </view>
+            <view class="address">
+              <text class="addressText">{{item.area}}{{item.address}}</text>
+            </view>
+            <view class="status">
+              <view class="borrow" style="background-color:{{ item.borrow_num>0?'#DEFFF3':'#F7F7F7' }}">
+                <image
+                  class="borrowImage"
+                  src="{{item.borrow_num>0?'/static/img/kejie.png':'/static/img/kejie1.png'}}"
+                  lazy-load="false"
+                  onError=""
+                  onLoad=""
+                ></image>
+                <text class="borrowText" style="color:{{ item.borrow_num>0?'#00D286':'#999999' }}">可借({{item.borrow_num}})</text>
+              </view>
+              <view class="repay" style="background-color:{{ item.borrow_num>0?'#E9FFFF':'#F7F7F7' }}">
+                <image
+                  class="repayImage"
+                  src="{{ item.return_num>0?'/static/img/kehuan.png':'/static/img/kehuan1.png' }}"
+                  lazy-load="false"
+                  onError=""
+                  onLoad=""
+                ></image>
+                <text class="repayText" style="color:{{ item.borrow_num>0?'#00D6D6':'#999999' }}">可还({{item.return_num}})</text>
+              </view>
+              <view class="isopen" a:if="{{item.openStatus}}">
+                <text class="isopenText">营业中</text>
+              </view>
+              <view class="isclose" a:if="{{!item.openStatus}}">
+                <text class="iscloseText">休业中</text>
+              </view>
+            </view>
+          </view>
+          <view class="sellerCardRight">
+            <view class="top">{{item.distance}}m</view>
+            <view class="buttom">
+              <image
+                class="position"
+                onTap="openLocation"
+                data-index="{{ index }}"
+                src="/static/img/dingwei.png"
+                lazy-load="false"
+                onError=""
+                onLoad=""
+              ></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view
+    class="buttomText"
+    hover-class="none"
+    hover-stop-propagation="false"
+  >
+		暂时没有更多了
+	</view>
+</view>

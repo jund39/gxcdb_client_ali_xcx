@@ -1,0 +1,91 @@
+<view id="map">
+  <map
+    showLocation
+    onMarkerTap="markertaps"
+    onRegionChange="regionchange"
+    onTap="hideSeller"
+    class="maps"
+    id="myMap"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    markers="{{markers}}"
+    scale="{{scale}}"
+    style="{width: 100vw;height: 100vh;}"
+  >
+  </map>
+  
+  <view>
+    <cover-view class="search_bg">
+      <cover-view class="userBox">
+        <cover-image
+          a:if="{{userinfo.avatar}}"
+          onTap="goUser"
+          class="search_user"
+          src="{{userinfo.avatar}}"
+        ></cover-image>
+      </cover-view>
+      <cover-view class="search_box">
+        <!-- <cover-view class="search_line left"></cover-view> -->
+        <cover-image
+          onTap="searchAddress"
+          class="search_icon_search"
+          src="/static/img/ic_seach.png"
+        ></cover-image>
+        <cover-view onTap="searchAddress" class="search_text">搜索地点</cover-view>
+        <!-- <cover-view class="search_line right"></cover-view> -->
+      </cover-view>
+      <cover-view class="listBox">
+        <cover-image
+          onTap="goNearby"
+          class="search_icon_list"
+          src="/static/img/ic_list.png"
+        ></cover-image>
+      </cover-view>
+    </cover-view>
+    <view class="kefu">
+      <cover-image
+        onTap="makePhoneCall"
+        class="customer_service"
+        data-tel="{{tel}}"
+        src="/static/img/ic_service.png"
+      ></cover-image>
+      <view style="background: #ebebeb; height: 1rpx;"></view>
+      <cover-image
+        onTap="backOriginal"
+        class="position"
+        src="/static/img/ic_gps.png"
+      ></cover-image>
+    </view>
+    <cover-image class="icon_center" src="/static/img/core2.png"></cover-image>
+    <!-- <cover-image bindtap="makePhoneCall" class="customer_service" data-tel="{{tel}}" src="/static/img/ic_service.png"></cover-image> -->
+    <cover-image onTap="_scanCode" class="scan_code" src="/static/img/ic_sao.png"></cover-image>
+    <!-- <cover-image bindtap="backOriginal" class="position" src="/static/img/ic_gps.png"></cover-image> -->
+    <cover-view class="seller_address" a:if="{{seller_address}}">
+      <cover-view class="seller_t">
+        <cover-image class="seller_img" src="{{seller.logo}}"></cover-image>
+        <cover-view class="seller_info">
+          <cover-view class="name">{{seller.name}}</cover-view>
+          <cover-view class="address">{{seller.area}}{{seller.address}}</cover-view>
+          <cover-view class="time">营业时间：周一至周日 {{seller.shop_start}}-{{seller.shop_end}}</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view class="seller_f">
+        <cover-view class="device_status">
+          <cover-image class="img" src="/static/img/ic_jie.png"></cover-image>
+          <cover-view class="num">{{seller.borrow_num}}</cover-view>
+          <cover-image class="img" src="/static/img/ic_huan.png"></cover-image>
+          <cover-view class="num">{{seller.return_num}}</cover-view>
+        </cover-view>
+        <cover-view class="device_distance">
+          <cover-image class="img" src="/static/img/ic_navigation.png"></cover-image>
+          <cover-view class="num">距离{{seller.distance}}米</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-image
+        onTap="goSeller"
+        class="seller_click"
+        src="/static/img/opacity.png"
+      ></cover-image>
+    </cover-view>
+  </view>
+</view>

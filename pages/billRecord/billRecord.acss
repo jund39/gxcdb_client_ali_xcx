@@ -1,0 +1,63 @@
+#billRecord {
+    width: 100%;
+    padding: 30rpx 40rpx 0;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+#billRecord .bill_list {
+    width: 100%;
+    flex-direction: column;
+}
+
+#billRecord .bill {
+    width: 100%;
+    padding: 18rpx 30rpx;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-bottom: 1rpx solid #efefef;
+}
+
+#billRecord .bill .msg {
+    align-items: center;
+    justify-content: space-between;
+    font-size: 26rpx;
+    color: #666;
+    line-height: 42rpx;
+    margin-bottom: 6rpx;
+}
+
+#billRecord .bill .info {
+    align-items: center;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #666;
+    line-height: 42rpx;
+}
+
+#billRecord .bill .info .blue {
+    color: #72a4ff;
+}
+
+#billRecord .bill .info .orange {
+    color: orange;
+}
+
+#billRecord .noOrder {
+    padding-top: 180rpx;
+    flex-direction: column;
+    text-align: center;
+}
+
+#billRecord .noOrder image {
+    width: 430rpx;
+    height: 250rpx;
+}
+
+#billRecord .noOrder text {
+    font-size: 28rpx;
+    color: #666;
+    margin-top: 80rpx;
+}

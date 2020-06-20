@@ -1,0 +1,41 @@
+#myOrder {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background-color: #F7F7F7;
+}
+
+#myOrder .order {
+    width: 670rpx;
+    background-color: #fff;
+    border-radius: 30rpx;
+    padding:20rpx;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+}
+
+.orderTitle{
+    height: 80rpx;
+    display: flex;
+    line-height: 40px;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom:  6rpx solid #FBFBFB;
+}
+.orderTitleLeft{
+    color: #C3C3C3;
+    font-size: 28rpx;
+}
+.orderTitleRight{
+    font-size: 32rpx;
+}
+.orderContent{
+    font-size: 30rpx;
+}
+.orderEnd{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

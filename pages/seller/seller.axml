@@ -1,0 +1,105 @@
+<view id="seller">
+  <view
+    class="aside"
+    hover-class="none"
+    hover-stop-propagation="false"
+  >
+    <image
+      class="serllerIcon"
+      src="{{ seller.picture }}"
+      lazy-load="false"
+      onError=""
+      onLoad=""
+    ></image>
+  </view>
+  <view
+    class="content"
+    hover-class="none"
+    hover-stop-propagation="false"
+  >
+    <view
+      class="title"
+      hover-class="none"
+      hover-stop-propagation="false"
+    >
+      <view class="titleLeft">{{ seller.name }}</view>
+      <view class="titleRight">{{ seller.distance }}m</view>
+    </view>
+    <view class="status">
+      <view class="borrow" style="background-color:{{ seller.borrow_num>0?'#DEFFF3':'#F7F7F7' }}">
+        <image
+          class="borrowImage"
+          src="{{seller.borrow_num>0?'/static/img/kejie.png':'/static/img/kejie1.png'}}"
+          lazy-load="false"
+          onError=""
+          onLoad=""
+        ></image>
+        <text class="borrowText" style="color:{{ seller.borrow_num>0?'#00D286':'#999999' }}">可借({{seller.borrow_num}})</text>
+      </view>
+      <view class="repay" style="background-color:{{ seller.borrow_num>0?'#E9FFFF':'#F7F7F7' }}">
+        <image
+          class="repayImage"
+          src="{{ seller.return_num>0?'/static/img/kehuan.png':'/static/img/kehuan1.png' }}"
+          lazy-load="false"
+          onError=""
+          onLoad=""
+        ></image>
+        <text class="repayText" style="color:{{ seller.borrow_num>0?'#00D6D6':'#999999' }}">可还({{seller.return_num}})</text>
+      </view>
+      <view class="isopen" a:if="{{seller.openStatus}}">
+        <text class="isopenText">营业中</text>
+      </view>
+      <view class="isclose" a:if="{{!seller.openStatus}}">
+        <text class="iscloseText">休业中</text>
+      </view>
+    </view>
+    <view
+      class="openTime"
+      hover-class="none"
+      hover-stop-propagation="false"
+    >
+      <image class="icon" src="/static/img/ic_time.png"></image>
+      <view
+        class="openTimeText"
+        hover-class="none"
+        hover-stop-propagation="false"
+      >
+                营业时间:{{ seller.shop_start }} - {{ seller.shop_end }}
+            </view>
+    </view>
+    <view
+      class="address"
+      hover-class="none"
+      hover-stop-propagation="false"
+    >
+      <view
+        class="addressLeft"
+        hover-class="none"
+        hover-stop-propagation="false"
+      >
+        <image
+          class="positionIcon"
+          src="/static/img/positionIcon.png"
+          lazy-load="false"
+          onError=""
+          onLoad=""
+        ></image>
+        <view
+          class="addressText"
+          hover-class="none"
+          hover-stop-propagation="false"
+        >
+                    {{seller.area}}{{ seller.address}}
+                </view>
+      </view>
+      <image
+        class="addressRight"
+        onTap="openLocation"
+        src="/static/img/dingwei.png"
+        lazy-load="false"
+        onError=""
+        onLoad=""
+      ></image>
+    </view>
+  </view>
+</view>

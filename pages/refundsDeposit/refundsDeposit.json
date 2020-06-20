@@ -1,0 +1,8 @@
+{
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "usingComponents": {},
+  "defaultTitle": "租借充电宝",
+  "titleBarColor": "#ffffff"
+}

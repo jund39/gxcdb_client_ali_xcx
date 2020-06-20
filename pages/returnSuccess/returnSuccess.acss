@@ -1,0 +1,70 @@
+#returnToSuccess {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+#returnToSuccess .returnTo {
+    width: 677rpx;
+    height: 362rpx;
+    background-color: #fff;
+    border-radius: 14rpx;
+    flex-direction: column;
+    margin-top: 20rpx;
+}
+
+#returnToSuccess .returnToImg {
+    justify-content: center;
+}
+
+#returnToSuccess .returnToImg image {
+    width: 148rpx;
+    height: 148rpx;
+    margin-top: 20rpx;
+}
+
+#returnToSuccess .success {
+    font-size: 32rpx;
+    color: #666;
+    margin: 20rpx 0rpx;
+    justify-content: center;
+}
+
+#returnToSuccess .paid {
+    font-size: 28rpx;
+    color: #666;
+    justify-content: center;
+}
+
+#returnToSuccess .paidText {
+    color: #9ccc3d;
+}
+
+#returnToSuccess .priceDetails {
+    width: 678rpx;
+    height: 292rpx;
+    background-color: #fff;
+    border-radius: 14rpx;
+    flex-direction: column;
+    margin-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+
+#returnToSuccess .details {
+    height: 60rpx;
+    margin: 20rpx 35rpx 0rpx 35rpx;
+    color: #666;
+    font-size: 30rpx;
+    line-height: 42rpx;
+    padding-bottom: 10rpx;
+    border-bottom: 1rpx solid rgba(0,0,0,0.1);
+}
+
+#returnToSuccess .detailsList {
+    font-size: 24rpx;
+    color: #666;
+    justify-content: space-between;
+    margin: 5rpx 35rpx;
+    padding-bottom: 30rpx;
+    line-height: 42rpx;
+}

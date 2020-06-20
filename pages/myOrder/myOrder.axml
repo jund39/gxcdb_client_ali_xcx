@@ -1,0 +1,54 @@
+<view id="myOrder">
+  <view class="orderList" a:if="{{total!=0}}">
+    <view
+      onTap="goDetail"
+      class="order"
+      data-id="{{item.id}}"
+      data-status="{{item.status}}"
+      a:for="{{list}}"
+      a:key="index"
+    >
+      <view class="orderTitle">
+        <view class="orderTitleLeft">
+          <text>订单编号：</text>
+        </view>
+        <view class="orderTitleRight">
+          <text style="color:#F5804C" a:if="{{item.status==1}}">租赁中</text>
+          <text style="color:#F5804C" a:if="{{item.status==2&&item.pay_status==0}}">待支付</text>
+          <text style="color:#A6A6A6" a:if="{{item.status==2&&item.pay_status==1}}">已完成</text>
+          <text style="color:#F5804C" a:if="{{item.status==2&&item.pay_status==2}}">违约</text>
+          <text style="color:#A6A6A6" a:if="{{item.status==3}}">已撤销</text>
+          <text style="color:#F5804C" a:if="{{item.status==4}}">已超时</text>
+        </view>
+      </view>
+      <view class="orderContent">
+        <view class="orderStartTime">
+          <text>
+                        开始租借：{{item.start_time}}
+                    </text>
+        </view>
+        <view class="orderEnd">
+          <view class="orderEndTime">
+            <text>
+                            结束租借：{{item.end_time}}
+                        </text>
+          </view>
+          <view class="orderAmount">
+            <text style="color:#D1D1D1" a:if="{{item.status==3&&item.amount==null}}"></text>
+            <text style="color:#D1D1D1" a:if="{{item.status!=3&&item.amount==null}}">
+                            待结算...
+                        </text>
+            <text style="color:#D1D1D1" a:if="{{item.amount!=null}}">
+                            合计：
+              <text style="color:#434343">¥{{item.amount?item.amount:'0.00'}}</text>
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="noOrder" a:if="{{total==0}}">
+    <image src="/static/img/ic_noorder.png"></image>
+    <text>暂无数据</text>
+  </view>
+</view>

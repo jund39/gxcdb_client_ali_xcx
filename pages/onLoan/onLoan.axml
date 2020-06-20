@@ -1,0 +1,7 @@
+<view id="onLoan">
+  <view class="loan">
+    <image src="/static/img/logo.png"></image>
+  </view>
+  <view class="loanTest">弹出成功，请尽快取走充电宝</view>
+  <view class="loanSize">若充电宝未取出,请稍等片刻</view>
+</view>

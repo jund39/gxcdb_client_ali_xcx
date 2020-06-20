@@ -1,0 +1,18 @@
+<view id="authorization">
+  <view class="authors">
+    <view class="tip">
+      为了保证程序正常运营，需要您授权您现在的位置和基本信息(基本信息仅包含头像，昵称等数据)，
+      您的信息将按照用户协议严格保密，请允许授权   
+    </view>
+    <view class="btn_wrap">
+      <button onTap="back" class="btn back">拒绝</button>
+      <button
+        onTap="bindgetuserinfos"
+        class="btn login"
+        open-type="getAuthorize"
+      >
+        授权登录
+      </button>
+    </view>
+  </view>
+</view>

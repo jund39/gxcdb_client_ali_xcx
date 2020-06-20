@@ -1,0 +1,67 @@
+<view>
+  <view class="myheard">
+    <image
+      class="bgImg"
+      mode="widthFix"
+      src="/static/img/myheard_bg.png"
+    ></image>
+    <view class="userBaseInfo">
+      <image
+        class="heardImg"
+        mode="widthFix"
+        src="/static/img/logo.png"
+      ></image>
+      <view class="userName">众云共享</view>
+    </view>
+    <view class="userId">会员ID000000</view>
+  </view>
+  <view class="myBox" style="height: 220rpx;">
+    <view class="totalList">
+      <view class="totalItem refund">
+        <view class="item">
+          <text>授权冻结资金</text>
+          <text class="itemPrice">0 元</text>
+        </view>
+      </view>
+      <view class="totalItem refund">
+        <view class="item">
+          <text>钱包余额</text>
+          <text class="itemPrice">999.66 元</text>
+        </view>
+      </view>
+      <view class="totalItem refund">
+        <view class="refundBtn">秒退余额</view>
+      </view>
+    </view>
+  </view>
+  <view class="myBox" style="padding-bottom: 10rpx;">
+    <view class="serverItem">
+      <image class="iconImg" src="/static/img/ic1.png"></image>
+      <text>我的订单</text>
+      <image src="/static/img/ic_next.png"></image>
+    </view>
+    <view class="serverItem">
+      <image class="iconImg" src="/static/img/ic2.png"></image>
+      <text>账单记录</text>
+      <image src="/static/img/ic_next.png"></image>
+    </view>
+    <view class="serverItem">
+      <image class="iconImg" src="/static/img/ic3.png"></image>
+      <text>关于我们</text>
+      <image src="/static/img/ic_next.png"></image>
+    </view>
+  </view>
+  <view style="height: 10rpx; width: 100%; background-color: #f1f1f1;"></view>
+  <view class="myBox" style="padding-top: 10rpx;">
+    <view class="serverItem">
+      <image class="iconImg" src="/static/img/ic4.png"></image>
+      <text>使用帮助</text>
+      <image src="/static/img/ic_next.png"></image>
+    </view>
+    <view class="serverItem">
+      <image class="iconImg" src="/static/img/ic5.png"></image>
+      <text>用户申诉</text>
+      <image src="/static/img/ic_next.png"></image>
+    </view>
+  </view>
+</view>

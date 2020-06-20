@@ -1,0 +1,199 @@
+page {
+    width: 100%;
+    height: 100%;
+    background: #F7F7F7;
+    margin: 0;
+    padding: 0;
+}
+
+#seller {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.serllerIcon {
+    width: 750rpx;
+    height: 420rpx;
+}
+
+.content {
+    position: absolute;
+    top: 372rpx;
+    left: 24rpx;
+    width: 642rpx;
+    background: #FFFFFF;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    padding: 30rpx;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.titleLeft {
+    font-size: 32rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #333232;
+}
+
+.titleRight {
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #333232;
+}
+
+
+.status {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20rpx;
+}
+
+.borrow {
+    width: 110rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+    background: #DEFFF3;
+    border-radius: 6rpx;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.repay {
+    width: 110rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+    background: #E9FFFF;
+    border-radius: 6rpx;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.isopen {
+    width: 74rpx;
+    height: 40rpx;
+    border-radius: 6rpx;
+    background: #FFF2EB;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.isclose {
+    width: 74rpx;
+    height: 40rpx;
+    border-radius: 6rpx;
+    background: #F7F7F7;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.borrowImage,
+.repayImage {
+    width: 24rpx;
+    height: 24rpx;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.borrowText {
+    height: 100%;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #00D286;
+    display: inline-block;
+}
+
+.repayText {
+    height: 100%;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #00D6D6;
+    display: inline-block;
+}
+
+.isopenText {
+    height: 100%;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #F25000;
+    display: inline-block;
+}
+
+.iscloseText {
+    height: 100%;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #999999;
+    display: inline-block;
+}
+
+.openTime {
+    display: flex;
+    flex-direction: row;
+    margin-top: 28rpx;
+}
+
+.icon {
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.openTimeText,
+.addressText {
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    margin-left: 20rpx;
+    color: #999999;
+}
+
+.address {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 28rpx;
+}
+
+.addressLeft {
+    display: flex;
+    flex-direction: row;
+}
+
+.positionIcon {
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.addressRight {
+    width: 60rpx;
+    height: 60rpx;
+}

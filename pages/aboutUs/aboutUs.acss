@@ -1,0 +1,44 @@
+#aboutUs {
+    flex-direction: column;
+    width: 100%;
+}
+
+#aboutUs .about {
+    flex-direction: column;
+}
+
+#aboutUs .aboutImg {
+    align-items: center;
+    justify-content: center;
+    margin-top: 50rpx;
+}
+
+#aboutUs .aboutImg image {
+    width: 490rpx;
+    height: 258rpx;
+    border-radius: 6rpx;
+}
+
+#aboutUs .contactAddress {
+    margin: 40rpx 30rpx 40rpx 30rpx;
+    align-items: center;
+}
+
+#aboutUs .contactAddress image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 30rpx;
+}
+
+#aboutUs .contactAddress text {
+    font-size: 31rpx;
+    color: #666;
+}
+
+#aboutUs .city {
+    width: 100%;
+    font-size: 26rpx;
+    color: #666;
+    padding: 5rpx 30rpx;
+    box-sizing: border-box;
+}

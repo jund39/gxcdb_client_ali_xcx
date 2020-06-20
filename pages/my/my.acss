@@ -1,0 +1,60 @@
+/* pages/my/my.wxss */
+page {
+  /* background-color: #f1f1f1; */
+  font-size: 30rpx;
+} 
+.myheard {
+  width: 100%; background: #fff; height: 390rpx;
+}
+.myheard .bgImg {
+  width: 100%; position: absolute; max-height: 330rpx;
+}
+.myheard .userBaseInfo {
+  position: relative; bottom: -200rpx; width: 300rpx; text-align: center;
+}
+.myheard .heardImg {
+  width: 120rpx; height: 120rpx;
+}
+.myheard .userName {
+  text-align: center; line-height: 50rpx; font-weight: bold;
+}
+.myheard .userId {
+  position: relative; bottom: -60rpx; float: right; padding-right: 45rpx; color: #fff; font-size: 26rpx;
+}
+.myBox {
+  width: 100%; background: #fff;
+}
+.myBox .totalList {
+  width: 85%; height: 180rpx; background: #ffb910; border-radius: 15rpx; margin: 0 auto;
+}
+.myBox .totalList .totalItem{
+  width: 33.3%; float: left; color: #fff; font-size: 26rpx; height: 100%;
+}
+.myBox .totalList .refund {
+  display: flex;    /*设置显示样式**/
+  align-items: center;    /**子view垂直居中*/
+  vertical-align: center; /**垂直居中*/
+  justify-content: center; /**内容居中*/
+}
+.myBox .totalList .refund .item {
+  display: flex; text-align: center; flex-direction: column; /**子元素上下排列*/
+}
+.myBox .totalList .refund .itemPrice {
+  font-size: 30rpx;
+}
+.myBox .totalList .refundBtn{
+  background-color: #0084ff; padding: 10rpx 20rpx; border-radius: 45rpx; font-size: 20rpx;
+}
+.myBox .serverItem{
+  width: 90%; margin: 0 auto; line-height: 80rpx; display: flex; flex-direction: row; align-items: center;
+  /* border-bottom: #ccc solid 2rpx;  */
+}
+.myBox .serverItem image{
+  width: 60rpx; height: 60rpx;
+}
+.myBox .serverItem text{
+  width: 100%; letter-spacing: 2rpx;
+}
+.myBox .serverItem .iconImg {
+  width: 40rpx; height: 30rpx; margin-right: 20rpx; 
+}

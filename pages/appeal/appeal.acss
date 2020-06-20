@@ -1,0 +1,55 @@
+#appeal {
+    width: 100%;
+    flex-direction: column;
+    padding: 100rpx 30rpx 0;
+    box-sizing: border-box;
+}
+
+#appeal .head {
+    align-items: center;
+    justify-content: center;
+    font-size: 32rpx;
+    color: #333;
+    margin-bottom: 80rpx;
+}
+
+#appeal .tips {
+    flex-direction: column;
+    font-size: 28rpx;
+    color: red;
+    line-height: 42rpx;
+    text-indent: 2em;
+}
+
+#appeal .qrcode_box {
+    align-items: center;
+    justify-content: center;
+    font-size: 32rpx;
+    color: #333;
+    margin-top: 40rpx;
+}
+
+#appeal .scan {
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 100rpx;
+}
+
+#appeal .scan .btn {
+    width: 260rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 70rpx;
+}
+
+#appeal .scan_btn {
+    background-color: #40da81;
+}
+
+#appeal .sub_btn {
+    background-color: #72a4ff;
+}

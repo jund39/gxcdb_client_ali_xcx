@@ -1,0 +1,66 @@
+<view id="chargingTime">
+  <view class="banner" a:if="{{swiperImg.length>0}}">
+    <swiper
+      autoplay="true"
+      circular="true"
+      class="swiper"
+      duration="1000"
+      interval="{{interval}}"
+    >
+      <swiper-item a:for="{{swiperImg}}" a:key="index">
+        <image src="{{item.img}}" style="width:100%;height:100%;"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="chargin {{swiperImg.length>0?'':'mt'}}" style="margin: 100rpx auto 100rpx auto">
+    <view class="charginLeft" a:if="{{info.sid!=0}}">
+      <image src="{{info.seller_logo}}"></image>
+      <view class="charginRight">
+        <text class="font">{{info.seller_name}}</text>
+        <text class="size flex_text_ellipts">{{info.seller_address}}</text>
+      </view>
+    </view>
+    <view
+      onTap="changeTime"
+      class="timeLift"
+      data-time="{{item.time}}"
+      a:for="{{info.price}}"
+      a:key="{{index}}"
+    >
+      <text class="size">充电{{item.text}}</text>
+      <view class="timRight">
+        <view class="teimCenter">
+          <text class="ssize">￥</text>
+          <text class="sizee">{{item.amount}}</text>
+        </view>
+        <radio checked="{{leaseTime==item.time?true:false}}"></radio>
+      </view>
+    </view>
+    <view class="qrCode">二维码编号:{{info.qecode}}</view>
+  </view>
+  <view onTap="openTips" class="tips">
+    <text class="head">使用说明：</text>
+    <view class="row">
+      <text>请在充电线按键上输入六位数密码开始充电.输入后指示灯常亮即可充电.否则重新获取密码,再次输入新密码。</text>
+      <text a:if="{{info.free_test}}">直接按C键 免费充电三分钟</text>
+      <text style="color:red;">更多请点击查看</text>
+    </view>
+  </view>
+  <view
+    catchTap="closeTips"
+    class="tips_img_mask"
+    a:if="{{isShowTip}}"
+  ></view>
+  <scroll-view
+    class="tips_img"
+    scrollY="{{true}}"
+    a:if="{{isShowTip}}"
+  >
+    <image
+      class="img"
+      mode="widthFix"
+      src="{{info.intro}}"
+    ></image>
+  </scroll-view>
+  <view onTap="goPayment" class="psword">支付获取密码</view>
+</view>

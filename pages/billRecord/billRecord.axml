@@ -1,0 +1,22 @@
+<view id="billRecord">
+  <view class="bill_list">
+    <view
+      class="bill"
+      a:for="{{list}}"
+      a:key="{{index}}"
+    >
+      <view class="msg">
+        <text>单号：{{item.order_no}}</text>
+        <text>{{item.type}}</text>
+      </view>
+      <view class="info">
+        <text>{{item.time}}</text>
+        <text class="{{item.is_income?'orange':'blue'}}">{{item.is_income?'+':'-'}}{{item.amount}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="noOrder" a:if="{{total==0}}">
+    <image src="/static/img/ic_noorder.png"></image>
+    <text>暂无数据</text>
+  </view>
+</view>

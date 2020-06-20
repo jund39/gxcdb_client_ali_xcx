@@ -1,0 +1,3 @@
+<view id="problemDetail">
+  <view class="content">{{question.content}}</view>
+</view>
