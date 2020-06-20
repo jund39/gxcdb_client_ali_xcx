@@ -113,12 +113,10 @@ var i = getApp(),
     s = require("./md5.js"),
     r = require("./base64.js"),
     c = {
-  oid: 1,
-  ocode: "zhongyun",
-  host: "https://www.zhongyunke.com/app",
-  qrcodeurl: "https://www.zhongyunke.com",
-  // host: "https://paidan.lubanit.com/app",
-  // qrcodeurl: "https://paidan.lubanit.com",
+  oid: 2,
+  ocode: "hdb",
+  host: "https://www.hdb.ink/app",
+  qrcodeurl: "https://www.hdb.ink",
   headerkey: "zhongyun@2020&8889"
 };
 
