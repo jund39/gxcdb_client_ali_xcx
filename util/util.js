@@ -157,7 +157,7 @@ module.exports = {
             success (res) {
               console.log(1111111);
               console.log(res);
-              //o(e.out_trade_no);
+              o(e.out_trade_no);
             },
             fail (t) {
               console.log(22222);
