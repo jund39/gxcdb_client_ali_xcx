@@ -51,7 +51,6 @@ Page({
       key: "device",
       success: function (e) {
         var a = JSON.parse(e.data);
-
         switch (wx2my.removeStorage({
           key: "device"
         }), a.type) {
@@ -61,6 +60,10 @@ Page({
 
           case "line":
             t.lineCharging(a.qrcode);
+            break;
+          default:
+            t.cabinet(a.qrcode);
+            break;
         }
       }
     });
@@ -103,23 +106,17 @@ Page({
   },
   getLocation: function () {
     var t = this;
-    // wx2my.getLocation({
-    //   type: "gcj02",
-    //   success: function (a) {
-    //     t.setData({
-    //       longitude: a.longitude,
-    //       latitude: a.latitude
-    //     }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
-    //   }
-    // });
-    wx2my.getLocation({
-      success: function (a) {
-        t.setData({
-          longitude: a.longitude,
-          latitude: a.latitude
-        }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
-      }
-    });
+      my.getLocation({
+        success(a) {
+          t.setData({
+            longitude: a.longitude,
+            latitude: a.latitude
+          }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
+        },
+        fail(res) {
+          my.alert({ title: '定位失败:'+ res.errorMessage});
+        },
+      });
   },
   goUser: function () {
     this.hideSeller(), t.userAuthor(function () {
@@ -154,10 +151,13 @@ Page({
     e.globalData.openID && "end" == t.type && a.mapCtx.getCenterLocation({
       success: function (t) {
         e.globalData.longitude = t.longitude, e.globalData.latitude = t.latitude, a.getNearySellerInfo(t.longitude, t.latitude);
+          a.setData({
+            longitude:t.longitude, latitude: t.latitude, scale: t.scale
+          });
       }
     });
   },
-  backOriginal: function () {
+  backOriginal: function (t) {
     this.mapCtx.moveToLocation();
   },
   markertaps: function (e) {

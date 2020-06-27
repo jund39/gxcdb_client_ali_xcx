@@ -11,7 +11,6 @@ Page({
     isshowbtn: !1
   },
   onLoad: function (t) {
-    console.log(21312321312);
     n = 1;
     var i = this;
     t.froms ? (this.setData({
