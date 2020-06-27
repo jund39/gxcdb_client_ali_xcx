@@ -3175,7 +3175,7 @@ define("util/util.js", function (require, module, exports, window, document, fra
   "use strict";
 
   function t(t) {
-    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "xfz61281006";
+    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "zy@20200608";
     e = s.hexMD5(e);
 
     for (var n = 0, o = (t = r.base64decode(t)).length, a = e.length, i = "", c = "", u = 0; u < o; u++) n == a && (n = 0), i += e.substr(n, 1), n++;

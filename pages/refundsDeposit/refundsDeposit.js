@@ -39,7 +39,6 @@ Page({
   },
   startFreeLease: function () {
     var a = this;
-    console.log(a.data);
     a.data.isClick && (console.log(a.data.version), a.data.version >= 1 ? (wx2my.showLoading({
       title: "请稍后...",
       mask: !0
@@ -145,14 +144,12 @@ Page({
     }));
   },
   freezePay: function () {
-    console.log('已来到payment/freeze');
     var t = this;
+    var de = e;
     e.httpRequest("/payment/freeze", {
       device_code: t.data.info.device_code,
       pay_type: "alipay"
     }, function (e) {
-      console.log('获取返回值，如下：');
-      console.log(e);
       1 == e.code && (t.setData({
         order_no: e.data.order_no,
         isClick: !0
@@ -160,48 +157,43 @@ Page({
             // 调用资金冻结接口（alipay.fund.auth.order.app.freeze），获取资金授权参数
             orderStr: e.data.params,
             success: (res) => {
-              /*my.request({
-                url: '', //我是在这里做的回调 官方的回调不知道为什么一直没有执行
-                data:{data:res.result}, //将支付宝返回的数据传到后台
-                type:"post",
-                success:function(res){
-					//授权成功
+              //setTimeout(t.startFreeLease(), 1e3);
+              de.httpRequest("/lease/deviceLease", {
+                device_code: t.data.info.device_code,
+                is_credit: !0
+              }, function (e) {
+                switch (e.code) {
+                  case 1:
+                    setTimeout(function () {
+                      t.setData({
+                        order_no: "",
+                        isClick: !0
+                      }), wx2my.hideLoading(), wx2my.navigateTo({
+                        url: "../onLoan/onLoan?data=" + JSON.stringify(e.data)
+                      });
+                    }, 1e3);
+                    break;
+
+                  default:
+                    t.setData({
+                      isClick: !0,
+                      isPlay: !1
+                    }), wx2my.hideLoading();
                 }
-              })*/
-              //this.checkStatus(this.data.order_no);
-              console.log(1212121212); 
-              console.log(res); 
-              console.log('this.data.order_no:'+this.data.order_no); 
-              
+              }, function () {
+                t.setData({
+                  isClick: !0,
+                  isPlay: !1
+                }), wx2my.hideLoading();
+              })
             },
             fail: (res) => {
-              my.alert({
-                content: JSON.stringify(res),
-              });
+              wx2my.hideLoading();
             },
             complete: function(e){
               console.log('complete:'+JSON.stringify(e));
             }
           }));
-      /*1 == e.code && (t.setData({
-        order_no: e.data.order_no,
-        isClick: !0
-      }), my.openBusinessView && my.openBusinessView({
-        businessType: "wxpayScoreUse",
-        extraData: {
-          mch_id: e.data.params.mch_id,
-          package: e.data.params.package,
-          timestamp: e.data.params.timestamp,
-          nonce_str: e.data.params.nonce_str,
-          sign_type: e.data.params.sign_type,
-          sign: e.data.params.sign
-        },
-        envVersion: "release",
-        success: function (e) {},
-        fail: function (e) {
-          wx2my.hideLoading();
-        }
-      }));*/
     }, function () {
       t.setData({
         isClick: !0
@@ -224,8 +216,6 @@ Page({
       device_code: a.data.info.device_code,
       is_credit: !1
     }, function (t) {
-      console.log(22222);
-      console.log(t);
       switch (t.code) {
         case 1:
           setTimeout(function () {
