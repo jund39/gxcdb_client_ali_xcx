@@ -83,5 +83,15 @@ Page({
     }, function () {
       wx2my.hideLoading();
     });
+  },
+  openLocation: function (i) {
+    let e = this;
+    let index = parseInt(i.currentTarget.dataset.index);
+    wx2my.openLocation({
+      latitude: Number(e.data.nearySeller[index].latitude),
+      longitude: Number(e.data.nearySeller[index].longitude),
+      name: e.data.nearySeller[index].name,
+      address: e.data.nearySeller[index].area + e.data.nearySeller[index].address
+    });
   }
 });

@@ -4,6 +4,7 @@ var e = getApp(),
     t = require("../../util/util.js"),
     a = 1;
 
+var get_app = getApp();
 Page({
   data: {
     userinfo: {},
@@ -15,17 +16,19 @@ Page({
     scale: 16,
     isClick: !0,
     nearySeller: [],
-    seller: {}
+    seller: {},
+    showDialog: false,
+    route: ''
   },
   onLoad: function (i) {
     a = 1;
     var n = this;
-    
+
     if (i.q) {
       var o = decodeURIComponent(i.q),
           r = t.returnQrcode(o);
       this.getAlipayOppenid(function () {
-        n.getLocation(), t.userAuthor(function () {
+        n.getLocation(), n.userAuthor(function () {
           switch (r.type) {
             case "cab":
               e.globalData.outCodeUrl = o, n.cabinet(r.qrcode);
@@ -188,7 +191,7 @@ Page({
   },
   _scanCode: function () {
     var e = this;
-    t.userAuthor(function () {
+    e.userAuthor(function () {
       wx2my.scanCode({
         scanType: ["qrCode"],
         onlyFromCamera: !0,
@@ -196,9 +199,20 @@ Page({
           if (a.result) {
             var i = a.result,
                 n = t.returnQrcode(i);
+            get_app.globalData.device_code = n.qrcode;
             if (n.oid == t.config.oid) switch (n.type) {
               case "cab":
-                e.cabinet(n.qrcode);
+                if (e.data.route === '') {
+                  e.cabinet(n.qrcode);
+                } else {
+                  e.setData({
+                    route: ''
+                  });
+                  my.navigateTo({
+                    url: "../adUploader/adUploader"
+                  });
+                }
+
                 break;
               case "line":
                 e.lineCharging(n.qrcode);
@@ -325,6 +339,65 @@ Page({
           markers: t
         });
       }
+    });
+  },
+  ad_bussiness: function () {
+    let localThis = this;
+
+    if (!e.globalData.device_code) {
+      my.showModal({
+        title: '提示',
+        content: '缺少机柜编号，是否扫码获取？',
+        confirmText: "立即扫码",
+
+        success(res) {
+          if (res.confirm) {
+            localThis.setData({
+              route: 'ad_bussiness'
+            });
+
+            localThis._scanCode();
+          } else if (res.cancel) {}
+        }
+
+      });
+    } else {
+      my.navigateTo({
+        url: "../adUploader/adUploader"
+      });
+    }
+  },
+
+  /*****************授权弹窗相关js********************/
+  userAuthor: function (tt) {
+    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () {};
+    var uu = this;
+    t.httpRequest("/user/getInfo", {}, function (n) {
+      1 == n.code && (1 == n.data.is_auth ? tt(n) : (e(), uu.toggleDialog()));
+    }, function () {
+      e();
+    });
+  },
+  back: function () {
+    this.toggleDialog();
+  },
+  bindgetuserinfos: function (i) {
+    var n = this,
+        o = i.detail.userInfo;
+    void 0 != o && t.httpRequest("/User/updateInfo", {
+      openid: e.globalData.openID,
+      userinfo: JSON.stringify(o)
+    }, function (t) {
+      1 == t.code ? n.back() : wx2my.showToast({
+        title: t.msg,
+        icon: "none"
+      });
+    });
+  },
+
+  toggleDialog() {
+    this.setData({
+      showDialog: !this.data.showDialog
     });
   }
 });

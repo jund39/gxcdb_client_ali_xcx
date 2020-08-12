@@ -1,18 +1,25 @@
-<view id="authorization">
-  <view class="authors">
-    <view class="tip">
-      为了保证程序正常运营，需要您授权您现在的位置和基本信息(基本信息仅包含头像，昵称等数据)，
-      您的信息将按照用户协议严格保密，请允许授权   
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" onTap="toggleDialog"/>
+  <view class="zan-dialog__container">
+    <view class="titleName">
+			支付宝授权
+		</view>
+    <view class="dialogTitle">
+      <image class="log" src="/static/img/logo.png"></image>
+      <text class="text">众云共享申请获取以下权限：</text>
     </view>
-    <view class="btn_wrap">
+    <view class="dialogContent">
+			接下来的操作需要用到，您现在的位置和基本信息（仅包含头像、昵称等数据），您的信息将按照用户协议严格保密，为了您的正常使用，请允许授权。
+		</view>
+    <view class="dialogBtn">
       <button onTap="back" class="btn back">拒绝</button>
       <button
-        onTap="bindgetuserinfos"
+        bindgetuserinfo="bindgetuserinfos"
         class="btn login"
-        open-type="getAuthorize"
+        openType="getUserInfo"
       >
-        授权登录
-      </button>
+				允许
+			</button>
     </view>
   </view>
 </view>

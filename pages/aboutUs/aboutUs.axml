@@ -1,19 +1,37 @@
 <view id="aboutUs">
-  <view class="about">
-    <view class="aboutImg">
-      <image src="{{data.logo}}"></image>
-    </view>
-    <view class="contactAddress">
-      <image src="/static/img/ic_mail.png"></image>
-      <text>公司简介</text>
-    </view>
-    <view class="city">{{data.introduce}}</view>
-    <view class="contactAddress">
-      <image src="/static/img/ic_contactaddress.png"></image>
-      <text>联系地址</text>
-    </view>
-    <view class="city">联系人:{{data.contacts}}</view>
-    <view class="city">电话:{{data.service_tel}}</view>
-    <view class="city">地址:{{data.address}}</view>
-  </view>
+  <image class="aboutImg" src="/static/img/aboutImg.png"></image>
 </view>
+<view class="titleContent">
+  <image class="titleImg" src="/static/img/company.png"></image>
+  <view class="titleText">公司简介</view>
+</view>
+<view class="content">
+	专注共享充电宝，我们的合作方式有三种：贴牌、定制和代理。经过我们专业团队的努力，我们已拥有多项发明专利，做到专业防盗、系统稳定、全球联保，认证齐全，与外蒙古、日本、新加坡等均有建立合作，丰富的海外经验，大厂货源，超强团队，一流售后，让我们一起携手并进！
+</view>
+<view class="phone">
+  <image class="heart" src="/static/img/heart.png"></image>
+  <view class="phoneNumber">招商电话： 18688811307（雷总）</view>
+</view>
+<view class="address">
+  <image class="position" src="/static/img/positionIcon.png"></image>
+  <view class="addressText">公司地址： 东莞市松山湖科技九路九号A栋305室</view>
+</view>
+<!-- <view id="aboutUs">
+    <view class="about">
+        <view class="aboutImg">
+            <image src="{{data.logo}}"></image>
+        </view>
+        <view class="contactAddress">
+            <image src="/static/img/ic_mail.png"></image>
+            <text>公司简介</text>
+        </view>
+        <view class="city">{{data.introduce}}</view>
+        <view class="contactAddress">
+            <image src="/static/img/ic_contactaddress.png"></image>
+            <text>联系地址</text>
+        </view>
+        <view class="city">联系人:{{data.contacts}}</view>
+        <view class="city">电话:{{data.service_tel}}</view>
+        <view class="city">地址:{{data.address}}</view>
+    </view>
+</view> -->

@@ -8,7 +8,8 @@ Page({
   data: {
     isClick: !0,
     userInfo: {},
-    isshowbtn: !1
+    isshowbtn: !1,
+    route: ''
   },
   onLoad: function (t) {
     n = 1;
@@ -35,7 +36,7 @@ Page({
               title: "温馨提示",
               content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
             });
-            wx2my.showToast({
+            my.showToast({
               title: "openID获取失败",
               icon: "none"
             }), o.getAlipayOppenid(i), n++;
@@ -61,7 +62,7 @@ Page({
       icon: "none"
     }), t.setData({
       isClick: !0
-    })) : wx2my.showModal({
+    })) : my.showModal({
       title: "退款提醒",
       content: "亲,是否退款",
       success: function (n) {
@@ -89,7 +90,7 @@ Page({
       icon: "none"
     }), t.setData({
       isClick: !0
-    })) : wx2my.showModal({
+    })) : my.showModal({
       title: "解冻提醒",
       content: "亲,是否解冻资金",
       success: function (n) {
@@ -107,5 +108,61 @@ Page({
         });
       }
     }));
+  },
+  _scanCode: function () {
+    var localThis = this;
+    wx2my.scanCode({
+      scanType: ["qrCode"],
+      onlyFromCamera: !0,
+      success: function (a) {
+        if (a.result) {
+          var i = a.result,
+              n = e.returnQrcode(i);
+          t.globalData.device_code = n.qrcode;
+          if (n.oid == e.config.oid) switch (n.type) {
+            case "cab":
+              localThis.setData({
+                route: ''
+              });
+              my.navigateTo({
+                url: "../adUploader/adUploader"
+              });
+              break;
+
+            case "line":
+              my.showToast({
+                title: '请扫描机柜二维码',
+                mask: false
+              });
+          }
+        }
+      }
+    });
+  },
+  ad_bussiness: function () {
+    let localThis = this;
+
+    if (!t.globalData.device_code) {
+      my.showModal({
+        title: '提示',
+        content: '缺少机柜编号，是否扫码获取？',
+        confirmText: "立即扫码",
+
+        success(res) {
+          if (res.confirm) {
+            localThis.setData({
+              route: 'ad_bussiness'
+            });
+
+            localThis._scanCode();
+          } else if (res.cancel) {}
+        }
+
+      });
+    } else {
+      my.navigateTo({
+        url: "../adUploader/adUploader"
+      });
+    }
   }
 });

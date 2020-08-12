@@ -9,154 +9,84 @@ page {
     align-items: center;
 }
 
-.banner {
-    width: 100%;
-    height: 272rpx;
-    margin-bottom: 20rpx;
-}
-
-.swiper {
+.depositWrap {
     position: relative;
-    width: 100%;
-    height: 100%;
 }
 
-#refundsDeposit .refundsFont {
-    font-size: 42rpx;
-    color: #666;
-    margin: 0rpx 0 30rpx 0rpx;
-    line-height: 42rpx;
+.depositTitle {
+    margin: 30rpx 0 21rpx 0;
+    font-size: 30rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #333333;
     text-align: center;
-    padding-top: 50rpx;
 }
 
-#refundsDeposit .refundsSize {
+.depositContent {
+    color: #999999;
     font-size: 26rpx;
-    color: #666;
-    line-height: 42rpx;
-    margin-bottom: 50rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
     text-align: center;
 }
 
-#refundsDeposit .deposit_wrap {
-    position: relative;
-    width: 674rpx;
-    height: 272rpx;
-    margin: 0 auto;
+.depositWrapImage {
+    width: 702rpx;
+    height: 260rpx;
+    margin: 24rpx;
 }
 
-#refundsDeposit .deposit_bg {
-    width: 100%;
-    height: 100%;
+.depositDes {
+    color: #FFFFFF;
 }
 
-#refundsDeposit .deposit {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 674rpx;
-    height: 272rpx;
-    padding: 70rpx 70rpx;
-    box-sizing: border-box;
-}
-
-#refundsDeposit .deposit_l {
-    flex: 1;
-    flex-direction: column;
-    float: left;
-}
-
-#refundsDeposit .deposit_r {
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    float: left;
-}
-
-#refundsDeposit .deposit_r .money {
+.despositDel {
     font-size: 36rpx;
-    color: #fff;
-    float: left;
+    font-family: PingFang SC;
+    font-weight: 500;
+    position: absolute;
+    top: 64rpx;
+    left: 54rpx;
 }
 
-#refundsDeposit .interactive {
-    color: #fff;
-    font-size: 30rpx;
-    width: 100%;
-    display: block;
-    float: left;
-}
-
-#refundsDeposit .interactive_d {
-    color: #fff;
-    font-size: 30rpx;
-    margin-bottom: 30rpx;
-    width: 100%;
-    display: block;
-    float: left;
-}
-#refundsDeposit .interactiveDeposit {
-    color: #fff;
-    font-size: 26rpx;
-    line-height: 36rpx;
-    display: block;
-    float: left;
-}
-
-#refundsDeposit .interactiveRefunds {
-    color: #fff;
-    font-size: 26rpx;
-    line-height: 36rpx;
-    display: block;
-    float: left;
-}
-
-#refundsDeposit .loan {
-    margin-top: 60rpx;
-}
-
-#refundsDeposit .loan {
-    width: 440rpx;
-    height: 304rpx;
-}
-
-#refundsDeposit .loan image {
-    width: 100%;
-    height: 100%;
-}
-
-#refundsDeposit .weChat {
-    flex-direction: column;
-    background-color: #fff;
-    border-radius: 14rpx;
-    width: 677rpx;
-    font-size: 26rpx;
-    color: #999;
-    padding: 0rpx 30rpx 30rpx;
-    box-sizing: border-box;
-    margin: 50rpx auto 30rpx auto;
-}
-
-#refundsDeposit .weChatText {
+.despositCash {
     font-size: 28rpx;
-    padding: 20rpx 0rpx;
-    align-items: center;
+    font-family: PingFang SC;
+    font-weight: 400;
+    position: absolute;
+    top: 118rpx;
+    left: 54rpx;
+}
+
+.despositMoney {
+    font-size: 30rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    position: absolute;
+    bottom: 64rpx;
+    left: 54rpx;
+}
+
+.depositContentText {
+    font-size: 28rpx;
     color: #333;
-    font-weight: bold;
+    font-family: PingFang SC;
+    font-weight: 300;
+    line-height: 42rpx;
+    margin: 0 25rpx 136rpx 25rpx;
 }
 
-#refundsDeposit .weChat .money {
-    font-size: 28rpx;
-    color: #06AE50;
-    margin-bottom: 10rpx;
+.startDepositButton {
+    text-align: center;
 }
 
-#refundsDeposit .weChat .txt {
-    line-height: 45rpx;
+.startDeposit {
+    color: #FFFFFF;
+    margin-top: 20rpx;
+    font-size: 30rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
 }
-
-
-
 
 /* TODO 免押金租借 */
 
@@ -167,11 +97,12 @@ page {
     position: relative;
 }
 
-.wechatFree .banner {
+.wechatFree>.banner {
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 0;
+    margin-bottom: 20rpx;
 }
 
 .title {
@@ -217,21 +148,23 @@ page {
 }
 
 .confirmPayments {
+    margin-top: 200rpx;
     text-align: center;
     width: 702rpx;
     height: 100rpx;
-    border-radius: 20rpx;
-    margin: 20rpx 24rpx 40rpx 24rpx;
-    line-height: 100rpx;
+    border-radius: 50rpx;
+    margin: 0 24rpx 40rpx 24rpx;
     background: linear-gradient(0deg, rgba(21, 184, 218, 1), rgba(8, 210, 215, 1));
 }
 
 .largeText {
     font-size: 30rpx;
     color: #FFFFFF;
+    margin-top: 20rpx;
     font-family: PingFang SC;
     font-weight: 400;
     text-align: center;
+    line-height: 30rpx;
 }
 
 .smallText {
@@ -261,12 +194,12 @@ checkbox .wx-checkbox-input {
     width: 48rpx;
     height: 48rpx;
     border-radius: 50%;
-    border-color: #E0E0E0;
+    border-color: #05D7D7;
 }
 
 /*checkbox选中后样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-    background: none;
+    background: #05D7D7;
 }
 
 /*checkbox选中后图标样式  */
@@ -277,10 +210,36 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
     text-align: center;
     font-size: 28rpx;
     font-weight: bold;
-    color: #05D7D7;
+    color: #FFFFFF;
     background: transparent;
     transform: translate(-50%, -50%) scale(1);
     -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.divLine {
+    margin-top: 20rpx;
+    background: #CBCBCB;
+    width: 72rpx;
+    height: 5rpx;
+}
+
+.sfbz {
+    font-size: 34rpx;
+    color: #333232;
+    font-family: PingFang SC;
+    font-weight: 400;
+    line-height: 42rpx;
+}
+
+
+.zfjg {
+    color: #05D7D7;
+    font-size: 30rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    line-height: 42rpx;
+    margin-top: 25rpx;
+    margin-bottom: 25rpx;
 }
 
 #refundsDeposit .agreement_mask {

@@ -27,10 +27,11 @@
         <view class="detatilRight">-¥0.00</view>
       </view>
       <view class="detatil">
-        <view class="detatilLeft" a:if="{{type==2&&info.pay_status==1}}">租借费用</view>
+        <view class="detatilLeft" a:if="{{(type==2&&info.pay_status==1)||type==3}}">计费时长</view>
         <view class="detatilLeft" a:else>租借预计费用</view>
-        <view class="detatilRight" a:if="{{type==3}}">¥0.00</view>
-        <view class="detatilRight" a:else>￥{{info.billing_unit}}</view>
+        <view class="detatilRight" a:if="{{type==2}}">{{info.billing_unit}}</view>
+        <view class="detatilRight" a:elif="{{type==3}}">0</view>
+        <view class="detatilRight" a:else>￥{{info.billing_amount}}</view>
       </view>
       <view class="detatil">
         <view class="detatilLeft">收费标准</view>
@@ -49,7 +50,7 @@
     </view>
     <view class="detatil">
       <view class="detatilLeft">租借地点</view>
-      <view class="detatilRight">{{info.address}}</view>
+      <view class="detatilRight">{{info.address ? info.address: '测试场地'}}</view>
     </view>
     <view class="detatil">
       <view class="detatilLeft">开始租借</view>
@@ -58,7 +59,7 @@
     <view a:if="{{type==2&&info.pay_status==1}}">
       <view class="detatil">
         <view class="detatilLeft">归还地点</view>
-        <view class="detatilRight">{{info.address}}</view>
+        <view class="detatilRight">{{info.address ? info.address: '测试场地'}}</view>
       </view>
       <view class="detatil">
         <view class="detatilLeft">结束租借</view>

@@ -12,40 +12,34 @@
       </swiper-item>
     </swiper>
   </view>
-  <view style="flex-direction: column;align-items: center;" a:if="{{info.alipay_credit =='true'}}">
-    <view class="refundsFont">租借前需充值押金</view>
-    <view class="refundsSize">归还充电宝后，可在＂个人中心-秒退押金＂中提现</view>
-    <view class="deposit_wrap">
-      <image class="deposit_bg" src="/static/img/wechat_bg.png"></image>
-      <view class="deposit">
-        <view class="deposit_l">
-          <text class="interactive">交付押金提醒</text>
-          <view class="interactive_d">
-            <text class="interactiveDeposit">请交付{{info.deposit}}元押金</text>
-            <text class="interactiveRefunds">前{{info.free_time}}分钟免费</text>
-          </view>
-        </view>
-        <view class="deposit_r">
-          <text class="money">{{info.amount}}元/{{info.time}}{{info.unit}}</text>
-        </view>
+  <view class="deposit" a:if="{{info.alipay_credit!='true'}}">
+    <view class="depositTitle">
+			租借前需充值押金
+		</view>
+    <view class="depositContent">
+			归还充电宝后，可在＂个人中心-秒退押金＂中提现
+		</view>
+    <view class="depositWrap">
+      <image class="depositWrapImage" src="/static/img/wechat_deposit_bg.png"></image>
+      <view class="depositDes">
+        <view class="despositDel">交付押金提醒</view>
+        <view class="despositCash">请交付{{info.deposit}}元押金，前{{info.free_time}}分钟免费</view>
+        <view class="despositMoney">{{info.amount}}元/{{info.time}}{{info.unit}}</view>
       </view>
     </view>
-    <view class="weChat">
-      <view class="weChatText">计费规则</view>
-      <text class="txt">租借{{info.free_time}}分钟内免费，日封顶{{info.ceiling}}元，总封顶{{info.deposit}}元</text>
-      <text class="txt">充电宝自带有 苹果/安卓/Typec/充电线，使用后记得及时归还并确认机柜播放“归还成功”语音！如有疑问，请与在线客服联系，谢谢！</text>
-    </view>
-    <view
-    onTap="startFreeLease"
-    class="confirmPayments"
-    hoverClass="none"
-    plain="true"
-    style="border:none"
+    <view class="depositContentText">
+			收费标准：租借{{info.free_time}}分钟内免费，日封顶{{info.ceiling}}元，总封顶{{info.deposit}}元，押金{{info.deposit}}元。充电宝自带苹果/安卓/Type-C ,三线速充。使用后记得及时归还并确认机柜播放“归还成功”语音！如，有疑问，请与在线客服联系，谢谢！
+		</view>
+    <button
+      onTap="startDepositButton"
+      class="confirmPayments"
+      hoverClass="none"
+      plain="true"
+      style="border:none"
+      a:if="{{info.wechat_credit=='true'}}"
     >
-      <view class="largeText">免押金租借</view>
-      <!-- <view class="smallText">(恭喜你，支付分550及以上有机会)</view> -->
-      <!-- <text onTap="startLease" class="btn_start">开始租借</text> -->
-    </view>
+      <view class="startDeposit">开始租借</view>
+    </button>
   </view>
   <!-- TODO 免押金租借 -->
   <view

@@ -41,7 +41,6 @@ Page({
         val.openStatus = 0;
       }
 
-      console.log(e.data);
       1 == e.code && l.setData({
         seller: val
       });

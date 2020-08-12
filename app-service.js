@@ -3272,11 +3272,11 @@ define("util/util.js", function (require, module, exports, window, document, fra
       s = require("./md5.js"),
       r = require("./base64.js"),
       c = {
-    oid: 18,
-    ocode: "weidian",
-    host: "https://www.zhongyunke.com/app",
-    qrcodeurl: "https://qrcode.zhongyunke.com",
-    headerkey: "zdhx%&$S(client"
+        oid: 1,
+        ocode: "zhongyun",
+        host: "https://www.zhongyunke.com/app",
+        qrcodeurl: "https://qrcode.zhongyunke.com",
+        headerkey: "zhongyun@2020&8889"
   };
 
   module.exports = {

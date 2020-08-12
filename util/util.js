@@ -25,7 +25,7 @@ function n(t, n, o) {
     url: c.host + t,
     method: "POST",
     header: {
-      "content-type": "application/json",
+      "content-type": "application/x-www-form-urlencoded",
       openid: i.globalData.openID,
       hash: e().hash,
       time: e().timestamp.toString(),
@@ -79,19 +79,6 @@ function o(e, n) {
   var o = null,
       a = null,
       i = null;
-  // if (-1 != e.indexOf("&&cineda=")) {
-  //   o = e.indexOf("&&cineda=");
-  //   a = t(a = e.substring(n, o));
-  //   i = e.substring(o + 9);
-  // } else {
-  //     if (-1 != e.indexOf("&&t=")) {
-  //       o = e.indexOf("&&t=");
-  //       a = t(a = e.substring(n, o));
-  //       i = e.substring(o + 4);
-  //     }
-  // }
-  // return {oid: a,type: "cab",qrcode: i};
-  
   return -1 != e.indexOf("&&cineda=") ? (o = e.indexOf("&&cineda="), a = t(a = e.substring(n, o)), i = e.substring(o + 9)) : -1 != e.indexOf("&&t=") && (o = e.indexOf("&&t="), a = t(a = e.substring(n, o)), i = e.substring(o + 4)), {
     oid: a,
     type: "cab",
@@ -117,8 +104,6 @@ var i = getApp(),
   ocode: "zhongyun",
   host: "https://www.zhongyunke.com/app",
   qrcodeurl: "https://www.zhongyunke.com",
-  // host: "https://paidan.lubanit.com/app",
-  // qrcodeurl: "https://paidan.lubanit.com",
   headerkey: "zhongyun@2020&8889"
 };
 
@@ -126,6 +111,7 @@ module.exports = {
   config: c,
   mwdecrypt: t,
   httpRequest: n,
+  e,
   getUserInfoAlipay: function (t) {
     wx2my.getLocation({
       success: function (t) {
@@ -147,27 +133,22 @@ module.exports = {
       pay_type: "alipay",
       type: e
     }, function (t) {
-      console.log(666666);
-      console.log(t.data);
       if (1 == t.code) {
         var e = t.data.params;
         my.tradePay({
             tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
             //orderStr: e.nonceStr, // 调用 资金授权 时必填
             success (res) {
-              console.log(1111111);
-              console.log(res);
               o(e.out_trade_no);
             },
             fail (t) {
-              console.log(22222);
-              wx2my.showToast({
+              my.showToast({
                 title: "支付失败",
                 icon: "none"
               }), a();
             },
             complete (t) {
-              wx2my.hideLoading();
+              my.hideLoading();
             },
         })
         /*my.requestPayment({
@@ -200,29 +181,25 @@ module.exports = {
     });
   },
   returnQrcode: function (t) {
-    var e = c.qrcodeurl,
-        n = null;
-    //     console.log(666666);
-    //     if (t.substring(0, e.length + 14) == e + "/Lease?objhxy=") {
-    //         console.log(11111);
-    //       n = o(t, e.length + 14)
-    //     } else {
-    //       if (t.substring(0, e.length + 9) == e + "/Lease?o=") {
-    //         console.log(2222);
-    //         console.log(t);
-    //         console.log(e.length + 9);
-    //         n = o(t, e.length + 9) 
-    //       } else { 
-            
-    //         console.log(3333);
-    //         t.substring(0, e.length + 6) == e + "/Xc?o=" && (n = a(t, e.length + 6)), n;
-    //       }
-    //     }
+    let e = c.qrcodeurl,
+        n = null,
+        url = t.substring(0, t.indexOf('/', 8));
 
-    //     console.log(888888);
-    // return n;
+    if (url === e) {
+      if (t.includes("/Lease?objhxy=")) {
+        n = o(t, e.length + 14);
+      } else {
+        if (t.includes("/Lease?o=")) {
+          n = o(t, e.length + 9);
+        } else {
+          if (t.includes("/Xc?o=")) {
+            n = a(t, e.length + 6);
+          }
+        }
+      }
+    }
 
-    return t.substring(0, e.length + 14) == e + "/Lease?objhxy=" ? n = o(t, e.length + 14) : t.substring(0, e.length + 9) == e + "/Lease?o=" ? n = o(t, e.length + 9) : t.substring(0, e.length + 6) == e + "/Xc?o=" && (n = a(t, e.length + 6)), n;
+    return n;
   },
   userAuthor: function (t) {
     var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () {};

@@ -5,7 +5,8 @@ var t = getApp(),
 
 Page({
   data: {
-    isClick: !0
+    isClick: !0,
+    showDialog: true
   },
   onLoad: function (t) {},
   back: function () {
@@ -14,19 +15,23 @@ Page({
     });
   },
   bindgetuserinfos: function (i) {
-    var n = this;
-    my.getAuthUserInfo({
-      success: (uInfo) => {
-        e.httpRequest("/User/updateInfo", {
-          openid: t.globalData.openID,
-          userinfo: JSON.stringify(uInfo)
-        }, function (t) {
-          1 == t.code ? n.back() : wx2my.showToast({
-            title: t.msg,
-            icon: "none"
-          });
-        });
-      }
+    var n = this,
+        o = i.detail.userInfo;
+    void 0 != o && e.httpRequest("/User/updateInfo", {
+      openid: t.globalData.openID,
+      userinfo: JSON.stringify(o)
+    }, function (t) {
+      1 == t.code ? n.back() : wx2my.showToast({
+        title: t.msg,
+        icon: "none"
+      });
+    });
+  },
+
+  toggleDialog() {
+    this.setData({
+      showDialog: !this.data.showDialog
     });
   }
+
 });
