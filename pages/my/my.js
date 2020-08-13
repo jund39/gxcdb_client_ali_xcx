@@ -1,8 +1,8 @@
 const wx2my = require('../../wx2my');
 //const Behavior = require('../../Behavior');
 var t = getApp(),
-    e = require("../../util/util.js"),
-    n = 1;
+  e = require("../../util/util.js"),
+  n = 1;
 
 Page({
   data: {
@@ -43,8 +43,8 @@ Page({
         });
       }
     });*/
-    
-      
+
+
       my.getAuthCode({
         scopes: 'auth_user', // 主动授权（弹框）：auth_user，静默授权（不弹框）：auth_base
         success: (res) => {

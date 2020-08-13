@@ -1,24 +1,18 @@
 <view id="refundsDeposit">
   <view class="banner" a:if="{{swiperImg.length>0}}">
-    <swiper
-      autoplay="true"
-      circular="true"
-      class="swiper"
-      duration="1000"
-      interval="{{interval}}"
-    >
+    <swiper autoplay="true" circular="true" class="swiper" duration="1000" interval="{{interval}}">
       <swiper-item a:for="{{swiperImg}}" a:key="index">
         <image src="{{item.img}}" style="width:100%;height:100%;"></image>
       </swiper-item>
     </swiper>
   </view>
-  <view class="deposit" a:if="{{info.alipay_credit!='true'}}">
+  <view class="deposit" a:if="{{info.alipay_credit=='true'}}">
     <view class="depositTitle">
 			租借前需充值押金
-		</view>
+    </view>
     <view class="depositContent">
 			归还充电宝后，可在＂个人中心-秒退押金＂中提现
-		</view>
+    </view>
     <view class="depositWrap">
       <image class="depositWrapImage" src="/static/img/wechat_deposit_bg.png"></image>
       <view class="depositDes">
@@ -29,70 +23,29 @@
     </view>
     <view class="depositContentText">
 			收费标准：租借{{info.free_time}}分钟内免费，日封顶{{info.ceiling}}元，总封顶{{info.deposit}}元，押金{{info.deposit}}元。充电宝自带苹果/安卓/Type-C ,三线速充。使用后记得及时归还并确认机柜播放“归还成功”语音！如，有疑问，请与在线客服联系，谢谢！
-		</view>
-    <button
-      onTap="startDepositButton"
-      class="confirmPayments"
-      hoverClass="none"
-      plain="true"
-      style="border:none"
-      a:if="{{info.wechat_credit=='true'}}"
-    >
+    </view>
+    <button onTap="startDepositButton" class="confirmPayments" hoverClass="none" plain="true" style="border:none" a:if="{{info.alipay_credit=='true'}}">
       <view class="startDeposit">开始租借</view>
     </button>
   </view>
+  
   <!-- TODO 免押金租借 -->
-  <view
-    class="wechatFree"
-    hover-class="none"
-    hover-stop-propagation="false"
-    a:if="{{info.wechat_credit=='true'}}"
-  >
-    <image
-      class="banner"
-      src="/static/img/wechat_bg.png"
-      lazy-load="false"
-      onError=""
-      onLoad=""
-    ></image>
-    <view
-      class="title"
-      hover-class="none"
-      hover-stop-propagation="false"
-    >
+  <view class="wechatFree" hover-class="none" hover-stop-propagation="false" a:if="{{info.wechat_credit=='true'}}">
+    <image class="banner" src="/static/img/wechat_bg.png" lazy-load="false" onError="" onLoad=""></image>
+    <view class="title" hover-class="none" hover-stop-propagation="false">
 			租借充电宝
-		</view>
-    <view
-      class="content"
-      hover-class="none"
-      hover-stop-propagation="false"
-    >
+    </view>
+    <view class="content" hover-class="none" hover-stop-propagation="false">
 			自带苹果/安卓/Type-C 三线速充
-		</view>
-    <view
-      class="price"
-      hover-class="none"
-      hover-stop-propagation="false"
-    >
+    </view>
+    <view class="price" hover-class="none" hover-stop-propagation="false">
 			{{info.amount}}元/{{info.time}}{{info.unit}}
-		</view>
+    </view>
   </view>
-  <view
-    class="wechatFreeText"
-    hover-class="none"
-    hover-stop-propagation="false"
-    a:if="{{info.wechat_credit=='true'}}"
-  >
+  <view class="wechatFreeText" hover-class="none" hover-stop-propagation="false" a:if="{{info.wechat_credit=='true'}}">
 		收费标准：租借{{info.free_time}}分钟内免费，日封顶{{info.ceiling}}元，总封顶{{info.deposit}}元押金{{info.deposit}}元，支持免押服务（微信支付分550分及以上可以免押）。
-	</view>
-  <button
-    onTap="startFreeLease"
-    class="confirmPayments"
-    hoverClass="none"
-    plain="true"
-    style="border:none"
-    a:if="{{info.wechat_credit=='true'}}"
-  >
+  </view>
+  <button onTap="startFreeLease" class="confirmPayments" hoverClass="none" plain="true" style="border:none" a:if="{{info.wechat_credit=='true'}}">
     <view class="largeText">免押金租借</view>
     <view class="smallText">(恭喜你，微信支付分550及以上有机会)</view>
   </button>
@@ -103,16 +56,9 @@
       <text onTap="openAgree" class="green">《委托扣款授权书》</text>
     </checkbox-group>
   </view>
-  <view
-    onTap="closeAgree"
-    class="agreement_mask"
-    a:if="{{agreement}}"
-  ></view>
+  <view onTap="closeAgree" class="agreement_mask" a:if="{{agreement}}"></view>
   <scroll-view
-    scrollY
-    class="agreement"
-    a:if="{{agreement}}"
-  >
+    scrollY class="agreement" a:if="{{agreement}}">
     <view class="heads">委托扣款授权书</view>
     <view class="txt">本授权书由您向东莞市众云科技有限公司（下称“众云科技”）出具，具有授权之法律效力。请您务必审慎阅读、充分理解本授权书各条款内容，特别是免除或者限制责任的条款，前述条款可能以加粗字体显示，您应重点阅读。除非您已阅读并接受本授权书所有条款，否则您无权使用微信支付的自动续费、自动缴费、自动扣款等服务。您同意本授权书即视为您已授权众云科技代理您向财付通支付科技有限公司（下称“财付通”）申请开通微信支付自动续费和免密支付功能，并自愿承担由此导致的一切法律后果。</view>
     <view class="txt">您确认并不可撤销地授权众云科技向财付通发出扣款指令，财付通即可在不验证您的支付密码、短信动态码等信息的情况下直接从您的银行账户或微信支付账户中扣划众云科技指定的款项至众云科技指定账户。</view>

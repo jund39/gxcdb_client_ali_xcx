@@ -36,7 +36,7 @@ Page({
               title: "温馨提示",
               content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
             });
-            my.showToast({
+            wx2my.showToast({
               title: "openID获取失败",
               icon: "none"
             }), o.getAlipayOppenid(i), n++;
@@ -62,7 +62,7 @@ Page({
       icon: "none"
     }), t.setData({
       isClick: !0
-    })) : my.showModal({
+    })) : wx2my.showModal({
       title: "退款提醒",
       content: "亲,是否退款",
       success: function (n) {
@@ -90,7 +90,7 @@ Page({
       icon: "none"
     }), t.setData({
       isClick: !0
-    })) : my.showModal({
+    })) : wx2my.showModal({
       title: "解冻提醒",
       content: "亲,是否解冻资金",
       success: function (n) {

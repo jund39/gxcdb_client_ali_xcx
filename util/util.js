@@ -25,7 +25,7 @@ function n(t, n, o) {
     url: c.host + t,
     method: "POST",
     header: {
-      "content-type": "application/x-www-form-urlencoded",
+      "content-type": "application/json",
       openid: i.globalData.openID,
       hash: e().hash,
       time: e().timestamp.toString(),
@@ -142,13 +142,13 @@ module.exports = {
               o(e.out_trade_no);
             },
             fail (t) {
-              my.showToast({
+              wx2my.showToast({
                 title: "支付失败",
                 icon: "none"
               }), a();
             },
             complete (t) {
-              my.hideLoading();
+              wx2my.hideLoading();
             },
         })
         /*my.requestPayment({

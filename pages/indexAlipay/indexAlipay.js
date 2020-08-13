@@ -54,6 +54,7 @@ Page({
       key: "device",
       success: function (e) {
         var a = JSON.parse(e.data);
+
         switch (wx2my.removeStorage({
           key: "device"
         }), a.type) {
@@ -109,17 +110,23 @@ Page({
   },
   getLocation: function () {
     var t = this;
-      my.getLocation({
-        success(a) {
-          t.setData({
-            longitude: a.longitude,
-            latitude: a.latitude
-          }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
-        },
-        fail(res) {
-          my.alert({ title: '定位失败:'+ res.errorMessage});
-        },
-      });
+    // wx2my.getLocation({
+    //   type: "gcj02",
+    //   success: function (a) {
+    //     t.setData({
+    //       longitude: a.longitude,
+    //       latitude: a.latitude
+    //     }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
+    //   }
+    // });
+    my.getLocation({
+      success: function (a) {
+        t.setData({
+          longitude: a.longitude,
+          latitude: a.latitude
+        }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
+      }
+    });
   },
   goUser: function () {
     this.hideSeller(), t.userAuthor(function () {
@@ -191,7 +198,7 @@ Page({
   },
   _scanCode: function () {
     var e = this;
-    e.userAuthor(function () {
+    t.userAuthor(function () {
       wx2my.scanCode({
         scanType: ["qrCode"],
         onlyFromCamera: !0,
