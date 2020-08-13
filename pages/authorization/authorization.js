@@ -15,9 +15,10 @@ Page({
     });
   },
   bindgetuserinfos: function (i) {
+
     var n = this,
         o = i.detail.userInfo;
-    void 0 != o && e.httpRequest("/User/updateInfo", {
+    e.httpRequest("/User/updateInfo", {
       openid: t.globalData.openID,
       userinfo: JSON.stringify(o)
     }, function (t) {

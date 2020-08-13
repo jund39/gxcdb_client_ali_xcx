@@ -1,5 +1,6 @@
 const wx2my = require('./wx2my');
 //const Behavior = require('./Behavior');
+//123
 const Behavior = '';
 App({
   onLaunch: function (o) {},

@@ -50,12 +50,14 @@ Page({
   },
   onShow: function () {
     var t = this;
-    e.globalData.openID && this.getUseInfo(), wx2my.getStorage({
+    e.globalData.openID && this.getUseInfo(), my.getStorage({
       key: "device",
       success: function (e) {
+        
+        console.log(get_app);
         var a = JSON.parse(e.data);
-
-        switch (wx2my.removeStorage({
+        
+        switch (my.removeStorage({
           key: "device"
         }), a.type) {
           case "cab":
@@ -391,7 +393,7 @@ Page({
   bindgetuserinfos: function (i) {
     var n = this,
         o = i.detail.userInfo;
-    void 0 != o && t.httpRequest("/User/updateInfo", {
+    t.httpRequest("/User/updateInfo", {
       openid: e.globalData.openID,
       userinfo: JSON.stringify(o)
     }, function (t) {

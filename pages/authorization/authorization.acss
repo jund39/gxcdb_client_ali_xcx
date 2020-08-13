@@ -72,6 +72,7 @@
 }
 
 .dialogBtn {
+
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -82,7 +83,11 @@
     font-family: PingFang SC;
     font-weight: 400;
     line-height: 42rpx;
+    border:none;
+    background: none;
+    height: 40rpx;
 }
+
 
 button {
     padding: 0;
