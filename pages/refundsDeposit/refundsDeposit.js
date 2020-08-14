@@ -196,6 +196,7 @@ Page({
           }));
     }, function () {
       t.setData({
+
         isClick: !0
       }), wx2my.hideLoading();
     });
