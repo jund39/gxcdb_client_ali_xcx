@@ -1,6 +1,5 @@
 const wx2my = require('../wx2my');
 //const Behavior = require('../Behavior');
-const Behavior = '';
 function t(t) {
   var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "zy@20200608";
   e = s.hexMD5(e);
@@ -45,6 +44,7 @@ function n(t, n, o) {
             icon: "none"
           });
           break;
+
         case 401:
           a(), wx2my.showToast({
             title: "未登录/未授权",
@@ -68,9 +68,6 @@ function n(t, n, o) {
         title: "系统繁忙",
         icon: "none"
       });
-    },
-    complete: function(e){
-      //console.log('complete:'+JSON.stringify(e));
     }
   });
 }
@@ -151,33 +148,62 @@ module.exports = {
               wx2my.hideLoading();
             },
         })
-        /*my.requestPayment({
-          timeStamp: e.timeStamp,
-          nonceStr: e.nonceStr,
-          package: e.package,
-          signType: e.signType,
-          paySign: e.paySign,
-          success: function () {
-            console.log(1111111);
-            o(t.data.order_no);
+      } else wx2my.hideLoading(), wx2my.showToast({
+        title: "支付失败",
+        icon: "none"
+      });
+    });
+  },
+  adPayment: function (amount, type, suc = () => {}, fai = () => {}, com = () => {}) {
+    //广告相关支付
+    n("/payment/adPayOrder", {
+      amount: amount,
+      pay_type: "alipay"
+    }, function (t) {
+      if (1 == t.code) {
+        var e = t.data.params;
+        my.tradePay({
+          tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
+          //orderStr: e.nonceStr, // 调用 资金授权 时必填
+          success (res) {
+            o(e.out_trade_no);
           },
-          fail: function (t) {
-            console.log(22222);
+          fail (t) {
             wx2my.showToast({
               title: "支付失败",
               icon: "none"
             }), a();
           },
-          complete: function (t) {
-            console.log(3333333);
-            console.log(t);
+          complete (t) {
             wx2my.hideLoading();
-          }
-        });*/
-      } else wx2my.hideLoading(), wx2my.showToast({
-        title: "支付失败",
-        icon: "none"
-      });
+          },
+        })
+      // if (1 == t.code) {
+      //   var e = t.data.params;
+      //   wx.requestPayment({
+      //     timeStamp: e.timeStamp,
+      //     nonceStr: e.nonceStr,
+      //     package: e.package,
+      //     signType: e.signType,
+      //     paySign: e.paySign,
+      //     success: function () {
+      //       suc(t.data.order_no);
+      //     },
+      //     fail: function (res) {
+      //       fai(t.data.order_no);
+      //     },
+      //     complete: function () {
+      //       com(t.data.order_no);
+      //     }
+      //   });
+      } else {
+        wx2my.hideLoading(), wx2my.showToast({
+          title: "支付失败",
+          icon: "none"
+        });
+      }
+
+      ;
     });
   },
   returnQrcode: function (t) {

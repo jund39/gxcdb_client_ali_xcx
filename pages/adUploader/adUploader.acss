@@ -241,6 +241,8 @@ radio .wx-radio-input {
     margin-top: 56rpx;
     margin-bottom: 30rpx;
     text-align: center;
+    display: flex;
+    justify-content:center;
 }
 
 .commit {

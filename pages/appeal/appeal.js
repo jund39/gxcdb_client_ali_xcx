@@ -1,5 +1,5 @@
 const wx2my = require('../../wx2my');
-const Behavior = '';
+//const Behavior = require('../../Behavior');
 getApp();
 
 var e = require("../../util/util.js");

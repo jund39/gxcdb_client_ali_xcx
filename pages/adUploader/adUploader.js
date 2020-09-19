@@ -1,5 +1,5 @@
 const wx2my = require('../../wx2my');
-
+//const Behavior = require('../../Behavior');
 var get_app = getApp(),
     util = require("../../util/util.js");
 
@@ -93,7 +93,7 @@ Page({
     }
 
     if (localThis.data.formData.type === 'video') {
-      wx.chooseMedia({
+      my.chooseVideo({
         sourceType: ['album'],
         mediaType: ["video"],
         count: 1,
@@ -205,7 +205,7 @@ Page({
   videoPlay: function () {
     this.setData({
       dis_v: 'block',
-      videoContext: wx.createVideoContext('userVideo')
+      videoContext: wx2my.createVideoContext('userVideo')
     });
     this.data.videoContext.play();
   },

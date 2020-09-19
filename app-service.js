@@ -1,6 +1,5 @@
 const wx2my = require('./wx2my');
 //const Behavior = require('./Behavior');
-const Behavior = '';
 var __wxAppData = __wxAppData || {};
 
 var __wxRoute = __wxRoute || "";
@@ -3272,11 +3271,11 @@ define("util/util.js", function (require, module, exports, window, document, fra
       s = require("./md5.js"),
       r = require("./base64.js"),
       c = {
-        oid: 1,
-        ocode: "zhongyun",
-        host: "https://www.zhongyunke.com/app",
-        qrcodeurl: "https://qrcode.zhongyunke.com",
-        headerkey: "zhongyun@2020&8889"
+    oid: 1,
+    ocode: "zhongyun",
+    host: "https://www.zhongyunke.com/app",
+    qrcodeurl: "https://qrcode.zhongyunke.com",
+    headerkey: "zhongyun@2020&8889"
   };
 
   module.exports = {
@@ -3290,7 +3289,7 @@ define("util/util.js", function (require, module, exports, window, document, fra
         }
       }), wx2my.getSetting({
         success: function (e) {
-          e.authSetting["scope.userInfo"] && my.getUserInfo({
+          e.authSetting["scope.userInfo"] && wx.getUserInfo({
             success: function (e) {
               console.log(e), t(e);
             }
@@ -3301,12 +3300,12 @@ define("util/util.js", function (require, module, exports, window, document, fra
     alipayPayment: function (t, e, o, a) {
       n("/payment/recharge", {
         amount: t,
-        pay_type: "alipay",
+        pay_type: "wechat",
         type: e
       }, function (t) {
         if (1 == t.code) {
           var e = t.data.params;
-          my.requestPayment({
+          wx.requestPayment({
             timeStamp: e.timeStamp,
             nonceStr: e.nonceStr,
             package: e.package,
@@ -4979,23 +4978,26 @@ define("pages/user/user.js", function (require, module, exports, window, documen
     },
     getAlipayOppenid: function (i) {
       var o = this;
-      my.login({
-        success: function (s) {
-          s.code && e.httpRequest("/Auth/wechatOpendId", {
-            code: s.code
-          }, function (e) {
-            if (e.data.openid) t.globalData.openID = e.data.openid, i();else {
-              if (!(n < 3)) return void wx2my.showModal({
-                title: "温馨提示",
-                content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
-              });
-              wx2my.showToast({
-                title: "openID获取失败",
-                icon: "none"
-              }), o.getAlipayOppenid(i), n++;
-            }
-          });
-        }
+      my.getAuthCode({
+        scopes: 'auth_user', // 主动授权（弹框）：auth_user，静默授权（不弹框）：auth_base
+        success: (res) => {
+          if (res.authCode) {
+            res.authCode && t.httpRequest("/Auth/alipayOpendId", {
+              code: res.authCode
+            }, function (t) {
+              if (t.data.openid) e.globalData.openID = t.data.openid, i();else {
+                if (!(a < 3)) return void wx2my.showModal({
+                  title: "温馨提示",
+                  content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
+                });
+                wx2my.showToast({
+                  title: "openID获取失败",
+                  icon: "none"
+                }), o.getAlipayOppenid(i), a++;
+              }
+            });
+          }
+        },
       });
     },
     getUserInfo: function () {

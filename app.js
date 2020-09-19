@@ -1,7 +1,4 @@
 const wx2my = require('./wx2my');
-//const Behavior = require('./Behavior');
-//123
-const Behavior = '';
 App({
   onLaunch: function (o) {},
   globalData: {
@@ -12,6 +9,8 @@ App({
     latitude: 22.540745,
     outCodeUrl: "",
     outLineUrl: "",
-    device_code: ''
+    device_code: '',
+    indexImages: [],
+    indexImageTime: 5
   }
 });

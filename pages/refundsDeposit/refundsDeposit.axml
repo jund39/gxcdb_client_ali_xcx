@@ -28,7 +28,7 @@
       <view class="start">开始租借</view>
     </button>
   </view>
-  
+
   <!-- TODO 免押金租借 -->
   <view class="wechatFree" hover-class="none" hover-stop-propagation="false" a:if="{{info.wechat_credit=='true'}}">
     <image class="banner" src="/static/img/wechat_bg.png" lazy-load="false" onError="" onLoad=""></image>

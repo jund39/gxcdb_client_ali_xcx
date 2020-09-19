@@ -1,5 +1,5 @@
 const wx2my = require('../../wx2my');
-const Behavior = '';
+//const Behavior = require('../../Behavior');
 var t = getApp(),
     e = require("../../util/util.js");
 
@@ -15,10 +15,9 @@ Page({
     });
   },
   bindgetuserinfos: function (i) {
-
     var n = this,
         o = i.detail.userInfo;
-    e.httpRequest("/User/updateInfo", {
+    void 0 != o && e.httpRequest("/User/updateInfo", {
       openid: t.globalData.openID,
       userinfo: JSON.stringify(o)
     }, function (t) {

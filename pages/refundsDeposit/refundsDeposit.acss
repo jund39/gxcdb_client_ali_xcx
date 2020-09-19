@@ -88,13 +88,6 @@ page {
     font-weight: 400;
 }
 
-.start{
-    color: #FFFFFF;
-    font-size: 30rpx;
-    font-family: PingFang SC;
-    font-weight: 400;
-}
-
 /* TODO 免押金租借 */
 
 .wechatFree {
@@ -162,10 +155,6 @@ page {
     border-radius: 50rpx;
     margin: 0 24rpx 40rpx 24rpx;
     background: linear-gradient(0deg, rgba(21, 184, 218, 1), rgba(8, 210, 215, 1));
-}
-
-.startLease{
-    line-height: 100rpx;
 }
 
 .largeText {

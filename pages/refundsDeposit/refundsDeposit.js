@@ -1,5 +1,5 @@
 const wx2my = require('../../wx2my');
-const Behavior = '';
+//const Behavior = require('../../Behavior');
 var get_app = getApp();
 
 var e = require("../../util/util.js"),
@@ -196,7 +196,6 @@ Page({
           }));
     }, function () {
       t.setData({
-
         isClick: !0
       }), wx2my.hideLoading();
     });

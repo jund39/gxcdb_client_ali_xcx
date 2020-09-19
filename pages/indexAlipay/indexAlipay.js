@@ -1,10 +1,9 @@
 const wx2my = require('../../wx2my');
-const Behavior = '';
+//const Behavior = require('../../Behavior');
 var e = getApp(),
     t = require("../../util/util.js"),
     a = 1;
 
-var get_app = getApp();
 Page({
   data: {
     userinfo: {},
@@ -18,7 +17,9 @@ Page({
     nearySeller: [],
     seller: {},
     showDialog: false,
-    route: ''
+    route: '',
+    indexImages: [],
+    indexImageTime: 5
   },
   onLoad: function (i) {
     a = 1;
@@ -28,7 +29,7 @@ Page({
       var o = decodeURIComponent(i.q),
           r = t.returnQrcode(o);
       this.getAlipayOppenid(function () {
-        n.getLocation(), n.userAuthor(function () {
+        n.getLocation(), n.getImages(), n.userAuthor(function () {
           switch (r.type) {
             case "cab":
               e.globalData.outCodeUrl = o, n.cabinet(r.qrcode);
@@ -45,18 +46,37 @@ Page({
         });
       });
     } else this.getAlipayOppenid(function () {
-      n.getUseInfo(), n.getLocation();
+      n.getUseInfo(), n.getLocation(), n.getImages();
     });
+  },
+  getImages: function () {
+    let localThis = this;
+
+    if (e.globalData.indexImages.length > 0) {
+      localThis.setData({
+        indexImages: e.globalData.indexImages,
+        indexImageTime: e.globalData.indexImageTime * 1000
+      });
+    } else {
+      t.httpRequest('/index/indexAd', {}, function (res) {
+        if (res.code == 1) {
+          e.globalData.indexImages = res.data.list;
+          e.globalData.indexImageTime = res.data.time;
+          localThis.setData({
+            indexImages: e.globalData.indexImages,
+            indexImageTime: e.globalData.indexImageTime * 1000
+          });
+        }
+      });
+    }
   },
   onShow: function () {
     var t = this;
     e.globalData.openID && this.getUseInfo(), my.getStorage({
       key: "device",
       success: function (e) {
-        
-        console.log(get_app);
         var a = JSON.parse(e.data);
-        
+
         switch (my.removeStorage({
           key: "device"
         }), a.type) {
@@ -107,20 +127,10 @@ Page({
       1 == t.code && e.setData({
         userinfo: t.data
       });
-      if(1==t.code) getApp().globalData.userinfo = t.data;
     });
   },
   getLocation: function () {
     var t = this;
-    // wx2my.getLocation({
-    //   type: "gcj02",
-    //   success: function (a) {
-    //     t.setData({
-    //       longitude: a.longitude,
-    //       latitude: a.latitude
-    //     }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
-    //   }
-    // });
     my.getLocation({
       success: function (a) {
         t.setData({
@@ -199,8 +209,9 @@ Page({
     }
   },
   _scanCode: function () {
-    var e = this;
-    t.userAuthor(function () {
+    let get_app = e;
+    let loal = this;
+    loal.userAuthor(function () {
       wx2my.scanCode({
         scanType: ["qrCode"],
         onlyFromCamera: !0,
@@ -211,10 +222,10 @@ Page({
             get_app.globalData.device_code = n.qrcode;
             if (n.oid == t.config.oid) switch (n.type) {
               case "cab":
-                if (e.data.route === '') {
-                  e.cabinet(n.qrcode);
+                if (loal.data.route === '') {
+                  loal.cabinet(n.qrcode);
                 } else {
-                  e.setData({
+                  loal.setData({
                     route: ''
                   });
                   my.navigateTo({
@@ -223,8 +234,9 @@ Page({
                 }
 
                 break;
+
               case "line":
-                e.lineCharging(n.qrcode);
+                loal.lineCharging(n.qrcode);
             }
           }
         }
@@ -354,10 +366,11 @@ Page({
     let localThis = this;
 
     if (!e.globalData.device_code) {
-      my.showModal({
+      wx2my.showModal({
         title: '提示',
         content: '缺少机柜编号，是否扫码获取？',
         confirmText: "立即扫码",
+        cancelText: "取消",
 
         success(res) {
           if (res.confirm) {
@@ -409,4 +422,5 @@ Page({
       showDialog: !this.data.showDialog
     });
   }
+
 });

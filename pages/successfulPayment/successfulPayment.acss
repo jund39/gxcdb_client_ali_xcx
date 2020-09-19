@@ -1,4 +1,108 @@
-#successfulPayment {
+page{
+    background-color: #F7F7F7;
+    width: 100%;
+    height: 100%;
+}
+.content{
+    width: 702rpx;
+    margin: 24rpx;
+    background-color: white;
+    border-radius: 20rpx;
+}
+
+.title{
+    color:#333232;
+    font-size: 48rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    padding: 30rpx 30rpx;
+}
+.f-title{
+    color: #333232;
+    font-size: 28rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    padding-left: 30rpx;
+}
+.password{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 50rpx 0 80rpx 0;
+}
+.number{
+    border-bottom: 2rpx solid #E0E0E0;
+    font-size: 56rpx;
+    color: #333232;
+    font-family:"PingFang SC";
+    font-weight:500;
+    width: 68rpx;
+    text-align: center;
+    line-height: 100rpx;
+}
+.code-view{
+    background-color: transparent;
+    position: relative;
+    height: 260rpx;
+    margin-bottom: 100rpx;
+}
+.code{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 702rpx;
+    height: 260rpx;
+    z-index: -1;
+}
+.qrcode{
+    color: #FFFFFF;
+    font-size: 28rpx;
+    font-weight: 400;
+    font-family: "PingFang SC";
+    padding: 30rpx;
+}
+.excess-time{
+    color: #FFFFFF;
+    font-size: 36rpx;
+    font-weight: 500;
+    font-family: "PingFang SC";
+    padding: 0 0 15rpx 30rpx;
+}
+.succtent{
+    color: #FFF;
+    padding-left: 30rpx;
+}
+.thirtyFive{
+    font-size: 50rpx;
+    font-weight: 500;
+}
+.branch{
+    font-size: 30rpx;
+    font-weight: 400;
+}
+.direction{
+    color: #333232;
+    font-size: 28rpx;
+    background-color: transparent;
+}
+.hint{
+    padding-left:30rpx;
+    padding-bottom: 10rpx;
+}
+.btn{
+    width: 702rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #FFF;
+    font-size: 28rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    background:linear-gradient(0deg,rgba(21,184,218,1),rgba(8,210,215,1));
+    border-radius:50rpx;
+}
+
+
+/* #successfulPayment {
     flex-direction: column;
     width: 100%;
     align-items: center;
@@ -215,4 +319,4 @@
 
 #successfulPayment .tips_img .img {
     width: 100%;
-}
+} */

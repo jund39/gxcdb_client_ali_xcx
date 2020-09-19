@@ -469,9 +469,6 @@
     font-family: PingFang SC;
     font-weight: 400;
     line-height: 42rpx;
-    border:none;
-    background: none;
-    height: 40rpx;
 }
 
 button {
@@ -491,4 +488,22 @@ button:after {
 .login {
     color: #05D7D7;
     padding-right: 50rpx;
+}
+
+.swiper{
+    position: fixed;
+    left: 24rpx;
+    top: 120rpx;
+    width: 702rpx;
+    min-height: 134rpx;
+    max-height: 260rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+
+.swiper image{
+    width: 702rpx;
+    min-height: 134rpx;
+    max-height: 260rpx;
+    border-radius: 20rpx;
 }

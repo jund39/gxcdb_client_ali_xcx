@@ -1,5 +1,5 @@
 const wx2my = require('../../wx2my');
-const Behavior = '';
+//const Behavior = require('../../Behavior');
 var t = getApp(),
     e = require("../../util/util.js"),
     n = 1;
@@ -26,23 +26,26 @@ Page({
   },
   getAlipayOppenid: function (i) {
     var o = this;
-    my.login({
-      success: function (s) {
-        s.code && e.httpRequest("/Auth/wechatOpendId", {
-          code: s.code
-        }, function (e) {
-          if (e.data.openid) t.globalData.openID = e.data.openid, i();else {
-            if (!(n < 3)) return void wx2my.showModal({
-              title: "温馨提示",
-              content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
-            });
-            wx2my.showToast({
-              title: "openID获取失败",
-              icon: "none"
-            }), o.getAlipayOppenid(i), n++;
-          }
-        });
-      }
+    my.getAuthCode({
+      scopes: 'auth_user', // 主动授权（弹框）：auth_user，静默授权（不弹框）：auth_base
+      success: (res) => {
+        if (res.authCode) {
+          res.authCode && t.httpRequest("/Auth/alipayOpendId", {
+            code: res.authCode
+          }, function (t) {
+            if (t.data.openid) e.globalData.openID = t.data.openid, i();else {
+              if (!(a < 3)) return void wx2my.showModal({
+                title: "温馨提示",
+                content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
+              });
+              wx2my.showToast({
+                title: "openID获取失败",
+                icon: "none"
+              }), o.getAlipayOppenid(i), a++;
+            }
+          });
+        }
+      },
     });
   },
   getUserInfo: function () {
@@ -124,13 +127,13 @@ Page({
               localThis.setData({
                 route: ''
               });
-              my.navigateTo({
+              wx2my.navigateTo({
                 url: "../adUploader/adUploader"
               });
               break;
 
             case "line":
-              my.showToast({
+              wx2my.showToast({
                 title: '请扫描机柜二维码',
                 mask: false
               });
@@ -143,10 +146,11 @@ Page({
     let localThis = this;
 
     if (!t.globalData.device_code) {
-      my.showModal({
+      wx2my.showModal({
         title: '提示',
         content: '缺少机柜编号，是否扫码获取？',
         confirmText: "立即扫码",
+        cancelText: "取消",
 
         success(res) {
           if (res.confirm) {
@@ -160,7 +164,7 @@ Page({
 
       });
     } else {
-      my.navigateTo({
+      wx2my.navigateTo({
         url: "../adUploader/adUploader"
       });
     }
