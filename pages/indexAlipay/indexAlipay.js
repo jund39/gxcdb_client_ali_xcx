@@ -404,17 +404,20 @@ Page({
     this.toggleDialog();
   },
   bindgetuserinfos: function (i) {
-    var n = this,
-        o = i.detail.userInfo;
-    t.httpRequest("/User/updateInfo", {
-      openid: e.globalData.openID,
-      userinfo: JSON.stringify(o)
-    }, function (t) {
-      1 == t.code ? n.back() : wx2my.showToast({
-        title: t.msg,
-        icon: "none"
-      });
-    });
+    var n = this;
+    my.getAuthUserInfo({
+      success: (uInfo) => {
+        e.httpRequest("/User/updateInfo", {
+          openid: t.globalData.openID,
+          userinfo: JSON.stringify(uInfo)
+        }, function (t) {
+          1 == t.code ? n.back() : wx2my.showToast({
+            title: t.msg,
+            icon: "none"
+          });
+        });
+      }
+    })
   },
 
   toggleDialog() {
