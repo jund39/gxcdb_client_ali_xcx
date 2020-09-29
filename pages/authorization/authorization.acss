@@ -86,9 +86,13 @@
 }
 
 button {
+    display: flex;
     padding: 0;
     margin: 0;
     height: 54rpx;
+    width: 150rpx;
+    justify-content: center;
+    line-height: 54rpx;
     border-radius: 10rpx;
 }
 
@@ -98,10 +102,8 @@ button:after {
 
 .back {
     color: #999999;
-    padding-right: 50rpx;
 }
 
 .login {
     color: #05D7D7;
-    padding-right: 50rpx;
 }
