@@ -29,7 +29,7 @@ Page({
       var o = decodeURIComponent(i.q),
           r = t.returnQrcode(o);
       this.getAlipayOppenid(function () {
-        n.getLocation(), n.getImages(), n.userAuthor(function () {
+        n.getLocation(), n.getImages(), t.userAuthor(function () {
           switch (r.type) {
             case "cab":
               e.globalData.outCodeUrl = o, n.cabinet(r.qrcode);
@@ -131,14 +131,17 @@ Page({
   },
   getLocation: function () {
     var t = this;
-    my.getLocation({
-      success: function (a) {
-        t.setData({
-          longitude: a.longitude,
-          latitude: a.latitude
-        }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
-      }
-    });
+      my.getLocation({
+        success(a) {
+          t.setData({
+            longitude: a.longitude,
+            latitude: a.latitude
+          }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
+        },
+        fail(res) {
+          my.alert({ title: '定位失败:'+ res.errorMessage});
+        },
+      });
   },
   goUser: function () {
     this.hideSeller(), t.userAuthor(function () {
@@ -179,7 +182,7 @@ Page({
       }
     });
   },
-  backOriginal: function () {
+  backOriginal: function (t) {
     this.mapCtx.moveToLocation();
   },
   markertaps: function (e) {
@@ -211,7 +214,7 @@ Page({
   _scanCode: function () {
     let get_app = e;
     let loal = this;
-    loal.userAuthor(function () {
+    t.userAuthor(function () {
       wx2my.scanCode({
         scanType: ["qrCode"],
         onlyFromCamera: !0,

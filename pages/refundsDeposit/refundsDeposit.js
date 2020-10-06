@@ -1,6 +1,6 @@
 const wx2my = require('../../wx2my');
-//const Behavior = require('../../Behavior');
-var get_app = getApp();
+const Behavior = '';
+getApp();
 
 var e = require("../../util/util.js"),
     t = null,
@@ -162,6 +162,9 @@ Page({
                 device_code: t.data.info.device_code,
                 is_credit: !0
               }, function (e) {
+                
+              console.log(222);
+              console.log(e);
                 switch (e.code) {
                   case 1:
                     setTimeout(function () {
@@ -191,6 +194,7 @@ Page({
               wx2my.hideLoading();
             },
             complete: function(e){
+              console.log(1111);
               console.log('complete:'+JSON.stringify(e));
             }
           }));
