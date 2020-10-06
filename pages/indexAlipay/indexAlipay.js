@@ -157,7 +157,7 @@ Page({
       }
     });
   },
-  backOriginal: function (t) {
+  backOriginal: function () {
     this.mapCtx.moveToLocation();
   },
   markertaps: function (e) {
