@@ -1,5 +1,6 @@
 const wx2my = require('./wx2my');
 //const Behavior = require('./Behavior');
+const Behavior = '';
 var __wxAppData = __wxAppData || {};
 
 var __wxRoute = __wxRoute || "";
@@ -3203,7 +3204,7 @@ define("util/util.js", function (require, module, exports, window, document, fra
         hash: e().hash,
         time: e().timestamp.toString(),
         ocode: c.ocode,
-        client: "alipay"
+        client: "wechat"
       },
       data: n,
       dataType: "json",
@@ -3275,7 +3276,7 @@ define("util/util.js", function (require, module, exports, window, document, fra
     ocode: "xumeng",
     host: "https://www.caidiank.com/app",
     qrcodeurl: "https://www.caidiank.com",
-    headerkey: "zhongyun@2020&8889"
+    headerkey: "zdhx%&$S(client"
   };
 
   module.exports = {
@@ -4978,26 +4979,23 @@ define("pages/user/user.js", function (require, module, exports, window, documen
     },
     getAlipayOppenid: function (i) {
       var o = this;
-      my.getAuthCode({
-        scopes: 'auth_user', // 主动授权（弹框）：auth_user，静默授权（不弹框）：auth_base
-        success: (res) => {
-          if (res.authCode) {
-            res.authCode && t.httpRequest("/Auth/alipayOpendId", {
-              code: res.authCode
-            }, function (t) {
-              if (t.data.openid) e.globalData.openID = t.data.openid, i();else {
-                if (!(a < 3)) return void wx2my.showModal({
-                  title: "温馨提示",
-                  content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
-                });
-                wx2my.showToast({
-                  title: "openID获取失败",
-                  icon: "none"
-                }), o.getAlipayOppenid(i), a++;
-              }
-            });
-          }
-        },
+      my.login({
+        success: function (s) {
+          s.code && e.httpRequest("/Auth/wechatOpendId", {
+            code: s.code
+          }, function (e) {
+            if (e.data.openid) t.globalData.openID = e.data.openid, i();else {
+              if (!(n < 3)) return void wx2my.showModal({
+                title: "温馨提示",
+                content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
+              });
+              wx2my.showToast({
+                title: "openID获取失败",
+                icon: "none"
+              }), o.getAlipayOppenid(i), n++;
+            }
+          });
+        }
       });
     },
     getUserInfo: function () {

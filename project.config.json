@@ -6,34 +6,26 @@
   "setting": {
     "urlCheck": true,
     "es6": true,
-    "enhance": false,
     "postcss": true,
-    "preloadBackgroundData": false,
     "minified": true,
     "newFeature": true,
     "coverView": true,
-    "nodeModules": false,
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
-    "uglifyFileName": false,
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
-    "useIsolateContext": true,
-    "useCompilerModule": false,
-    "userConfirmedUseCompilerModuleSwitch": false
+    }
   },
   "compileType": "miniprogram",
   "libVersion": "2.10.0",
-  "appid": "2021001170695511",
-  "projectname": "xumeng",
+  "appid": "2021001168673373",
+  "projectname": "hedianbao",
   "debugOptions": {
     "hidedInDevtools": []
   },

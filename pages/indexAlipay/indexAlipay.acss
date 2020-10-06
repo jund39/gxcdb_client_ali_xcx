@@ -31,17 +31,14 @@
     background-color: #fff;
     border-radius: 45rpx;
 }
-
 #map .customer_service {
     width: 70rpx;
     height: 70rpx;
 }
-
 #map .position {
     width: 70rpx;
     height: 70rpx;
 }
-
 #map .scan_code {
     position: fixed;
     left: 284rpx;
@@ -67,41 +64,39 @@
     align-items: center;
     width: 710rpx;
     height: 82rpx;
+    background:rgba(0,0,0,0);
 }
-
 #map .userBox {
-    width: 82rpx;
-    height: 82rpx;
-    display: flex;
-    border-radius: 90rpx;
-    background-color: #fff;
-    align-items: center;
-    vertical-align: center;
-    justify-content: center;
-    /* box-shadow:0px 1px 0px 1px red; */
+  width: 82rpx;
+  height: 82rpx;
+  display: flex;
+  border-radius: 90rpx;
+  background-color: #fff;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
+  /* box-shadow:0px 1px 0px 1px red; */
 }
-
 #map .search_box {
-    width: 75%;
-    height: 82rpx;
-    background-color: #fff;
-    border-radius: 45rpx;
-    display: flex;
-    align-items: center;
-    vertical-align: center;
-    justify-content: center;
-    margin: 0 auto;
+  width: 75%;
+  height: 82rpx;
+  background-color: #fff;
+  border-radius: 45rpx;
+  display: flex;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
+  margin: 0 auto;
 }
-
 #map .listBox {
-    width: 82rpx;
-    height: 82rpx;
-    border-radius: 20rpx;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    vertical-align: center;
-    justify-content: center;
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
 }
 
 #map .search_user {
@@ -148,7 +143,7 @@
     top: 24rpx;
     width: 615rpx;
     height: 82rpx;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255,255,255,0);
 }
 
 #map .sel_bg {
@@ -274,7 +269,7 @@
     width: 710rpx;
     height: 260rpx;
     border-radius: 20rpx;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255,255,255,0);
 }
 
 #map .seller_address {
@@ -374,143 +369,4 @@
     bottom: 0;
     width: 690rpx;
     height: 100%;
-}
-
-#map .ad_bussiness{
-    position: absolute;
-    right: 20rpx;
-    bottom: 150rpx;
-    width: 120rpx;
-    height: 120rpx;
-}
-
-/**************授权弹窗css******************************/
-
-.zan-dialog__mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.4);
-    opacity: 1;
-    display: none;
-}
-
-.zan-dialog__container {
-    position: fixed;
-    bottom: 416rpx;
-    width: 572rpx;
-    height: 514rpx;
-    margin-left: 89rpx;
-    background: #f8f8f8;
-    transform: translateY(300%);
-    transition: all 0.4s ease;
-    z-index: 12;
-    border-radius: 20rpx;
-}
-
-.zan-dialog--show .zan-dialog__container {
-    transform: translateY(0);
-}
-
-.zan-dialog--show .zan-dialog__mask {
-    display: block;
-}
-
-.titleName {
-    font-size: 40rpx;
-    color: #333333;
-    font-family: PingFang SC;
-    font-weight: 400;
-    line-height: 42rpx;
-    margin: 60rpx 52rpx 30rpx;
-}
-
-.dialogTitle {
-    margin-left: 52rpx;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.dialogTitle .log {
-    width: 80rpx;
-    height: 80rpx;
-    display: inline-block;
-}
-
-.dialogTitle .text {
-    font-size: 30rpx;
-    font-weight: 400;
-    font-family: PingFang SC;
-    margin-left: 20rpx;
-    display: inline-block;
-}
-
-.dialogContent {
-    font-size: 28rpx;
-    font-family: PingFang SC;
-    font-size: 300;
-    line-height: 42rpx;
-    color: #333333;
-    margin: 0 50rpx 40rpx 50rpx;
-    overflow: hidden;
-}
-
-.dialogBtn {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-
-.btn {
-    font-size: 30rpx;
-    font-family: PingFang SC;
-    font-weight: 400;
-    line-height: 42rpx;
-}
-
-button {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    height: 54rpx;
-    width: 150rpx;
-    justify-content: center;
-    line-height: 54rpx;
-    border-radius: 10rpx;
-}
-
-button:after {
-    border: none;
-}
-
-.back {
-    color: #999999;
-}
-
-.login {
-    color: #05D7D7;
-}
-
-.swiper{
-    position: fixed;
-    left: 24rpx;
-    top: 120rpx;
-    width: 702rpx;
-    min-height: 134rpx;
-    max-height: 260rpx;
-    border-radius: 20rpx;
-    overflow: hidden;
-}
-
-.swiper image{
-    width: 702rpx;
-    min-height: 134rpx;
-    max-height: 260rpx;
-    border-radius: 20rpx;
 }

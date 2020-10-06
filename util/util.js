@@ -1,5 +1,6 @@
 const wx2my = require('../wx2my');
 //const Behavior = require('../Behavior');
+const Behavior = '';
 function t(t) {
   var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "zy@20200608";
   e = s.hexMD5(e);
@@ -44,7 +45,6 @@ function n(t, n, o) {
             icon: "none"
           });
           break;
-
         case 401:
           a(), wx2my.showToast({
             title: "未登录/未授权",
@@ -68,6 +68,9 @@ function n(t, n, o) {
         title: "系统繁忙",
         icon: "none"
       });
+    },
+    complete: function(e){
+      //console.log('complete:'+JSON.stringify(e));
     }
   });
 }
@@ -76,6 +79,19 @@ function o(e, n) {
   var o = null,
       a = null,
       i = null;
+  // if (-1 != e.indexOf("&&cineda=")) {
+  //   o = e.indexOf("&&cineda=");
+  //   a = t(a = e.substring(n, o));
+  //   i = e.substring(o + 9);
+  // } else {
+  //     if (-1 != e.indexOf("&&t=")) {
+  //       o = e.indexOf("&&t=");
+  //       a = t(a = e.substring(n, o));
+  //       i = e.substring(o + 4);
+  //     }
+  // }
+  // return {oid: a,type: "cab",qrcode: i};
+  
   return -1 != e.indexOf("&&cineda=") ? (o = e.indexOf("&&cineda="), a = t(a = e.substring(n, o)), i = e.substring(o + 9)) : -1 != e.indexOf("&&t=") && (o = e.indexOf("&&t="), a = t(a = e.substring(n, o)), i = e.substring(o + 4)), {
     oid: a,
     type: "cab",
@@ -108,7 +124,6 @@ module.exports = {
   config: c,
   mwdecrypt: t,
   httpRequest: n,
-  e,
   getUserInfoAlipay: function (t) {
     wx2my.getLocation({
       success: function (t) {
@@ -130,15 +145,20 @@ module.exports = {
       pay_type: "alipay",
       type: e
     }, function (t) {
+      console.log(666666);
+      console.log(t.data);
       if (1 == t.code) {
         var e = t.data.params;
         my.tradePay({
             tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
             //orderStr: e.nonceStr, // 调用 资金授权 时必填
             success (res) {
+              console.log(1111111);
+              console.log(res);
               o(e.out_trade_no);
             },
             fail (t) {
+              console.log(22222);
               wx2my.showToast({
                 title: "支付失败",
                 icon: "none"
@@ -148,84 +168,59 @@ module.exports = {
               wx2my.hideLoading();
             },
         })
+        /*my.requestPayment({
+          timeStamp: e.timeStamp,
+          nonceStr: e.nonceStr,
+          package: e.package,
+          signType: e.signType,
+          paySign: e.paySign,
+          success: function () {
+            console.log(1111111);
+            o(t.data.order_no);
+          },
+          fail: function (t) {
+            console.log(22222);
+            wx2my.showToast({
+              title: "支付失败",
+              icon: "none"
+            }), a();
+          },
+          complete: function (t) {
+            console.log(3333333);
+            console.log(t);
+            wx2my.hideLoading();
+          }
+        });*/
       } else wx2my.hideLoading(), wx2my.showToast({
         title: "支付失败",
         icon: "none"
       });
     });
   },
-  adPayment: function (amount, type, suc = () => {}, fai = () => {}, com = () => {}) {
-    //广告相关支付
-    n("/payment/adPayOrder", {
-      amount: amount,
-      pay_type: "alipay"
-    }, function (t) {
-      if (1 == t.code) {
-        var e = t.data.params;
-        my.tradePay({
-          tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
-          //orderStr: e.nonceStr, // 调用 资金授权 时必填
-          success (res) {
-            o(e.out_trade_no);
-          },
-          fail (t) {
-            wx2my.showToast({
-              title: "支付失败",
-              icon: "none"
-            }), a();
-          },
-          complete (t) {
-            wx2my.hideLoading();
-          },
-        })
-      // if (1 == t.code) {
-      //   var e = t.data.params;
-      //   wx.requestPayment({
-      //     timeStamp: e.timeStamp,
-      //     nonceStr: e.nonceStr,
-      //     package: e.package,
-      //     signType: e.signType,
-      //     paySign: e.paySign,
-      //     success: function () {
-      //       suc(t.data.order_no);
-      //     },
-      //     fail: function (res) {
-      //       fai(t.data.order_no);
-      //     },
-      //     complete: function () {
-      //       com(t.data.order_no);
-      //     }
-      //   });
-      } else {
-        wx2my.hideLoading(), wx2my.showToast({
-          title: "支付失败",
-          icon: "none"
-        });
-      }
-
-      ;
-    });
-  },
   returnQrcode: function (t) {
-    let e = c.qrcodeurl,
-        n = null,
-        url = t.substring(0, t.indexOf('/', 8));
+    var e = c.qrcodeurl,
+        n = null;
+    //     console.log(666666);
+    //     if (t.substring(0, e.length + 14) == e + "/Lease?objhxy=") {
+    //         console.log(11111);
+    //       n = o(t, e.length + 14)
+    //     } else {
+    //       if (t.substring(0, e.length + 9) == e + "/Lease?o=") {
+    //         console.log(2222);
+    //         console.log(t);
+    //         console.log(e.length + 9);
+    //         n = o(t, e.length + 9) 
+    //       } else { 
+            
+    //         console.log(3333);
+    //         t.substring(0, e.length + 6) == e + "/Xc?o=" && (n = a(t, e.length + 6)), n;
+    //       }
+    //     }
 
-    if (url === e) {
-      if (t.includes("/Lease?objhxy=")) {
-        n = o(t, e.length + 14);
-      } else {
-        if (t.includes("/Lease?o=")) {
-          n = o(t, e.length + 9);
-        } else {
-          if (t.includes("/Xc?o=")) {
-            n = a(t, e.length + 6);
-          }
-        }
-      }
-    }
+    //     console.log(888888);
+    // return n;
 
-    return n;
+    return t.substring(0, e.length + 14) == e + "/Lease?objhxy=" ? n = o(t, e.length + 14) : t.substring(0, e.length + 9) == e + "/Lease?o=" ? n = o(t, e.length + 9) : t.substring(0, e.length + 6) == e + "/Xc?o=" && (n = a(t, e.length + 6)), n;
   },
   userAuthor: function (t) {
     var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () {};

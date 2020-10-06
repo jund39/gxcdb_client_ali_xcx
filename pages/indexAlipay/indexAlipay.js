@@ -1,5 +1,5 @@
 const wx2my = require('../../wx2my');
-//const Behavior = require('../../Behavior');
+const Behavior = '';
 var e = getApp(),
     t = require("../../util/util.js"),
     a = 1;
@@ -15,21 +15,17 @@ Page({
     scale: 16,
     isClick: !0,
     nearySeller: [],
-    seller: {},
-    showDialog: false,
-    route: '',
-    indexImages: [],
-    indexImageTime: 5
+    seller: {}
   },
   onLoad: function (i) {
     a = 1;
     var n = this;
-
+    
     if (i.q) {
       var o = decodeURIComponent(i.q),
           r = t.returnQrcode(o);
       this.getAlipayOppenid(function () {
-        n.getLocation(), n.getImages(), t.userAuthor(function () {
+        n.getLocation(), t.userAuthor(function () {
           switch (r.type) {
             case "cab":
               e.globalData.outCodeUrl = o, n.cabinet(r.qrcode);
@@ -46,38 +42,16 @@ Page({
         });
       });
     } else this.getAlipayOppenid(function () {
-      n.getUseInfo(), n.getLocation(), n.getImages();
+      n.getUseInfo(), n.getLocation();
     });
-  },
-  getImages: function () {
-    let localThis = this;
-
-    if (e.globalData.indexImages.length > 0) {
-      localThis.setData({
-        indexImages: e.globalData.indexImages,
-        indexImageTime: e.globalData.indexImageTime * 1000
-      });
-    } else {
-      t.httpRequest('/index/indexAd', {}, function (res) {
-        if (res.code == 1) {
-          e.globalData.indexImages = res.data.list;
-          e.globalData.indexImageTime = res.data.time;
-          localThis.setData({
-            indexImages: e.globalData.indexImages,
-            indexImageTime: e.globalData.indexImageTime * 1000
-          });
-        }
-      });
-    }
   },
   onShow: function () {
     var t = this;
-    e.globalData.openID && this.getUseInfo(), my.getStorage({
+    e.globalData.openID && this.getUseInfo(), wx2my.getStorage({
       key: "device",
       success: function (e) {
         var a = JSON.parse(e.data);
-
-        switch (my.removeStorage({
+        switch (wx2my.removeStorage({
           key: "device"
         }), a.type) {
           case "cab":
@@ -127,6 +101,7 @@ Page({
       1 == t.code && e.setData({
         userinfo: t.data
       });
+      if(1==t.code) getApp().globalData.userinfo = t.data;
     });
   },
   getLocation: function () {
@@ -212,8 +187,7 @@ Page({
     }
   },
   _scanCode: function () {
-    let get_app = e;
-    let loal = this;
+    var e = this;
     t.userAuthor(function () {
       wx2my.scanCode({
         scanType: ["qrCode"],
@@ -222,24 +196,12 @@ Page({
           if (a.result) {
             var i = a.result,
                 n = t.returnQrcode(i);
-            get_app.globalData.device_code = n.qrcode;
             if (n.oid == t.config.oid) switch (n.type) {
               case "cab":
-                if (loal.data.route === '') {
-                  loal.cabinet(n.qrcode);
-                } else {
-                  loal.setData({
-                    route: ''
-                  });
-                  my.navigateTo({
-                    url: "../adUploader/adUploader"
-                  });
-                }
-
+                e.cabinet(n.qrcode);
                 break;
-
               case "line":
-                loal.lineCharging(n.qrcode);
+                e.lineCharging(n.qrcode);
             }
           }
         }
@@ -364,69 +326,5 @@ Page({
         });
       }
     });
-  },
-  ad_bussiness: function () {
-    let localThis = this;
-
-    if (!e.globalData.device_code) {
-      wx2my.showModal({
-        title: '提示',
-        content: '缺少机柜编号，是否扫码获取？',
-        confirmText: "立即扫码",
-        cancelText: "取消",
-
-        success(res) {
-          if (res.confirm) {
-            localThis.setData({
-              route: 'ad_bussiness'
-            });
-
-            localThis._scanCode();
-          } else if (res.cancel) {}
-        }
-
-      });
-    } else {
-      my.navigateTo({
-        url: "../adUploader/adUploader"
-      });
-    }
-  },
-
-  /*****************授权弹窗相关js********************/
-  userAuthor: function (tt) {
-    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () {};
-    var uu = this;
-    t.httpRequest("/user/getInfo", {}, function (n) {
-      1 == n.code && (1 == n.data.is_auth ? tt(n) : (e(), uu.toggleDialog()));
-    }, function () {
-      e();
-    });
-  },
-  back: function () {
-    this.toggleDialog();
-  },
-  bindgetuserinfos: function (i) {
-    var n = this;
-    my.getAuthUserInfo({
-      success: (uInfo) => {
-        e.httpRequest("/User/updateInfo", {
-          openid: t.globalData.openID,
-          userinfo: JSON.stringify(uInfo)
-        }, function (t) {
-          1 == t.code ? n.back() : wx2my.showToast({
-            title: t.msg,
-            icon: "none"
-          });
-        });
-      }
-    })
-  },
-
-  toggleDialog() {
-    this.setData({
-      showDialog: !this.data.showDialog
-    });
   }
-
 });

@@ -10,7 +10,7 @@
     >
       <view class="orderTitle">
         <view class="orderTitleLeft">
-          <text>订单编号：{{item.order_no}}</text>
+          <text>订单编号：</text>
         </view>
         <view class="orderTitleRight">
           <text style="color:#F5804C" a:if="{{item.status==1}}">租赁中</text>

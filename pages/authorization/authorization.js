@@ -1,14 +1,13 @@
 const wx2my = require('../../wx2my');
-//const Behavior = require('../../Behavior');
+const Behavior = '';
 var t = getApp(),
-  e = require("../../util/util.js");
+    e = require("../../util/util.js");
 
 Page({
   data: {
-    isClick: !0,
-    showDialog: true
+    isClick: !0
   },
-  onLoad: function (t) { },
+  onLoad: function (t) {},
   back: function () {
     wx2my.navigateBack({
       delta: 1
@@ -28,12 +27,6 @@ Page({
           });
         });
       }
-    })
-  },
-  toggleDialog() {
-    this.setData({
-      showDialog: !this.data.showDialog
     });
   }
-
 });

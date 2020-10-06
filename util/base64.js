@@ -1,5 +1,6 @@
 const wx2my = require('../wx2my');
 //const Behavior = require('../Behavior');
+const Behavior = '';
 function r(r) {
   var e, t, h, o, c, d;
 

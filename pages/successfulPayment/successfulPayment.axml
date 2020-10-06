@@ -1,80 +1,68 @@
-<view class="content">
-  <view class="title">欢迎使用</view>
-  <view class="f-title">请输入六位数的密码解锁后开始使用</view>
-  <view class="password">
-    <view
-      class="number"
-      a:for="{{password}}"
-      a:key="index"
-    >
-            {{item}}
-        </view>
-  </view>
-</view>
-<view class="content code-view">
-  <image src="/static/img/code.png" class="code"></image>
-  <view class="qrcode">
-    <text>二维码编号：</text>
-    <text>{{info.qrcode}}</text>
-  </view>
-  <view class="excess-time">
-    <text>使用剩余时长</text>
-  </view>
-  <view class="succtent">
-    <text class="thirtyFive">{{hour}} </text>
-    <text class="branch">小时</text>
-    <text class="thirtyFive"> {{minute}} </text>
-    <text class="branch">分</text>
-    <text class="thirtyFive"> {{second}} </text>
-    <text class="branch">秒</text>
-  </view>
-</view>
-<view class="content direction">
-  <view class="hint">提示：重新获取密码次数不能超过8次</view>
-  <button onTap="againGetPaw" class="btn">重新获取密码</button>
-</view>
-<!-- <view id="successfulPayment">
-    <view class="fulPayment">
-        <view class="fulPaymentText">请输入密码解锁后充电</view>
-        <view class="fulPaymentSize">租借充电:请输入六位数的密码开始充电</view>
-        <view class="fulPaymentNeb">
-            <view class="neber" wx:for="{{password}}" wx:key="{{index}}">
+<view id="successfulPayment">
+  <view class="fulPayment">
+    <view class="fulPaymentText">请输入密码解锁后充电</view>
+    <view class="fulPaymentSize">租借充电:请输入六位数的密码开始充电</view>
+    <view class="fulPaymentNeb">
+      <view
+        class="neber"
+        a:for="{{password}}"
+        a:key="{{index}}"
+      >
         {{item}}
       </view>
-        </view>
     </view>
-    <view class="successt">
-        <image src="/static/img/bg.png"></image>
-        <view class="left">
-            <text class="successTime">充电剩余时间</text>
-            <view class="succtent">
-                <text class="thirtyFive">{{hour}}</text>
-                <text class="branch">小时</text>
-                <text class="thirtyFive">{{minute}}</text>
-                <text class="branch">分</text>
-                <text class="thirtyFive">{{second}}</text>
-                <text class="branch">秒</text>
-            </view>
-            <view class="qrCode">
-                <text>二维码编号</text>
-                <text>{{info.qrcode}}</text>
-            </view>
-        </view>
+  </view>
+  <view class="successt">
+    <image src="/static/img/bg.png"></image>
+    <view class="left">
+      <text class="successTime">充电剩余时间</text>
+      <view class="succtent">
+        <text class="thirtyFive">{{hour}}</text>
+        <text class="branch">小时</text>
+        <text class="thirtyFive">{{minute}}</text>
+        <text class="branch">分</text>
+        <text class="thirtyFive">{{second}}</text>
+        <text class="branch">秒</text>
+      </view>
+      <view class="qrCode">
+        <text>二维码编号</text>
+        <text>{{info.qrcode}}</text>
+      </view>
     </view>
-    <view class="tips">
-        <text class="head">使用说明：</text>
-        <view class="row">请选择充电时长,并点击支付获取密码,支付成功后再次点击按钮即可获取密码</view>
-        <text class="row" style="color:red;">点击获取密码</text>
+  </view>
+  <view onTap="openTips" class="tips">
+    <text class="head">使用说明：</text>
+    <view class="row">请选择充电时长,并点击支付获取密码,支付成功后再次点击按钮即可获取密码</view>
+    <text class="row" style="color:red;">更多请点击查看</text>
+  </view>
+  <view
+    catchTap="closeTips"
+    class="tips_img_mask"
+    a:if="{{isShowTip}}"
+  ></view>
+  <scroll-view
+    class="tips_img"
+    scrollY="{{true}}"
+    a:if="{{isShowTip}}"
+  >
+    <image
+      class="img"
+      mode="widthFix"
+      src="{{info.intro}}"
+    ></image>
+  </scroll-view>
+  <view class="{{info.isshowGetPaw=='dmm'?'pswordBtn':'pswordBtnz'}}">
+    <view onTap="overOrder" class="endBtn">
+      <image src="/static/img/ic_stop.png"></image>
+      <text>结束订单</text>
     </view>
-    
-    <view class="{{info.isshowGetPaw=='dmm'?'pswordBtn':'pswordBtnz'}}">
-        <view bindtap="overOrder" class="endBtn">
-            <image src="/static/img/ic_stop.png"></image>
-            <text>结束订单</text>
-        </view>
-        <view bindtap="againGetPaw" class="endBtn1">
-            <image src="/static/img/ic_password.png"></image>
-            <text>重新获取密码</text>
-        </view>
+    <view
+      onTap="againGetPaw"
+      class="endBtn1"
+      a:if="{{info.isshowGetPaw=='dmm'}}"
+    >
+      <image src="/static/img/ic_password.png"></image>
+      <text>重新获取密码</text>
     </view>
-</view> -->
+  </view>
+</view>

@@ -1,5 +1,5 @@
 const wx2my = require('../../wx2my');
-//const Behavior = require('../../Behavior');
+const Behavior = '';
 var e = getApp(),
     a = require("../../util/util.js");
 
@@ -41,6 +41,7 @@ Page({
         val.openStatus = 0;
       }
 
+      console.log(e.data);
       1 == e.code && l.setData({
         seller: val
       });

@@ -1,8 +1,3 @@
 {
-  "navigationBarTextStyle": "black",
-  "backgroundColor": "#eeeeee",
-  "backgroundTextStyle": "light",
-  "usingComponents": {},
-  "defaultTitle": "关于我们",
-  "titleBarColor": "#ffffff"
+  "usingComponents": {}
 }
