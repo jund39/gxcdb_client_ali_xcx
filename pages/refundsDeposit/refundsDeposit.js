@@ -51,8 +51,6 @@ Page({
       device_code: a.data.info.device_code,
       is_credit: !0
     }, function (e) {
-      console.log(11111222222);
-      console.log(e);
       switch (e.code) {
         case 1:
           setTimeout(function () {
@@ -78,7 +76,6 @@ Page({
           }), wx2my.hideLoading();
       }
     }, function () {
-      console.log(33333555);
       a.setData({
         isClick: !0,
         isPlay: !1
