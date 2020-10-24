@@ -1,5 +1,5 @@
 const wx2my = require('../../wx2my');
-//const Behavior = require('../../Behavior');
+const Behavior = '';
 var e = getApp(),
     t = require("../../util/util.js"),
     a = 1;
@@ -29,7 +29,7 @@ Page({
       var o = decodeURIComponent(i.q),
           r = t.returnQrcode(o);
       this.getAlipayOppenid(function () {
-        n.getLocation(), n.getImages(), n.userAuthor(function () {
+        n.getLocation(), n.getImages(), t.userAuthor(function () {
           switch (r.type) {
             case "cab":
               e.globalData.outCodeUrl = o, n.cabinet(r.qrcode);
@@ -72,12 +72,11 @@ Page({
   },
   onShow: function () {
     var t = this;
-    e.globalData.openID && this.getUseInfo(), my.getStorage({
+    e.globalData.openID && this.getUseInfo(), wx2my.getStorage({
       key: "device",
       success: function (e) {
         var a = JSON.parse(e.data);
-
-        switch (my.removeStorage({
+        switch (wx2my.removeStorage({
           key: "device"
         }), a.type) {
           case "cab":
@@ -127,17 +126,21 @@ Page({
       1 == t.code && e.setData({
         userinfo: t.data
       });
+      if(1==t.code) getApp().globalData.userinfo = t.data;
     });
   },
   getLocation: function () {
     var t = this;
     my.getLocation({
-      success: function (a) {
+        success(a) {
         t.setData({
           longitude: a.longitude,
           latitude: a.latitude
         }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
-      }
+        },
+        fail(res) {
+          my.alert({ title: '定位失败:'+ res.errorMessage});
+        },
     });
   },
   goUser: function () {
@@ -404,17 +407,20 @@ Page({
     this.toggleDialog();
   },
   bindgetuserinfos: function (i) {
-    var n = this,
-        o = i.detail.userInfo;
-    t.httpRequest("/User/updateInfo", {
-      openid: e.globalData.openID,
-      userinfo: JSON.stringify(o)
-    }, function (t) {
-      1 == t.code ? n.back() : wx2my.showToast({
-        title: t.msg,
-        icon: "none"
-      });
-    });
+    var n = this;
+    my.getAuthUserInfo({
+      success: (uInfo) => {
+        e.httpRequest("/User/updateInfo", {
+          openid: t.globalData.openID,
+          userinfo: JSON.stringify(uInfo)
+        }, function (t) {
+          1 == t.code ? n.back() : wx2my.showToast({
+            title: t.msg,
+            icon: "none"
+          });
+        });
+      }
+    })
   },
 
   toggleDialog() {

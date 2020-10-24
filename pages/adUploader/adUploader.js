@@ -1,7 +1,7 @@
 const wx2my = require('../../wx2my');
 //const Behavior = require('../../Behavior');
 var get_app = getApp(),
-    util = require("../../util/util.js");
+  util = require("../../util/util.js");
 
 Page({
   /**
@@ -65,9 +65,7 @@ Page({
           }
 
         });
-      }
-
-      ;
+      };
       1 == res.code && localThis.setData({
         image_size: parseInt(res.data.image_size) * 1024 * 1024,
         video_size: parseInt(res.data.video_size) * 1024 * 1024,
@@ -95,22 +93,24 @@ Page({
     if (localThis.data.formData.type === 'video') {
       my.chooseVideo({
         sourceType: ['album'],
-        mediaType: ["video"],
+        maxDuration: 60,
+        camera: 'back',
         count: 1,
         success: function (res) {
-          let size = parseInt(res.tempFiles[0].size);
-          let time = res.tempFiles[0].duration;
-          let image = res.tempFiles[0].thumbTempFilePath;
-
+          let size = parseInt(res.size);
+          let time = localThis.data.video_time;
+          let url = res.tempFilePath;
+          let image = url;
+         
           if (size <= localThis.data.video_size && time <= localThis.data.video_time) {
             localThis.setData({
               dis_i: 'block',
               dis_v: 'none',
               dis_p: 'block',
               color: 'white',
-              tempFilePathImage: image,
-              tempFilePathVideo: res.tempFiles[0].tempFilePath,
-              path: res.tempFiles[0].tempFilePath
+              tempFilePathImage: '',
+              tempFilePathVideo: url,
+              path: url
             });
           } else {
             localThis.setData({
@@ -149,20 +149,26 @@ Page({
         }
       });
     } else {
-      wx2my.chooseImage({
+      my.chooseImage({
         count: 1,
         success: function (res) {
-          let size = parseInt(res.tempFiles[0].size);
-
+          let url = res.apFilePaths[0];
+          let size = 0;
+          my.getFileInfo({
+            apFilePath: url,
+            success: (res) => {
+              size = res.size;
+            }
+          });
           if (size <= localThis.data.image_size) {
             localThis.setData({
               dis_i: 'block',
               dis_v: 'none',
               dis_p: 'none',
               color: 'white',
-              tempFilePathImage: res.tempFiles[0].path,
+              tempFilePathImage: url,
               tempFilePathVideo: '',
-              path: res.tempFiles[0].path
+              path: url
             });
           } else {
             localThis.setData({
@@ -205,7 +211,7 @@ Page({
   videoPlay: function () {
     this.setData({
       dis_v: 'block',
-      videoContext: wx2my.createVideoContext('userVideo')
+      videoContext: my.createVideoContext('userVideo')
     });
     this.data.videoContext.play();
   },
@@ -213,7 +219,7 @@ Page({
     this.setData({
       dis_v: 'none'
     });
-    this.data.videoContext.stop();
+    this.data.videoContext.pause();
   },
   radioChange: function (e) {
     if (e.detail.value === 'image') {
@@ -293,7 +299,7 @@ Page({
       title: "开始上传...",
       mask: true
     });
-    wx2my.uploadFile({
+    my.uploadFile({
       url: util.config.host + '/user_ad_order/store',
       //上传的接口地址
       header: {
@@ -305,7 +311,8 @@ Page({
         client: "wechat"
       },
       filePath: localThis.data.path,
-      name: 'file',
+      fileName:"file",
+      fileType:localThis.data.formData.type,
       formData: localThis.data.formData,
 
       success(res) {

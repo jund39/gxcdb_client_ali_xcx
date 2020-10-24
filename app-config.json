@@ -18,7 +18,9 @@
     "pages/billRecord/billRecord",
     "pages/aboutUs/aboutUs",
     "pages/appeal/appeal",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/adUploader/adUploader",
+    "pages/adOrder/adOrder"
   ],
   "page": {
     "pages/indexAlipay/indexAlipay.html": {
