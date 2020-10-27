@@ -1,8 +1,8 @@
 const wx2my = require('../../wx2my');
 const Behavior = '';
 var e = getApp(),
-    t = require("../../util/util.js"),
-    a = 1;
+  t = require("../../util/util.js"),
+  a = 1;
 
 Page({
   data: {
@@ -27,7 +27,7 @@ Page({
 
     if (i.q) {
       var o = decodeURIComponent(i.q),
-          r = t.returnQrcode(o);
+        r = t.returnQrcode(o);
       this.getAlipayOppenid(function () {
         n.getLocation(), n.getImages(), t.userAuthor(function () {
           switch (r.type) {
@@ -105,7 +105,7 @@ Page({
           res.authCode && t.httpRequest("/Auth/alipayOpendId", {
             code: res.authCode
           }, function (t) {
-            if (t.data.openid) e.globalData.openID = t.data.openid, i();else {
+            if (t.data.openid) e.globalData.openID = t.data.openid, i(); else {
               if (!(a < 3)) return void wx2my.showModal({
                 title: "温馨提示",
                 content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
@@ -126,21 +126,21 @@ Page({
       1 == t.code && e.setData({
         userinfo: t.data
       });
-      if(1==t.code) getApp().globalData.userinfo = t.data;
+      if (1 == t.code) getApp().globalData.userinfo = t.data;
     });
   },
   getLocation: function () {
     var t = this;
     my.getLocation({
-        success(a) {
+      success(a) {
         t.setData({
           longitude: a.longitude,
           latitude: a.latitude
         }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
-        },
-        fail(res) {
-          my.alert({ title: '定位失败:'+ res.errorMessage});
-        },
+      },
+      fail(res) {
+        my.alert({ title: '定位失败:' + res.errorMessage });
+      },
     });
   },
   goUser: function () {
@@ -176,9 +176,9 @@ Page({
     e.globalData.openID && "end" == t.type && a.mapCtx.getCenterLocation({
       success: function (t) {
         e.globalData.longitude = t.longitude, e.globalData.latitude = t.latitude, a.getNearySellerInfo(t.longitude, t.latitude);
-          a.setData({
-            longitude:t.longitude, latitude: t.latitude, scale: t.scale
-          });
+        a.setData({
+          longitude: t.longitude, latitude: t.latitude, scale: t.scale
+        });
       }
     });
   },
@@ -191,8 +191,8 @@ Page({
       seller_address: !0
     });
     var a = !0,
-        i = !1,
-        n = void 0;
+      i = !1,
+      n = void 0;
 
     try {
       for (var o, r = t.data.nearySeller[Symbol.iterator](); !(a = (o = r.next()).done); a = !0) {
@@ -221,7 +221,7 @@ Page({
         success: function (a) {
           if (a.result) {
             var i = a.result,
-                n = t.returnQrcode(i);
+              n = t.returnQrcode(i);
             get_app.globalData.device_code = n.qrcode;
             if (n.oid == t.config.oid) switch (n.type) {
               case "cab":
@@ -333,9 +333,9 @@ Page({
           tel: e.data.tel
         });
         var t = [],
-            a = !0,
-            n = !1,
-            o = void 0;
+          a = !0,
+          n = !1,
+          o = void 0;
 
         try {
           for (var r, l = e.data.list[Symbol.iterator](); !(a = (r = l.next()).done); a = !0) {
@@ -382,7 +382,7 @@ Page({
             });
 
             localThis._scanCode();
-          } else if (res.cancel) {}
+          } else if (res.cancel) { }
         }
 
       });
@@ -395,7 +395,7 @@ Page({
 
   /*****************授权弹窗相关js********************/
   userAuthor: function (tt) {
-    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () {};
+    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () { };
     var uu = this;
     t.httpRequest("/user/getInfo", {}, function (n) {
       1 == n.code && (1 == n.data.is_auth ? tt(n) : (e(), uu.toggleDialog()));
@@ -410,8 +410,8 @@ Page({
     var n = this;
     my.getAuthUserInfo({
       success: (uInfo) => {
-        e.httpRequest("/User/updateInfo", {
-          openid: t.globalData.openID,
+        t.httpRequest("/User/updateInfo", {
+          openid: e.globalData.openID,
           userinfo: JSON.stringify(uInfo)
         }, function (t) {
           1 == t.code ? n.back() : wx2my.showToast({
