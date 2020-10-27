@@ -98,9 +98,9 @@ var i = getApp(),
     r = require("./base64.js"),
     c = {
   oid: 1,
-  ocode: "zhongyun",
-  host: "https://www.zhongyunke.com/app",
-  qrcodeurl: "https://www.zhongyunke.com",
+  ocode: "youdiankeji",
+  host: "https://www.youdiankejike.com/app",
+  qrcodeurl: "https://www.youdiankejike.com",
   headerkey: "zhongyun@2020&8889"
 };
 
