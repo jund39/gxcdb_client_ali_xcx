@@ -410,8 +410,8 @@ Page({
     var n = this;
     my.getAuthUserInfo({
       success: (uInfo) => {
-        e.httpRequest("/User/updateInfo", {
-          openid: t.globalData.openID,
+        t.httpRequest("/User/updateInfo", {
+          openid: e.globalData.openID,
           userinfo: JSON.stringify(uInfo)
         }, function (t) {
           1 == t.code ? n.back() : wx2my.showToast({
