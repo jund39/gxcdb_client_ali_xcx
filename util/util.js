@@ -99,8 +99,8 @@ var i = getApp(),
     c = {
   oid: 16,
   ocode: "zycsw",
-  host: "https://www.zycswke.com/app",
-  qrcodeurl: "https://www.zycswke.com",
+  host: "https://test.zhongyunke.com/app",
+  qrcodeurl: "https://test.zhongyunke.com",
   headerkey: "zhongyun@2020&8889"
 };
 
