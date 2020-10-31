@@ -224,6 +224,7 @@ Page({
               n = t.returnQrcode(i);
             get_app.globalData.device_code = n.qrcode;
             if (n.oid == t.config.oid) switch (n.type) {
+              
               case "cab":
                 if (loal.data.route === '') {
                   loal.cabinet(n.qrcode);

@@ -97,7 +97,7 @@ var i = getApp(),
     s = require("./md5.js"),
     r = require("./base64.js"),
     c = {
-  oid: 1,
+  oid: 14,
   ocode: "xidiankeji",
   host: "https://www.xdkj.vip/app",
   qrcodeurl: "https://www.xdkj.vip",
