@@ -78,7 +78,7 @@ Page({
         var a = JSON.parse(e.data);
         switch (wx2my.removeStorage({
           key: "device"
-        }), a.type) {
+        })) {
           case "cab":
             t.cabinet(a.qrcode);
             break;
@@ -87,7 +87,7 @@ Page({
             t.lineCharging(a.qrcode);
             break;
           default:
-            t.cabinet(a.qrcode);
+           
             break;
         }
       }

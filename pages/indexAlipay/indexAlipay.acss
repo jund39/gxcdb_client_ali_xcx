@@ -4,7 +4,7 @@
 }
 
 #map .maps {
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     right: 0;
@@ -13,8 +13,13 @@
     padding: 0;
     width: 100vw;
     height: 100vh;
+    z-index: -1;
 }
-
+#content{
+    position: absolute;
+    top: 0;
+    z-index: 99999;
+}
 #map .icon_center {
     position: absolute;
     left: 47vw;
@@ -383,6 +388,7 @@
     width: 120rpx;
     height: 120rpx;
 }
+
 
 /**************授权弹窗css******************************/
 
