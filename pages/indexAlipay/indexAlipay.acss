@@ -382,7 +382,7 @@
 }
 
 #map .ad_bussiness{
-    position: absolute;
+    position: fixed;
     right: 20rpx;
     bottom: 150rpx;
     width: 120rpx;

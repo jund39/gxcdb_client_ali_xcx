@@ -136,7 +136,14 @@ module.exports = {
         my.tradePay({
             tradeNO: e.trade_no, // 调用 小程序支付 时必填
             success (res) {
-              o(e.out_trade_no);
+               if(res.resultCode == "9000"){
+                    o(e.out_trade_no);
+               }else if(res.resultCode == "6001"){
+                    wx2my.showToast({
+                        title: "取消支付",
+                        icon: "none"
+                    });
+               }
             },
             fail (t) {
               wx2my.showToast({
@@ -165,7 +172,14 @@ module.exports = {
         my.tradePay({
           tradeNO: e.trade_no, // 调用 小程序支付 时必填
           success (res) {
-            o(e.out_trade_no);
+            if(res.resultCode == "9000"){
+                o(e.out_trade_no);
+            }else if(res.resultCode == "6001"){
+                wx2my.showToast({
+                    title: "取消支付",
+                    icon: "none"
+                });
+            }
           },
           fail (t) {
             wx2my.showToast({

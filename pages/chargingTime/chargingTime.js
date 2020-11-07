@@ -48,10 +48,14 @@ Page({
           break;
         case 3:
           t.alipayPayment(a.data.amount, 2, function (t) {
+              console.log(
+                  "来来来"
+              );
             e.setData({
               isClick: !0
             }), e.goPayment();
           }, function () {
+              console.log("走走走")
             e.setData({
               isClick: !0
             }), wx2my.hideLoading();
