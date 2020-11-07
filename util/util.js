@@ -131,10 +131,10 @@ module.exports = {
       type: e
     }, function (t) {
       if (1 == t.code) {
+          console.log(t);
         var e = t.data.params;
         my.tradePay({
-            tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
-            //orderStr: e.nonceStr, // 调用 资金授权 时必填
+            tradeNO: e.trade_no, // 调用 小程序支付 时必填
             success (res) {
               o(e.out_trade_no);
             },
@@ -163,8 +163,7 @@ module.exports = {
       if (1 == t.code) {
         var e = t.data.params;
         my.tradePay({
-          tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
-          //orderStr: e.nonceStr, // 调用 资金授权 时必填
+          tradeNO: e.trade_no, // 调用 小程序支付 时必填
           success (res) {
             o(e.out_trade_no);
           },
@@ -178,24 +177,6 @@ module.exports = {
             wx2my.hideLoading();
           },
         })
-      // if (1 == t.code) {
-      //   var e = t.data.params;
-      //   wx.requestPayment({
-      //     timeStamp: e.timeStamp,
-      //     nonceStr: e.nonceStr,
-      //     package: e.package,
-      //     signType: e.signType,
-      //     paySign: e.paySign,
-      //     success: function () {
-      //       suc(t.data.order_no);
-      //     },
-      //     fail: function (res) {
-      //       fai(t.data.order_no);
-      //     },
-      //     complete: function () {
-      //       com(t.data.order_no);
-      //     }
-      //   });
       } else {
         wx2my.hideLoading(), wx2my.showToast({
           title: "支付失败",
