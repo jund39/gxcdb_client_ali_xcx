@@ -3271,10 +3271,10 @@ define("util/util.js", function (require, module, exports, window, document, fra
       s = require("./md5.js"),
       r = require("./base64.js"),
       c = {
-    oid: 19,
-    ocode: "shandianxia",
-    host: "https://www.shandiankeji.cn/app",
-    qrcodeurl: "https://qrcode.shandiankeji.cn",
+    oid: 17,
+    ocode: "youdiankeji",
+    host: "https://www.youdiansc.com/app",
+    qrcodeurl: "https://qrcode.youdiansc.com",
     headerkey: "zycsw@2020&8889"
   };
 

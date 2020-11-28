@@ -97,10 +97,10 @@ var i = getApp(),
     s = require("./md5.js"),
     r = require("./base64.js"),
     c = {
-  oid: 19,
-  ocode: "shandianxia",
-  host: "https://www.shandiankeji.cn/app",
-  qrcodeurl: "https://www.shandiankeji.cn",
+  oid: 17,
+  ocode: "youdiankeji",
+  host: "https://www.youdiansc.com/app",
+  qrcodeurl: "https://www.youdiansc.com",
   headerkey: "zhongyun@2020&8889"
 };
 
@@ -133,10 +133,16 @@ module.exports = {
       if (1 == t.code) {
         var e = t.data.params;
         my.tradePay({
-            tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
-            //orderStr: e.nonceStr, // 调用 资金授权 时必填
+            tradeNO: e.trade_no, // 调用 小程序支付 时必填
             success (res) {
-              o(e.out_trade_no);
+               if(res.resultCode == "9000"){
+                    o(e.out_trade_no);
+               }else if(res.resultCode == "6001"){
+                    wx2my.showToast({
+                        title: "取消支付",
+                        icon: "none"
+                    });
+               }
             },
             fail (t) {
               wx2my.showToast({
@@ -163,10 +169,16 @@ module.exports = {
       if (1 == t.code) {
         var e = t.data.params;
         my.tradePay({
-          tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
-          //orderStr: e.nonceStr, // 调用 资金授权 时必填
+          tradeNO: e.trade_no, // 调用 小程序支付 时必填
           success (res) {
-            o(e.out_trade_no);
+            if(res.resultCode == "9000"){
+                o(e.out_trade_no);
+            }else if(res.resultCode == "6001"){
+                wx2my.showToast({
+                    title: "取消支付",
+                    icon: "none"
+                });
+            }
           },
           fail (t) {
             wx2my.showToast({
@@ -178,24 +190,6 @@ module.exports = {
             wx2my.hideLoading();
           },
         })
-      // if (1 == t.code) {
-      //   var e = t.data.params;
-      //   wx.requestPayment({
-      //     timeStamp: e.timeStamp,
-      //     nonceStr: e.nonceStr,
-      //     package: e.package,
-      //     signType: e.signType,
-      //     paySign: e.paySign,
-      //     success: function () {
-      //       suc(t.data.order_no);
-      //     },
-      //     fail: function (res) {
-      //       fai(t.data.order_no);
-      //     },
-      //     complete: function () {
-      //       com(t.data.order_no);
-      //     }
-      //   });
       } else {
         wx2my.hideLoading(), wx2my.showToast({
           title: "支付失败",

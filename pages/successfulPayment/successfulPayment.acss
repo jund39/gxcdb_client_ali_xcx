@@ -52,7 +52,11 @@ page{
     top: 0;
     width: 702rpx;
     height: 260rpx;
-    z-index: -1;
+    z-index: 0
+}
+.qrcode,.excess-time,.succtent{
+    position: absolute;
+    z-index: 1
 }
 .qrcode{
     color: #FFFFFF;
@@ -62,6 +66,7 @@ page{
     padding: 30rpx;
 }
 .excess-time{
+    top:79rpx;
     color: #FFFFFF;
     font-size: 36rpx;
     font-weight: 500;
@@ -69,6 +74,7 @@ page{
     padding: 0 0 15rpx 30rpx;
 }
 .succtent{
+    top: 165rpx;
     color: #FFF;
     padding-left: 30rpx;
 }

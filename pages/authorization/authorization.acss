@@ -14,7 +14,7 @@
     position: fixed;
     bottom: 416rpx;
     width: 572rpx;
-    height: 514rpx;
+    height: auto;
     margin-left: 89rpx;
     background: #f8f8f8;
     transform: translateY(300%);
@@ -68,25 +68,30 @@
     font-size: 300;
     line-height: 42rpx;
     color: #333333;
-    margin: 0 50rpx 40rpx 50rpx;
+    margin: 0 50rpx 10rpx 50rpx;
 }
 
 .dialogBtn {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    padding-right: 50rpx;
 }
 
 .btn {
     font-size: 30rpx;
     font-family: PingFang SC;
     font-weight: 400;
-    line-height: 42rpx;
+    height: 100rpx;
+    width: 130rpx;
+    background: none
 }
 
 button {
-    padding: 0;
-    margin: 0;
+    border: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 button:after {
@@ -95,10 +100,9 @@ button:after {
 
 .back {
     color: #999999;
-    padding-right: 50rpx;
+   
 }
 
 .login {
     color: #05D7D7;
-    padding-right: 50rpx;
 }
