@@ -131,7 +131,6 @@ module.exports = {
       type: e
     }, function (t) {
       if (1 == t.code) {
-          console.log(t);
         var e = t.data.params;
         my.tradePay({
             tradeNO: e.trade_no, // 调用 小程序支付 时必填
