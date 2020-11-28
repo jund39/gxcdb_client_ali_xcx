@@ -97,10 +97,10 @@ var i = getApp(),
     s = require("./md5.js"),
     r = require("./base64.js"),
     c = {
-  oid: 16,
-  ocode: "zycsw",
-  host: "https://test.zhongyunke.com/app",
-  qrcodeurl: "https://test.zhongyunke.com",
+  oid: 19,
+  ocode: "shandianxia",
+  host: "https://www.shandiankeji.cn/app",
+  qrcodeurl: "https://www.shandiankeji.cn",
   headerkey: "zhongyun@2020&8889"
 };
 
