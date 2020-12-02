@@ -11,7 +11,7 @@
         mode="widthFix"
         src="/static/img/logo.png"
       ></image>
-      <view class="userName">柚电快充</view>
+      <view class="userName">兔脚快充</view>
     </view>
     <view class="userId">会员ID000000</view>
   </view>
