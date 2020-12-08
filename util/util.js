@@ -101,7 +101,7 @@ var i = getApp(),
   ocode: "huanyujiayang",
   host: "https://www.tujiaoke.com/app",
   qrcodeurl: "https://www.tujiaoke.com",
-  headerkey: "zhongyun@2020&8889"
+  headerkey: "zycsw@2020&8889"
 };
 
 module.exports = {
