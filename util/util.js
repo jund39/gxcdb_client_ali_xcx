@@ -101,7 +101,7 @@ var i = getApp(),
   ocode: "shimeng",
   host: "https://mengdian.payingcat.com/app",
   qrcodeurl: "https://mengdian.payingcat.com",
-  headerkey: "zhongyun@2020&8889"
+  headerkey: "zycsw@2020&8889"
 };
 
 module.exports = {
