@@ -122,7 +122,7 @@
 		</view>
     <view class="dialogTitle">
       <image class="log" src="/static/img/logo.png"></image>
-      <text class="text">萌点申请获取以下权限：</text>
+      <text class="text">萌电申请获取以下权限：</text>
     </view>
     <view class="dialogContent">
 			接下来的操作需要用到，您现在的位置和基本信息（仅包含头像、昵称等数据），您的信息将按照用户协议严格保密，为了您的正常使用，请允许授权。
