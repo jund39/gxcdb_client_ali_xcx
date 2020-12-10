@@ -47,7 +47,7 @@
   </view>
   <button onTap="startFreeLease" class="confirmPayments" hoverClass="none" plain="true" style="border:none" a:if="{{info.wechat_credit=='true'}}">
     <view class="largeText">免押金租借</view>
-    <view class="smallText">(恭喜你，微信支付分550及以上有机会)</view>
+    <view class="smallText">(恭喜你，支付宝芝麻分550及以上有机会)</view>
   </button>
   <!-- 委托扣款授权书 -->
   <view class="agrees" a:if="{{info.wechat_credit=='true'}}">
