@@ -94,7 +94,7 @@ function a(e, n) {
 }
 
 var i = getApp(),
-    s = require("./md5.js"),
+    s = require("./md5.js"), 
     r = require("./base64.js"),
     c = {
   oid: 22,
