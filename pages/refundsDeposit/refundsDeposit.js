@@ -194,10 +194,22 @@ Page({
             complete: function(e){
               console.log(e['resultCode']);
               if(e['resultCode']==6001){
-             (t.setData({
-          freezeFailBtn: !0
-        }), t.startLease());
-              }
+ 
+              wx2my.showModal({
+                showCancel: false,
+                title: '充值押金提醒',
+                content: '亲,芝麻分失败,是否缴纳押金',
+                success(res) {
+                  if (res.confirm) {
+                      (t.setData({
+                    freezeFailBtn: !0
+                    }), t.startLease());
+                  }
+                }
+
+              });
+
+          }
               console.log('complet11e:'+JSON.stringify(e));
             }
           }));
