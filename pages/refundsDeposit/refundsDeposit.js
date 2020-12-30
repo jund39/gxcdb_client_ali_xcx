@@ -196,7 +196,8 @@ Page({
               if(e['resultCode']==6001){
  
               wx2my.showModal({
-                showCancel: false,
+                confirmText: "确认",
+                cancelText: "取消",
                 title: '充值押金提醒',
                 content: '亲,芝麻分失败,是否缴纳押金',
                 success(res) {
@@ -210,7 +211,7 @@ Page({
               });
 
           }
-              console.log('complet11e:'+JSON.stringify(e));
+              console.log('completle:'+JSON.stringify(e));
             }
           }));
     }, function () {
