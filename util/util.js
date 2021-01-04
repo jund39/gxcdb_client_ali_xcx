@@ -178,32 +178,12 @@ module.exports = {
             wx2my.hideLoading();
           },
         })
-      // if (1 == t.code) {
-      //   var e = t.data.params;
-      //   wx.requestPayment({
-      //     timeStamp: e.timeStamp,
-      //     nonceStr: e.nonceStr,
-      //     package: e.package,
-      //     signType: e.signType,
-      //     paySign: e.paySign,
-      //     success: function () {
-      //       suc(t.data.order_no);
-      //     },
-      //     fail: function (res) {
-      //       fai(t.data.order_no);
-      //     },
-      //     complete: function () {
-      //       com(t.data.order_no);
-      //     }
-      //   });
       } else {
         wx2my.hideLoading(), wx2my.showToast({
           title: "支付失败",
           icon: "none"
         });
       }
-
-      ;
     });
   },
   returnQrcode: function (t) {

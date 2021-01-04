@@ -63,5 +63,35 @@ Page({
         page_size: 10
       }, i.getOrderList());
     });
-  }
+  },
+   payamount:function(e){
+        let lease_id = e.currentTarget.dataset.id
+        let amount = e.currentTarget.dataset.amount
+        t.httpRequest("/payment/activePayment",{"lease_id":lease_id,"amount":amount,"pay_type":2},function(t){
+            if (1 == t.code) {
+            var e = t.data.params;
+            my.tradePay({
+              tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
+              //orderStr: e.nonceStr, // 调用 资金授权 时必填
+              success (res) {
+                o(e.out_trade_no);
+              },
+              fail (t) {
+                wx2my.showToast({
+                  title: "支付失败",
+                  icon: "none"
+                }), a();
+              },
+              complete (t) {
+                wx2my.hideLoading();
+              },
+            })
+          } else {
+            wx2my.hideLoading(), wx2my.showToast({
+              title: "支付失败",
+              icon: "none"
+            });
+          }
+      });
+    }
 });
