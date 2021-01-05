@@ -3272,10 +3272,10 @@ define("util/util.js", function (require, module, exports, window, document, fra
       r = require("./base64.js"),
       c = {
     oid: 1,
-    ocode: "banglanshibei",
-    host: "https://www.banglanshibeike.com/app",
-    qrcodeurl: "https://qrcode.banglanshibeike.com",
-    headerkey: "banglanshibei@2020&8889"
+    ocode: "gongdianbao",
+    host: "https://www.gongdianbaoke.com/app",
+    qrcodeurl: "https://qrcode.gongdianbaoke.com",
+    headerkey: "gongdianbao@2020&8889"
   };
 
   module.exports = {
