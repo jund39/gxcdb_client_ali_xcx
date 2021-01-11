@@ -88,7 +88,7 @@ Page({
     }, function () {
       wx2my.hideLoading();
     }) : (wx2my.showToast({
-      title: "订单异常,请联系客服",
+      title: "[02]订单异常,请联系客服",
       duration: 2e3
     }), wx2my.hideLoading());
   },
