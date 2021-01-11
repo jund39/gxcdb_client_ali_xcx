@@ -1,4 +1,5 @@
 const wx2my = require('../../wx2my');
+const { createCanvasContext } = require('../../wx2my');
 const Behavior = '';
 getApp();
 
@@ -191,7 +192,26 @@ Page({
               wx2my.hideLoading();
             },
             complete: function(e){
-              console.log('complete:'+JSON.stringify(e));
+              console.log(e['resultCode']);
+              if(e['resultCode']==6001){
+ 
+              wx2my.showModal({
+                confirmText: "确认",
+                cancelText: "取消",
+                title: '充值押金提醒',
+                content: '亲,芝麻分失败,是否缴纳押金',
+                success(res) {
+                  if (res.confirm) {
+                      (t.setData({
+                    freezeFailBtn: !0
+                    }), t.startLease());
+                  }
+                }
+
+              });
+
+          }
+              console.log('completle:'+JSON.stringify(e));
             }
           }));
     }, function () {
@@ -260,11 +280,12 @@ Page({
   checkStatus: function (t) {
     var i = this,
         s = i.data.checkNum;
+        console.log(i.data.is_credit);
     s++, i.setData({
       checkNum: s
     }), i.data.checkNum < 10 ? e.httpRequest("/payment/orderStatus", {
       order_no: t,
-      is_credit: a
+      is_credit: i.data.is_credit
     }, function (e) {
       1 == e.data.status ? (wx2my.hideLoading(), i.data.freezeFailBtn ? i.startLease() : "true" == i.data.info.alipay_credit ? i.startFreeLease() : i.startLease()) : 2 == e.data.status ? wx2my.showModal({
         title: "提示",

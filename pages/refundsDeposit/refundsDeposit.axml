@@ -6,7 +6,7 @@
       </swiper-item>
     </swiper>
   </view>
-  <view class="deposit" a:if="{{info.alipay_credit!='true'}}">
+  <view class="deposit" a:if="{{info.alipay_credit=='false'}}">
     <view class="depositTitle">
 			租借前需充值押金
     </view>
@@ -24,7 +24,7 @@
     <view class="depositContentText">
 			收费标准：租借{{info.free_time}}分钟内免费，日封顶{{info.ceiling}}元，总封顶{{info.deposit}}元，押金{{info.deposit}}元。充电宝自带苹果/安卓/Type-C ,三线速充。使用后记得及时归还并确认机柜播放“归还成功”语音！如，有疑问，请与在线客服联系，谢谢！
     </view>
-    <button onTap="starLease" class="confirmPayments startLease startDepositButton" hoverClass="none" plain="true" style="border:none" a:if="{{info.alipay_credit=='true'}}">
+    <button onTap="startLease" class="confirmPayments startLease startDepositButton" hoverClass="none" plain="true" style="border:none" a:if="{{info.alipay_credit=='false'}}">
       <view class="start">开始租借</view>
     </button>
   </view>
@@ -43,9 +43,9 @@
     </view>
   </view>
   <view class="wechatFreeText" hover-class="none" hover-stop-propagation="false" a:if="{{info.alipay_credit=='true'}}">
-		收费标准：租借{{info.free_time}}分钟内免费，日封顶{{info.ceiling}}元，总封顶{{info.deposit}}元押金{{info.deposit}}元，支持免押服务（支付宝支付分550分及以上可以免押）。
+		收费标准：租借{{info.free_time}}分钟内免费，日封顶{{info.ceiling}}元，总封顶{{info.deposit}}元押金{{info.deposit}}元，支持免押服务<!--（支付宝支付分550分及以上可以免押-->）。
   </view>
-  <button onTap="startFreeLease" class="confirmPayments" hoverClass="none" plain="true" style="border:none" a:if="{{info.wechat_credit=='true'}}">
+  <button onTap="startFreeLease" class="confirmPayments" hoverClass="none" plain="true" style="border:none" a:if="{{info.alipay_credit=='true'}}">
     <view class="largeText">免押金租借</view>
     <view class="smallText">(恭喜你，支付宝支付分550及以上有机会)</view>
   </button>
