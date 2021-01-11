@@ -133,7 +133,7 @@ module.exports = {
       if (1 == t.code) {
         var e = t.data.params;
         my.tradePay({
-            tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
+            tradeNO: e.trade_no, // 调用 小程序支付 时必填
             //orderStr: e.nonceStr, // 调用 资金授权 时必填
             success (res) {
               o(e.out_trade_no);
@@ -163,7 +163,7 @@ module.exports = {
       if (1 == t.code) {
         var e = t.data.params;
         my.tradePay({
-          tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
+          tradeNO: e.trade_no, // 调用 小程序支付 时必填
           //orderStr: e.nonceStr, // 调用 资金授权 时必填
           success (res) {
             o(e.out_trade_no);
