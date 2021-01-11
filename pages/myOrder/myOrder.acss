@@ -68,6 +68,10 @@
 .payamount{
     color:#FFFFFF;
     font-size: 24rpx;
+    line-height: 50rpx;
     font-weight: 400;
-    background: #0096FF;
+    width: 130rpx;
+    height: 50rpx;
+    background: linear-gradient(0deg, #3885DD, #03BDF8);
+    border-radius: 10rpx;
 }

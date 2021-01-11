@@ -24,6 +24,8 @@
     position: fixed;
     bottom: 0rpx;
     border-top: 1rpx solid #efefef;
+    display: flex;
+    flex-direction: row;
 }
 
 #commonProblem .customerService image {

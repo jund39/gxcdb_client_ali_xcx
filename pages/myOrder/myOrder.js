@@ -3,10 +3,10 @@ const Behavior = '';
 getApp();
 
 var t = require("../../util/util.js"),
-    a = {
-  page: 1,
-  page_size: 10
-};
+  a = {
+    page: 1,
+    page_size: 10
+  };
 
 Page({
   data: {
@@ -27,8 +27,8 @@ Page({
   },
   getOrderList: function () {
     var e = this,
-        i = [],
-        s = e.data.list;
+      i = [],
+      s = e.data.list;
     t.httpRequest("/order/orderList", {
       page: a.page,
       page_size: a.page_size
@@ -51,7 +51,7 @@ Page({
   },
   payStatus: function (e) {
     var i = this,
-        s = e.currentTarget.dataset.id;
+      s = e.currentTarget.dataset.id;
     t.httpRequest("/order/payStatus", {
       order_id: s
     }, function (t) {
@@ -64,34 +64,41 @@ Page({
       }, i.getOrderList());
     });
   },
-   payamount:function(e){
-        let lease_id = e.currentTarget.dataset.id
-        let amount = e.currentTarget.dataset.amount
-        t.httpRequest("/payment/activePayment",{"lease_id":lease_id,"amount":amount,"pay_type":2},function(t){
-            if (1 == t.code) {
-            var e = t.data.params;
-            my.tradePay({
-              tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
-              //orderStr: e.nonceStr, // 调用 资金授权 时必填
-              success (res) {
-                o(e.out_trade_no);
-              },
-              fail (t) {
-                wx2my.showToast({
-                  title: "支付失败",
-                  icon: "none"
-                }), a();
-              },
-              complete (t) {
-                wx2my.hideLoading();
-              },
-            })
-          } else {
-            wx2my.hideLoading(), wx2my.showToast({
+  payamount: function (e) {
+    let lease_id = e.currentTarget.dataset.id
+    let amount = e.currentTarget.dataset.amount
+    t.httpRequest("/payment/activePayment", { "lease_id": lease_id, "amount": amount, "pay_type": 2 }, function (t) {
+      if (1 == t.code) {
+        var e = t.data.params;
+        my.tradePay({
+          tradeNO: e.trade_no, // 调用 小程序支付 时必填
+          //orderStr: e.nonceStr, // 调用 资金授权 时必填
+          success(res) {
+            if (res.resultCode == "9000") {
+              o(e.out_trade_no);
+            } else if (res.resultCode == "6001") {
+              wx2my.showToast({
+                title: "取消支付",
+                icon: "none"
+              });
+            }
+          },
+          fail(t) {
+            wx2my.showToast({
               title: "支付失败",
               icon: "none"
-            });
-          }
-      });
-    }
+            }), a();
+          },
+          complete(t) {
+            wx2my.hideLoading();
+          },
+        })
+      } else {
+        wx2my.hideLoading(), wx2my.showToast({
+          title: "支付失败",
+          icon: "none"
+        });
+      }
+    });
+  }
 });

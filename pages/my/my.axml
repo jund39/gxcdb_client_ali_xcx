@@ -1,16 +1,8 @@
 <view>
   <view class="myheard">
-    <image
-      class="bgImg"
-      mode="widthFix"
-      src="/static/img/myheard_bg.png"
-    ></image>
+    <image class="bgImg" mode="widthFix" src="/static/img/myheard_bg.png"></image>
     <view class="userBaseInfo">
-      <image
-        class="heardImg"
-        mode="widthFix"
-        src="/static/img/logo.png"
-      ></image>
+      <image class="heardImg" mode="widthFix" src="/static/img/logo.png"></image>
       <view class="userName">众云共享</view>
     </view>
     <view class="userId">会员ID000000</view>
