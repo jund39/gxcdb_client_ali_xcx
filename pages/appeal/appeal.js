@@ -6,7 +6,19 @@ var e = require("../../util/util.js");
 
 Page({
   data: {
-    qrcode: ""
+    qrcode: "",
+    tel: ""
+  },
+  onLoad: function () {
+    this.getInfo();
+  },
+  getInfo: function () {
+    let local = this;
+    e.httpRequest("/index/faqList", {}, function (t) {
+      1 == t.code && local.setData({
+        tel: t.data.tel
+      });
+    });
   },
   _scanCode: function () {
     var t = this;

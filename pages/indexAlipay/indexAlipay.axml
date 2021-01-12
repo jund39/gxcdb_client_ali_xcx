@@ -10,7 +10,7 @@
     longitude="{{longitude}}"
     markers="{{markers}}"
     scale="{{scale}}"
-    style="{width: 100vw;height: 100vh;}"
+    style="width: 100vw;height: 100vh;"
   >
   </map>
 
