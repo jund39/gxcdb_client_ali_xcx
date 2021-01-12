@@ -3289,7 +3289,7 @@ define("util/util.js", function (require, module, exports, window, document, fra
         }
       }), wx2my.getSetting({
         success: function (e) {
-          e.authSetting["scope.userInfo"] && wx.getUserInfo({
+          e.authSetting["scope.userInfo"] && my.getUserInfo({
             success: function (e) {
               console.log(e), t(e);
             }
@@ -3300,12 +3300,12 @@ define("util/util.js", function (require, module, exports, window, document, fra
     alipayPayment: function (t, e, o, a) {
       n("/payment/recharge", {
         amount: t,
-        pay_type: "wechat",
+        pay_type: "alipay",
         type: e
       }, function (t) {
         if (1 == t.code) {
           var e = t.data.params;
-          wx.requestPayment({
+          my.requestPayment({
             timeStamp: e.timeStamp,
             nonceStr: e.nonceStr,
             package: e.package,

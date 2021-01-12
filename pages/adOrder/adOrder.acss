@@ -69,3 +69,9 @@ page{
     margin-top: 10rpx;
     line-height: 50rpx;
 }
+.noOrder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
