@@ -3289,7 +3289,7 @@ define("util/util.js", function (require, module, exports, window, document, fra
         }
       }), wx2my.getSetting({
         success: function (e) {
-          e.authSetting["scope.userInfo"] && wx.getUserInfo({
+          e.authSetting["scope.userInfo"] && my.getUserInfo({
             success: function (e) {
               console.log(e), t(e);
             }
@@ -3300,12 +3300,12 @@ define("util/util.js", function (require, module, exports, window, document, fra
     alipayPayment: function (t, e, o, a) {
       n("/payment/recharge", {
         amount: t,
-        pay_type: "wechat",
+        pay_type: "alipay",
         type: e
       }, function (t) {
         if (1 == t.code) {
           var e = t.data.params;
-          wx.requestPayment({
+          my.requestPayment({
             timeStamp: e.timeStamp,
             nonceStr: e.nonceStr,
             package: e.package,
@@ -4153,7 +4153,7 @@ define("pages/refundsDeposit/refundsDeposit.js", function (require, module, expo
         }), wx2my.hideLoading();
       })) : wx2my.showModal({
         title: "提示",
-        content: "微信版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
+        content: "支付宝版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
         success: function (e) {
           e.confirm && (a.setData({
             freezeFailBtn: !0
@@ -4978,26 +4978,23 @@ define("pages/user/user.js", function (require, module, exports, window, documen
     },
     getAlipayOppenid: function (i) {
       var o = this;
-      my.getAuthCode({
-        scopes: 'auth_user', // 主动授权（弹框）：auth_user，静默授权（不弹框）：auth_base
-        success: (res) => {
-          if (res.authCode) {
-            res.authCode && t.httpRequest("/Auth/alipayOpendId", {
-              code: res.authCode
-            }, function (t) {
-              if (t.data.openid) e.globalData.openID = t.data.openid, i();else {
-                if (!(a < 3)) return void wx2my.showModal({
-                  title: "温馨提示",
-                  content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
-                });
-                wx2my.showToast({
-                  title: "openID获取失败",
-                  icon: "none"
-                }), o.getAlipayOppenid(i), a++;
-              }
-            });
-          }
-        },
+      my.login({
+        success: function (s) {
+          s.code && e.httpRequest("/Auth/wechatOpendId", {
+            code: s.code
+          }, function (e) {
+            if (e.data.openid) t.globalData.openID = e.data.openid, i();else {
+              if (!(n < 3)) return void wx2my.showModal({
+                title: "温馨提示",
+                content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
+              });
+              wx2my.showToast({
+                title: "openID获取失败",
+                icon: "none"
+              }), o.getAlipayOppenid(i), n++;
+            }
+          });
+        }
       });
     },
     getUserInfo: function () {

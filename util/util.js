@@ -19,7 +19,7 @@ function e() {
   };
 }
 function n(t, n, o) {
-  var a = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : function () {};
+  var a = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : function () { };
   wx2my.request({
     url: c.host + t,
     method: "POST",
