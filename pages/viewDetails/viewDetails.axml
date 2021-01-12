@@ -27,10 +27,11 @@
         <view class="detatilRight">-¥0.00</view>
       </view>
       <view class="detatil">
-        <view class="detatilLeft" a:if="{{type==2&&info.pay_status==1}}">租借费用</view>
+        <view class="detatilLeft" a:if="{{(type==2&&info.pay_status==1)||type==3}}">计费时长</view>
         <view class="detatilLeft" a:else>租借预计费用</view>
-        <view class="detatilRight" a:if="{{type==3}}">¥0.00</view>
-        <view class="detatilRight" a:else>￥{{info.billing_unit}}</view>
+        <view class="detatilRight" a:if="{{type==2}}">{{info.billing_unit}}</view>
+        <view class="detatilRight" a:elif="{{type==3}}">0</view>
+        <view class="detatilRight" a:else>￥{{info.billing_amount}}</view>
       </view>
       <view class="detatil">
         <view class="detatilLeft">收费标准</view>
@@ -72,7 +73,7 @@
     <view class="payInfo">
       <view class="detatil" a:if="{{type==2&&info.pay_status==1}}">
         <view class="detatilLeft">支付方式</view>
-        <view class="detatilRight">微信支付</view>
+        <view class="detatilRight">支付宝支付</view>
       </view>
       <view class="detatil">
         <view class="detatilLeft">扫码渠道</view>

@@ -1,33 +1,37 @@
-#onLoan {
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-}
-
-#onLoan .loan {
-    margin-top: 140rpx;
-}
-
-#onLoan .loan {
-    width: 238rpx;
-    height: 399rpx;
-}
-
-#onLoan .loan image {
+page{
     width: 100%;
     height: 100%;
+    justify-content: center;
 }
 
-#onLoan .loanTest {
-    font-size: 32rpx;
-    color: #666;
+#onLoan{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 80rpx;
+    align-items: center;
+    height: auto;
+
 }
 
-#onLoan .loanSize {
-    font-size: 26rpx;
-    color: #999;
-    justify-content: center;
-    margin-top: 10rpx;
+.loan{
+    margin-top: 118rpx;
+}
+
+.loan image{
+    width: 576rpx;
+    height: 300rpx;
+}
+
+.loanTest{
+    color: #343434;
+    font-size: 28rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+}
+
+.loanSize{
+    color: #9A9A9A;
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
 }

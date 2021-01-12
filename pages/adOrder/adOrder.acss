@@ -1,0 +1,77 @@
+page{
+    width: 100%;
+    height: 100%;
+    background: #F7F7F7;
+}
+
+#myOrder {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+#myOrder .order {
+    width: 670rpx;
+    background-color: #fff;
+    border-radius: 30rpx;
+    padding: 20rpx;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+}
+
+.orderTitle {
+    height: 80rpx;
+    display: flex;
+    line-height: 40px;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 6rpx solid #FBFBFB;
+}
+
+.orderTitleLeft {
+    color: #C3C3C3;
+    font-size: 28rpx;
+}
+
+.orderTitleRight {
+    font-size: 32rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.payStatus{
+    margin-right: 40rpx;
+}
+
+.orderContent {
+    font-size: 30rpx;
+}
+.orderStartTime{
+    margin-top: 20rpx;
+}
+.orderEnd {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20rpx;
+}
+.orderEndTitle{
+     color: #C3C3C3;
+}
+.orderImg{
+    width: 27rpx;
+    height: 16rpx;
+}
+.info{
+    margin-top: 10rpx;
+    line-height: 50rpx;
+}
+.noOrder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

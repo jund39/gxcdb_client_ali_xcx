@@ -1,4 +1,5 @@
 const wx2my = require('../../wx2my');
+const { createCanvasContext } = require('../../wx2my');
 const Behavior = '';
 getApp();
 
@@ -82,7 +83,7 @@ Page({
       }), wx2my.hideLoading();
     })) : wx2my.showModal({
       title: "提示",
-      content: "微信版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
+      content: "支付宝版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
       success: function (e) {
         e.confirm && (a.setData({
           freezeFailBtn: !0
@@ -135,7 +136,7 @@ Page({
       }), wx2my.hideLoading();
     })) : wx2my.showModal({
       title: "提示",
-      content: "微信版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
+      content: "支付宝版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
       success: function (e) {
         e.confirm && (a.setData({
           freezeFailBtn: !0
@@ -191,7 +192,26 @@ Page({
               wx2my.hideLoading();
             },
             complete: function(e){
-              console.log('complete:'+JSON.stringify(e));
+              console.log(e['resultCode']);
+              if(e['resultCode']==6001){
+
+              wx2my.showModal({
+                confirmText: "确认",
+                cancelText: "取消",
+                title: '充值押金提醒',
+                content: '亲,芝麻分失败,是否缴纳押金',
+                success(res) {
+                  if (res.confirm) {
+                      (t.setData({
+                    freezeFailBtn: !0
+                    }), t.startLease());
+                  }
+                }
+
+              });
+
+          }
+              console.log('completle:'+JSON.stringify(e));
             }
           }));
     }, function () {
@@ -202,7 +222,6 @@ Page({
   },
   startLease: function () {
     var a = this;
-    //console.log(111111);
     a.data.isClick && (wx2my.showLoading({
       title: "请稍后...",
       mask: !0
@@ -232,14 +251,10 @@ Page({
           a.setData({
             isPlay: !1
           }), e.alipayPayment(t.data.amount, 1, function (e) {
-            
-            console.log(595959);
             a.setData({
               isClick: !0
             }), a.checkStatus(e);
           }, function () {
-            console.log(66666);
-            console.log(a.data.info.alipay_credit);
             "true" == a.data.info.alipay_credit ? a.setData({
               isClick: !0,
               freezeFailBtn: !1
@@ -263,19 +278,15 @@ Page({
     }));
   },
   checkStatus: function (t) {
-      console.log(2020202020);
     var i = this,
         s = i.data.checkNum;
+        console.log(i.data.is_credit);
     s++, i.setData({
       checkNum: s
     }), i.data.checkNum < 10 ? e.httpRequest("/payment/orderStatus", {
       order_no: t,
-      is_credit: a
+      is_credit: i.data.is_credit
     }, function (e) {
-      console.log(8989898989);
-      console.log(e.data.status);
-      console.log(i.data.freezeFailBtn);
-      console.log(i.data.info.alipay_credit);
       1 == e.data.status ? (wx2my.hideLoading(), i.data.freezeFailBtn ? i.startLease() : "true" == i.data.info.alipay_credit ? i.startFreeLease() : i.startLease()) : 2 == e.data.status ? wx2my.showModal({
         title: "提示",
         content: e.msg,

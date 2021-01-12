@@ -33,7 +33,7 @@ Page({
           time: t.data.time,
           expire_time: t.data.expire_time,
           is_end: t.data.is_end,
-          qrcode: t.data.qrcode,
+          qrcode: t.data.qrcode.replace(/(.{4})/g, '$1 '),
           isshowGetPaw: t.data.type,
           intro: t.data.intro
         };

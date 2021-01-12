@@ -1,0 +1,120 @@
+<view id="adUploader">
+  <image class="ad_bg" src="/static/img/ad_bg.png"></image>
+  <view class="ad_setting">
+    <view class="box">
+      <view class="titleBox">
+        <text class="title">广告投放须知</text>
+      </view>
+      <!-- TODO -->
+      <view class="content">
+        <text class="content-text">{{comment}}</text>
+      </view>
+    </view>
+  </view>
+  <image class="ad_toufang" src="/static/img/ad_toufang.png"></image>
+  <view class="ad_setting ad_upload">
+    <view class="box">
+      <view class="titleBox">
+        <text class="title">广告投放步骤</text>
+      </view>
+      <!-- TODO -->
+      <view class="content">
+        <view class="weui-cell inputForm">
+          <label for="name">姓名：</label>
+          <input
+            id="name"
+            type="text"
+            maxlength="50"
+            class="input"
+            onInput="bindInput"
+            disabled="{{disabled}}"
+            value="{{formData.name}}"
+            placeholder="请输入您的真实姓名"
+            placeholder-class="placeholder"
+          />
+        </view>
+        <view class="weui-cell inputForm">
+          <label for="phone">联系方式：</label>
+          <input
+            id="phone"
+            type="number"
+            maxlength="11"
+            class="input"
+            onInput="bindInput"
+            disabled="{{disabled}}"
+            value="{{formData.phone}}"
+            placeholder="请输入您的手机号码"
+            placeholder-class="placeholder"
+          />
+        </view>
+        <radio-group class="radio-group" onChange="radioChange">
+          <view class="radio-title">文件格式：</view>
+          <label
+            class="weui-cell weui-check__label"
+            a:for="{{items}}"
+            a:key="index"
+          >
+            <view class="weui-cell__hd">
+              <radio
+                value="{{item.value}}"
+                checked="{{item.checked}}"
+                color="#1029DB"
+              />
+            </view>
+            <view class="weui-cell__bd">{{item.name}}</view>
+          </label>
+        </radio-group>
+        <view class="weui-cell upload">
+          <view class="upload-text">上传文件：</view>
+          <view class="addfiles" onTap="uploadFile">
+            <image class="addicon" src="/static/img/add.png"></image>
+          </view>
+          <view class="filesImage" style="display:{{dis_i}}">
+            <image
+              onTap="videoPlay"
+              class="videoPlay"
+              src="/static/img/video_play.png"
+              style="display:{{dis_p}}"
+            ></image>
+            <image class="fileImg" src="{{tempFilePathImage}}"></image>
+          </view>
+        </view>
+        <!-- 播放视频开始 -->
+        <view class="userVideo" style="display:{{dis_v}}">
+          <view class="titleVideo">
+            <image
+              class="videoClose"
+              onTap="videoClose"
+              src="/static/img/video-close.png"
+            ></image>
+          </view>
+          <video id="userVideo" src="{{tempFilePathVideo}}"></video>
+        </view>
+        <!-- 播放视频结束 -->
+        <view class="tishi" style="color:{{color}}">{{tishi}}</view>
+        <view class="address">
+          <view class="address-text">投放地址：</view>
+          <view class="address-content">
+            <text>{{formData.address}}</text>
+          </view>
+        </view>
+        <view class="address">
+          <view class="address-text">价格：</view>
+          <view class="address-content" style="color:#FCAB11;font-size:32rpx">{{price}}元/次</view>
+        </view>
+        <view class="address">
+          <view class="address-text">投放时长：</view>
+          <view class="address-content">{{date_number}}天</view>
+        </view>
+        <text class="explain">*付款后视频会自动上传，并审核，审核通过后，广告会投放于机柜，并开始计时。如审核不通过，钱会原路返回，然后， 您也可以再次在此页面下单，重新上传。</text>
+        <view class="commit-v">
+          <button
+            class="commit"
+            onTap="commit"
+            disabled="{{disabled}}"
+          >{{commitText}}</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

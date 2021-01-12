@@ -25,47 +25,27 @@ Page({
   },
   getAlipayOppenid: function (i) {
     var o = this;
-    /*my.login({
-      success: function (s) {
-        s.code && e.httpRequest("/Auth/wechatOpendId", {
-          code: s.code
-        }, function (e) {
-          if (e.data.openid) t.globalData.openID = e.data.openid, i();else {
-            if (!(n < 3)) return void wx2my.showModal({
-              title: "温馨提示",
-              content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
-            });
-            wx2my.showToast({
-              title: "openID获取失败",
-              icon: "none"
-            }), o.getAlipayOppenid(i), n++;
-          }
-        });
-      }
-    });*/
-    
-      
-      my.getAuthCode({
-        scopes: 'auth_user', // 主动授权（弹框）：auth_user，静默授权（不弹框）：auth_base
-        success: (res) => {
-          if (res.authCode) {
-            res.authCode && t.httpRequest("/Auth/alipayOpendId", {
-              code: res.authCode
-            }, function (t) {
-              if (t.data.openid) e.globalData.openID = t.data.openid, i();else {
-                if (!(a < 3)) return void wx2my.showModal({
-                  title: "温馨提示",
-                  content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
-                });
-                wx2my.showToast({
-                  title: "openID获取失败",
-                  icon: "none"
-                }), n.getAlipayOppenid(i), a++;
-              }
-            });
-          }
-        },
-      });
+    my.getAuthCode({
+      scopes: 'auth_user', // 主动授权（弹框）：auth_user，静默授权（不弹框）：auth_base
+      success: (res) => {
+        if (res.authCode) {
+          res.authCode && t.httpRequest("/Auth/alipayOpendId", {
+            code: res.authCode
+          }, function (t) {
+            if (t.data.openid) e.globalData.openID = t.data.openid, i();else {
+              if (!(a < 3)) return void wx2my.showModal({
+                title: "温馨提示",
+                content: "尊敬的用户,您的openID未获取到,请您退出程序并再次进入重新获取"
+              });
+              wx2my.showToast({
+                title: "openID获取失败",
+                icon: "none"
+              }), o.getAlipayOppenid(i), a++;
+            }
+          });
+        }
+      },
+    });
   },
   getUserInfo: function () {
     var t = this;
