@@ -6,7 +6,7 @@
       <text class="textColor">提交</text>”即可。其他问题，请拨打客户电话进行处理，如有不便，敬请谅解。
 		</view>
     <view class="appealTextNumber">
-			客服电话： 0755-4585685
+			客服电话： <view class="phone" onTap="to_call"><image class="kefu" src="/static/img/ic_kefu.png"></image>{{tel}}</view>
 		</view>
   </view>
   <view class="scan">

@@ -73,7 +73,7 @@
     <view class="payInfo">
       <view class="detatil" a:if="{{type==2&&info.pay_status==1}}">
         <view class="detatilLeft">支付方式</view>
-        <view class="detatilRight">微信支付</view>
+        <view class="detatilRight">支付宝支付</view>
       </view>
       <view class="detatil">
         <view class="detatilLeft">扫码渠道</view>
