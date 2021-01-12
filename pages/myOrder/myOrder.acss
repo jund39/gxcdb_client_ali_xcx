@@ -75,3 +75,9 @@
     background: linear-gradient(0deg, #3885DD, #03BDF8);
     border-radius: 10rpx;
 }
+.noOrder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

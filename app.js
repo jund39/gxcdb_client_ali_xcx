@@ -1,6 +1,4 @@
 const wx2my = require('./wx2my');
-//const Behavior = require('./Behavior');
-const Behavior = '';
 App({
   onLaunch: function (o) {},
   globalData: {
