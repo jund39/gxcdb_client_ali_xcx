@@ -15,17 +15,21 @@ Page({
     scale: 16,
     isClick: !0,
     nearySeller: [],
-    seller: {}
+    seller: {},
+    showDialog: false,
+    route: '',
+    indexImages: [],
+    indexImageTime: 5
   },
   onLoad: function (i) {
     a = 1;
     var n = this;
-    
+
     if (i.q) {
       var o = decodeURIComponent(i.q),
           r = t.returnQrcode(o);
       this.getAlipayOppenid(function () {
-        n.getLocation(), t.userAuthor(function () {
+        n.getLocation(), n.getImages(), t.userAuthor(function () {
           switch (r.type) {
             case "cab":
               e.globalData.outCodeUrl = o, n.cabinet(r.qrcode);
@@ -42,8 +46,29 @@ Page({
         });
       });
     } else this.getAlipayOppenid(function () {
-      n.getUseInfo(), n.getLocation();
+      n.getUseInfo(), n.getLocation(), n.getImages();
     });
+  },
+  getImages: function () {
+    let localThis = this;
+
+    if (e.globalData.indexImages.length > 0) {
+      localThis.setData({
+        indexImages: e.globalData.indexImages,
+        indexImageTime: e.globalData.indexImageTime * 1000
+      });
+    } else {
+      t.httpRequest('/index/indexAd', {}, function (res) {
+        if (res.code == 1) {
+          e.globalData.indexImages = res.data.list;
+          e.globalData.indexImageTime = res.data.time;
+          localThis.setData({
+            indexImages: e.globalData.indexImages,
+            indexImageTime: e.globalData.indexImageTime * 1000
+          });
+        }
+      });
+    }
   },
   onShow: function () {
     var t = this;
@@ -106,17 +131,17 @@ Page({
   },
   getLocation: function () {
     var t = this;
-      my.getLocation({
+    my.getLocation({
         success(a) {
-          t.setData({
-            longitude: a.longitude,
-            latitude: a.latitude
-          }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
+        t.setData({
+          longitude: a.longitude,
+          latitude: a.latitude
+        }), e.globalData.longitude = a.longitude, e.globalData.latitude = a.latitude, t.getNearySellerInfo(a.longitude, a.latitude);
         },
         fail(res) {
           my.alert({ title: '定位失败:'+ res.errorMessage});
         },
-      });
+    });
   },
   goUser: function () {
     this.hideSeller(), t.userAuthor(function () {
@@ -157,7 +182,7 @@ Page({
       }
     });
   },
-  backOriginal: function (t) {
+  backOriginal: function () {
     this.mapCtx.moveToLocation();
   },
   markertaps: function (e) {
@@ -187,8 +212,9 @@ Page({
     }
   },
   _scanCode: function () {
-    var e = this;
-    t.userAuthor(function () {
+    let get_app = e;
+    let loal = this;
+    loal.userAuthor(function () {
       wx2my.scanCode({
         scanType: ["qrCode"],
         onlyFromCamera: !0,
@@ -196,12 +222,24 @@ Page({
           if (a.result) {
             var i = a.result,
                 n = t.returnQrcode(i);
+            get_app.globalData.device_code = n.qrcode;
             if (n.oid == t.config.oid) switch (n.type) {
               case "cab":
-                e.cabinet(n.qrcode);
+                if (loal.data.route === '') {
+                  loal.cabinet(n.qrcode);
+                } else {
+                  loal.setData({
+                    route: ''
+                  });
+                  my.navigateTo({
+                    url: "../adUploader/adUploader"
+                  });
+                }
+
                 break;
+
               case "line":
-                e.lineCharging(n.qrcode);
+                loal.lineCharging(n.qrcode);
             }
           }
         }
@@ -326,5 +364,69 @@ Page({
         });
       }
     });
+  },
+  ad_bussiness: function () {
+    let localThis = this;
+
+    if (!e.globalData.device_code) {
+      wx2my.showModal({
+        title: '提示',
+        content: '缺少机柜编号，是否扫码获取？',
+        confirmText: "立即扫码",
+        cancelText: "取消",
+
+        success(res) {
+          if (res.confirm) {
+            localThis.setData({
+              route: 'ad_bussiness'
+            });
+
+            localThis._scanCode();
+          } else if (res.cancel) {}
+        }
+
+      });
+    } else {
+      my.navigateTo({
+        url: "../adUploader/adUploader"
+      });
+    }
+  },
+
+  /*****************授权弹窗相关js********************/
+  userAuthor: function (tt) {
+    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () {};
+    var uu = this;
+    t.httpRequest("/user/getInfo", {}, function (n) {
+      1 == n.code && (1 == n.data.is_auth ? tt(n) : (e(), uu.toggleDialog()));
+    }, function () {
+      e();
+    });
+  },
+  back: function () {
+    this.toggleDialog();
+  },
+  bindgetuserinfos: function (i) {
+    var n = this;
+    my.getAuthUserInfo({
+      success: (uInfo) => {
+        t.httpRequest("/User/updateInfo", {
+          openid: e.globalData.openID,
+          userinfo: JSON.stringify(uInfo)
+        }, function (t) {
+          1 == t.code ? n.back() : wx2my.showToast({
+            title: t.msg,
+            icon: "none"
+          });
+        });
+      }
+    })
+  },
+
+  toggleDialog() {
+    this.setData({
+      showDialog: !this.data.showDialog
+    });
   }
+
 });

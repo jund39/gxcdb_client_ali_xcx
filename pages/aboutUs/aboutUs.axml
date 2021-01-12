@@ -1,19 +1,18 @@
 <view id="aboutUs">
-  <view class="about">
-    <view class="aboutImg">
-      <image src="{{data.logo}}"></image>
-    </view>
-    <view class="contactAddress">
-      <image src="/static/img/ic_mail.png"></image>
-      <text>公司简介</text>
-    </view>
-    <view class="city">{{data.introduce}}</view>
-    <view class="contactAddress">
-      <image src="/static/img/ic_contactaddress.png"></image>
-      <text>联系地址</text>
-    </view>
-    <view class="city">联系人:{{data.contacts}}</view>
-    <view class="city">电话:{{data.service_tel}}</view>
-    <view class="city">地址:{{data.address}}</view>
-  </view>
+  <image class="aboutImg" mode='aspectFit' src="{{data.logo}}"></image>
+</view>
+<view class="titleContent">
+  <image class="titleImg" src="/static/img/company.png"></image>
+  <view class="titleText">公司简介</view>
+</view>
+<view class="content">
+	{{data.introduce}}
+</view>
+<view class="phone">
+  <image class="heart" src="/static/img/heart.png"></image>
+  <view class="phoneNumber">招商电话： {{data.service_tel}}（{{data.contacts}}）</view>
+</view>
+<view class="address">
+  <image class="position" src="/static/img/positionIcon.png"></image>
+  <view class="addressText">公司地址：{{data.address}}</view>
 </view>

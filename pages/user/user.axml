@@ -57,6 +57,16 @@
   </view>
   <view style="height: 10rpx; width: 100%; background-color: #f1f1f1;"></view>
   <view class="myBox" style="padding-top: 10rpx;">
+    <view class="serverItem" onTap="ad_bussiness">
+      <image class="iconImg" src="/static/img/ic6.png"></image>
+      <text>广告招商</text>
+      <image src="/static/img/ic_next.png"></image>
+    </view>
+    <navigator class="serverItem" url="/pages/adOrder/adOrder">
+      <image class="iconImg" src="/static/img/ic7.png"></image>
+      <text>广告订单列表</text>
+      <image src="/static/img/ic_next.png"></image>
+    </navigator>
     <navigator class="serverItem" url="/pages/commonProblem/commonProblem">
       <image class="iconImg" src="/static/img/ic4.png"></image>
       <text>使用帮助</text>

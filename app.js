@@ -10,6 +10,9 @@ App({
     longitude: 113.97933,
     latitude: 22.540745,
     outCodeUrl: "",
-    outLineUrl: ""
+    outLineUrl: "",
+    device_code: '',
+    indexImages: [],
+    indexImageTime: 5
   }
 });

@@ -1,9 +1,14 @@
 <view id="appeal">
-  <view class="tips">
-    <text>如遇归还失败，请点击“扫一扫”按钮扫描设备二维码，成功获取二维码编号后，点击“提交”即可。</text>
-    <text>其他问题，请拨打客服电话进行处理，如有不便，敬请谅解。</text>
+  <view class="content">
+    <view class="appealText">
+			如遇归还失败，请点击“
+      <text class="textColor">扫一扫</text>”按钮扫描设备二维码，成功获取二维码编码后，点击“
+      <text class="textColor">提交</text>”即可。其他问题，请拨打客户电话进行处理，如有不便，敬请谅解。
+		</view>
+    <view class="appealTextNumber">
+			客服电话： <view class="phone" onTap="to_call"><image class="kefu" src="/static/img/ic_kefu.png"></image>{{tel}}</view>
+		</view>
   </view>
-  <view class="qrcode_box" a:if="{{qrcode}}">二维码编号： {{qrcode}}</view>
   <view class="scan">
     <button onTap="_scanCode" class="scan_btn btn">扫一扫</button>
     <button onTap="returnCheck" class="sub_btn btn">提交</button>

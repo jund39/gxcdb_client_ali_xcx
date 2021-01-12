@@ -1,12 +1,24 @@
 const wx2my = require('../../wx2my');
-const Behavior = '';
+//const Behavior = require('../../Behavior');
 getApp();
 
 var e = require("../../util/util.js");
 
 Page({
   data: {
-    qrcode: ""
+    qrcode: "",
+    tel: ""
+  },
+  onLoad: function () {
+    this.getInfo();
+  },
+  getInfo: function () {
+    let local = this;
+    e.httpRequest("/index/faqList", {}, function (t) {
+      1 == t.code && local.setData({
+        tel: t.data.tel
+      });
+    });
   },
   _scanCode: function () {
     var t = this;
@@ -16,12 +28,17 @@ Page({
       success: function (o) {
         if (o.result) {
           var r = o.result,
-              a = e.returnQrcode(r);
+            a = e.returnQrcode(r);
           a.oid == e.config.oid && t.setData({
             qrcode: a.qrcode
           });
         }
       }
+    });
+  },
+  to_call: function () {
+    wx2my.makePhoneCall({
+      phoneNumber: this.data.tel
     });
   },
   returnCheck: function () {

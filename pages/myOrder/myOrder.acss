@@ -4,38 +4,74 @@
     align-items: center;
     background-color: #F7F7F7;
 }
+#myOrder .orderList{
+    padding-top:10rpx;
+}
 
 #myOrder .order {
-    width: 670rpx;
+    width: 700rpx;
     background-color: #fff;
     border-radius: 30rpx;
-    padding:20rpx;
     display: flex;
     flex-direction: column;
-    margin-top: 20rpx;
-    margin-left: 20rpx;
+    margin-top: 17rpx;
+    margin-left: 25rpx;
+}
+.order>.orderTitle,.order>.orderContent{
+    margin:0 30rpx;
 }
 
-.orderTitle{
-    height: 80rpx;
+.order>.orderTitle{
     display: flex;
-    line-height: 40px;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom:  6rpx solid #FBFBFB;
+    margin-top:30rpx;
 }
 .orderTitleLeft{
-    color: #C3C3C3;
-    font-size: 28rpx;
+    color: #333232;
+    font-size: 32rpx;
+    font-weight: 500;
 }
 .orderTitleRight{
-    font-size: 32rpx;
+    font-size: 24rpx;
 }
-.orderContent{
-    font-size: 30rpx;
+.order>.orderContent{
+    font-size: 24rpx;
+    margin-bottom: 30rpx;
+}
+.order .orderStartTime,.order .orderEndTime{
+    color:#808080;
 }
 .orderEnd{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+}
+.line{
+    margin-top: 30rpx;
+    margin-bottom: 20rpx;
+    border-bottom:1px dashed #D2D2D2
+}
+.orderAmount{
+    height: 100%;
+    color:#333232;
+    font-size: 28rpx;
+    line-height: 30rpx;
+}
+.amount{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+.payamount{
+    color:#FFFFFF;
+    font-size: 24rpx;
+    line-height: 50rpx;
+    font-weight: 400;
+    width: 130rpx;
+    height: 50rpx;
+    background: linear-gradient(0deg, #3885DD, #03BDF8);
+    border-radius: 10rpx;
 }
