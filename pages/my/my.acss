@@ -16,7 +16,7 @@ page {
   width: 120rpx; height: 120rpx;
 }
 .myheard .userName {
-  text-align: center; line-height: 50rpx; font-weight: bold;
+  text-align: center; line-height: 50rpx; font-weight: bold; width: 200rpx; height: 50rpx; overflow: hidden; margin-left: 50rpx;
 }
 .myheard .userId {
   position: relative; bottom: -60rpx; float: right; padding-right: 45rpx; color: #fff; font-size: 26rpx;

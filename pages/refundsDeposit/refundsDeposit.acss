@@ -160,11 +160,11 @@ page {
 .largeText {
     font-size: 30rpx;
     color: #FFFFFF;
-
+    margin-top: 20rpx;
     font-family: PingFang SC;
     font-weight: 400;
     text-align: center;
-
+    line-height: 30rpx;
 }
 
 .smallText {

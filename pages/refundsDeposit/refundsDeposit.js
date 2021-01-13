@@ -83,7 +83,7 @@ Page({
       }), wx2my.hideLoading();
     })) : wx2my.showModal({
       title: "提示",
-      content: "微信版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
+      content: "支付宝版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
       success: function (e) {
         e.confirm && (a.setData({
           freezeFailBtn: !0
@@ -136,7 +136,7 @@ Page({
       }), wx2my.hideLoading();
     })) : wx2my.showModal({
       title: "提示",
-      content: "微信版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
+      content: "支付宝版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
       success: function (e) {
         e.confirm && (a.setData({
           freezeFailBtn: !0
@@ -194,7 +194,7 @@ Page({
             complete: function(e){
               console.log(e['resultCode']);
               if(e['resultCode']==6001){
- 
+
               wx2my.showModal({
                 confirmText: "确认",
                 cancelText: "取消",

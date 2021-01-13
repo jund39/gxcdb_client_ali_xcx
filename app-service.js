@@ -3289,7 +3289,7 @@ define("util/util.js", function (require, module, exports, window, document, fra
         }
       }), wx2my.getSetting({
         success: function (e) {
-          e.authSetting["scope.userInfo"] && wx.getUserInfo({
+          e.authSetting["scope.userInfo"] && my.getUserInfo({
             success: function (e) {
               console.log(e), t(e);
             }
@@ -3300,12 +3300,12 @@ define("util/util.js", function (require, module, exports, window, document, fra
     alipayPayment: function (t, e, o, a) {
       n("/payment/recharge", {
         amount: t,
-        pay_type: "wechat",
+        pay_type: "alipay",
         type: e
       }, function (t) {
         if (1 == t.code) {
           var e = t.data.params;
-          wx.requestPayment({
+          my.requestPayment({
             timeStamp: e.timeStamp,
             nonceStr: e.nonceStr,
             package: e.package,
@@ -4153,7 +4153,7 @@ define("pages/refundsDeposit/refundsDeposit.js", function (require, module, expo
         }), wx2my.hideLoading();
       })) : wx2my.showModal({
         title: "提示",
-        content: "微信版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
+        content: "支付宝版本过低，不支持免押租借，如需使用免押请升级最新版本，即将为您切换为押金租借",
         success: function (e) {
           e.confirm && (a.setData({
             freezeFailBtn: !0
