@@ -27,7 +27,7 @@
       a:for="{{info.price}}"
       a:key="{{index}}"
     >
-      <text class="size">{{item.text}}充电+按摩</text>
+      <text class="size">充电{{item.text}}</text>
       <view class="timRight">
         <view class="teimCenter">
           <text class="ssize">￥</text>

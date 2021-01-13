@@ -50,7 +50,7 @@ Page({
           t.alipayPayment(a.data.amount, 2, function (t) {
             e.setData({
               isClick: !0
-            }), e.goPayment();
+            }), e.checkStatus(t);
           }, function () {
             e.setData({
               isClick: !0

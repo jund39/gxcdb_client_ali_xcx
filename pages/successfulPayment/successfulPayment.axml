@@ -66,7 +66,7 @@
         <view class="row">请选择充电时长,并点击支付获取密码,支付成功后再次点击按钮即可获取密码</view>
         <text class="row" style="color:red;">点击获取密码</text>
     </view>
-    
+
     <view class="{{info.isshowGetPaw=='dmm'?'pswordBtn':'pswordBtnz'}}">
         <view bindtap="overOrder" class="endBtn">
             <image src="/static/img/ic_stop.png"></image>

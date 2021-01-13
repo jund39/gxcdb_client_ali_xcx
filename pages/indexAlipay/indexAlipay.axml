@@ -14,7 +14,7 @@
   >
   </map>
 
-  <view id="content">
+  <view>
     <cover-view class="search_bg">
       <cover-view class="userBox">
         <cover-image
@@ -74,11 +74,17 @@
     </view>
     <cover-image class="icon_center" src="/static/img/core2.png"></cover-image>
     <!-- <cover-image bindtap="makePhoneCall" class="customer_service" data-tel="{{tel}}" src="/static/img/ic_service.png"></cover-image> -->
-    <cover-image onTap="_scanCode" class="scan_code" src="/static/img/ic_sao.png"></cover-image>
+    <cover-image
+      onTap="_scanCode"
+      class="scan_code"
+      src="/static/img/ic_sao.png"
+    ></cover-image>
     <!-- <cover-image bindtap="backOriginal" class="position" src="/static/img/ic_gps.png"></cover-image> -->
-
-    <!-- <cover-image onTap="ad_bussiness" class="ad_bussiness"src="/static/img/ad_bussiness.png"></cover-image> -->
-
+    <cover-image
+      onTap="ad_bussiness"
+      class="ad_bussiness"
+      src="/static/img/ad_bussiness.png"
+    ></cover-image>
     <cover-view class="seller_address" a:if="{{seller_address}}">
       <cover-view class="seller_t">
         <cover-image class="seller_img" src="{{seller.logo}}"></cover-image>
