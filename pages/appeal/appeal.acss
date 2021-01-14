@@ -18,6 +18,9 @@ page {
     font-size: 28rpx;
     margin: 0 25rpx 154rpx;
     color: #333;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .scan {
@@ -42,4 +45,14 @@ page {
 
 .textColor {
     color: #05D7D7;
+}
+
+.kefu{
+    width: 60rpx;
+    height: 60rpx;
+}
+.phone{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
