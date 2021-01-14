@@ -4,9 +4,12 @@
     align-items: center;
     background-color: #F7F7F7;
 }
+#myOrder .orderList{
+    padding-top:10rpx;
+}
 
 #myOrder .order {
-    width: 670rpx;
+    width: 700rpx;
     background-color: #fff;
     border-radius: 30rpx;
     padding:20rpx;

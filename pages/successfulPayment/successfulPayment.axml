@@ -12,7 +12,7 @@
   </view>
 </view>
 <view class="content code-view">
-  <image src="/static/img/code.png" mode="aspectFill" class="code"></image>
+  <image src="/static/img/code.png" class="code"></image>
   <view class="qrcode">
     <text>二维码编号：</text>
     <text>{{info.qrcode}}</text>
