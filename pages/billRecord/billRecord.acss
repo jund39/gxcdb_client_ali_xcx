@@ -61,3 +61,10 @@
     color: #666;
     margin-top: 80rpx;
 }
+
+.noOrder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

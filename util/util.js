@@ -19,7 +19,7 @@ function e() {
   };
 }
 function n(t, n, o) {
-  var a = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : function () {};
+  var a = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : function () { };
   wx2my.request({
     url: c.host + t,
     method: "POST",
@@ -74,8 +74,8 @@ function n(t, n, o) {
 
 function o(e, n) {
   var o = null,
-      a = null,
-      i = null;
+    a = null,
+    i = null;
   return -1 != e.indexOf("&&cineda=") ? (o = e.indexOf("&&cineda="), a = t(a = e.substring(n, o)), i = e.substring(o + 9)) : -1 != e.indexOf("&&t=") && (o = e.indexOf("&&t="), a = t(a = e.substring(n, o)), i = e.substring(o + 4)), {
     oid: a,
     type: "cab",
@@ -85,7 +85,7 @@ function o(e, n) {
 
 function a(e, n) {
   var o = e.indexOf("&&t="),
-      a = e.substring(n, o);
+    a = e.substring(n, o);
   return {
     oid: a = t(a),
     type: "line",
@@ -133,20 +133,26 @@ module.exports = {
       if (1 == t.code) {
         var e = t.data.params;
         my.tradePay({
-            tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
-            //orderStr: e.nonceStr, // 调用 资金授权 时必填
-            success (res) {
+          tradeNO: e.trade_no, // 调用 小程序支付 时必填
+          success(res) {
+            if (res.resultCode == "9000") {
               o(e.out_trade_no);
-            },
-            fail (t) {
+            } else if (res.resultCode == "6001") {
               wx2my.showToast({
-                title: "支付失败",
+                title: "取消支付",
                 icon: "none"
-              }), a();
-            },
-            complete (t) {
-              wx2my.hideLoading();
-            },
+              });
+            }
+          },
+          fail(t) {
+            wx2my.showToast({
+              title: "支付失败",
+              icon: "none"
+            }), a();
+          },
+          complete(t) {
+            wx2my.hideLoading();
+          },
         })
       } else wx2my.hideLoading(), wx2my.showToast({
         title: "支付失败",
@@ -154,7 +160,7 @@ module.exports = {
       });
     });
   },
-  adPayment: function (amount, type, suc = () => {}, fai = () => {}, com = () => {}) {
+  adPayment: function (amount, type, suc = () => { }, fai = () => { }, com = () => { }) {
     //广告相关支付
     n("/payment/adPayOrder", {
       amount: amount,
@@ -163,39 +169,27 @@ module.exports = {
       if (1 == t.code) {
         var e = t.data.params;
         my.tradePay({
-          tradeNO: e.out_trade_no, // 调用 小程序支付 时必填
-          //orderStr: e.nonceStr, // 调用 资金授权 时必填
-          success (res) {
-            o(e.out_trade_no);
+          tradeNO: e.trade_no, // 调用 小程序支付 时必填
+          success(res) {
+            if (res.resultCode == "9000") {
+              o(e.out_trade_no);
+            } else if (res.resultCode == "6001") {
+              wx2my.showToast({
+                title: "取消支付",
+                icon: "none"
+              });
+            }
           },
-          fail (t) {
+          fail(t) {
             wx2my.showToast({
               title: "支付失败",
               icon: "none"
             }), a();
           },
-          complete (t) {
+          complete(t) {
             wx2my.hideLoading();
           },
         })
-      // if (1 == t.code) {
-      //   var e = t.data.params;
-      //   wx.requestPayment({
-      //     timeStamp: e.timeStamp,
-      //     nonceStr: e.nonceStr,
-      //     package: e.package,
-      //     signType: e.signType,
-      //     paySign: e.paySign,
-      //     success: function () {
-      //       suc(t.data.order_no);
-      //     },
-      //     fail: function (res) {
-      //       fai(t.data.order_no);
-      //     },
-      //     complete: function () {
-      //       com(t.data.order_no);
-      //     }
-      //   });
       } else {
         wx2my.hideLoading(), wx2my.showToast({
           title: "支付失败",
@@ -208,8 +202,8 @@ module.exports = {
   },
   returnQrcode: function (t) {
     let e = c.qrcodeurl,
-        n = null,
-        url = t.substring(0, t.indexOf('/', 8));
+      n = null,
+      url = t.substring(0, t.indexOf('/', 8));
 
     if (url === e) {
       if (t.includes("/Lease?objhxy=")) {
@@ -228,7 +222,7 @@ module.exports = {
     return n;
   },
   userAuthor: function (t) {
-    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () {};
+    var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function () { };
     n("/user/getInfo", {}, function (n) {
       1 == n.code && (1 == n.data.is_auth ? t(n) : (e(), wx2my.navigateTo({
         url: "/pages/authorization/authorization"

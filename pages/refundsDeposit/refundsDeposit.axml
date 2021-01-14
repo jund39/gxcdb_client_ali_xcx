@@ -6,7 +6,7 @@
       </swiper-item>
     </swiper>
   </view>
-  <view class="deposit" a:if="{{info.alipay_credit=='true'}}">
+  <view class="deposit" a:if="{{info.alipay_credit=='false'}}">
     <view class="depositTitle">
 			租借前需充值押金
     </view>
@@ -24,13 +24,13 @@
     <view class="depositContentText">
 			收费标准：租借{{info.free_time}}分钟内免费，日封顶{{info.ceiling}}元，总封顶{{info.deposit}}元，押金{{info.deposit}}元。充电宝自带苹果/安卓/Type-C ,三线速充。使用后记得及时归还并确认机柜播放“归还成功”语音！如，有疑问，请与在线客服联系，谢谢！
     </view>
-    <button onTap="startFreeLease" class="confirmPayments startLease startDepositButton" hoverClass="none" plain="true" style="border:none" a:if="{{info.alipay_credit=='true'}}">
+    <button onTap="startLease" class="confirmPayments startLease startDepositButton" hoverClass="none" plain="true" style="border:none" a:if="{{info.alipay_credit=='false'}}">
       <view class="start">开始租借</view>
     </button>
   </view>
 
   <!-- TODO 免押金租借 -->
-  <view class="wechatFree" hover-class="none" hover-stop-propagation="false" a:if="{{info.wechat_credit=='true'}}">
+  <view class="wechatFree" hover-class="none" hover-stop-propagation="false" a:if="{{info.alipay_credit=='true'}}">
     <image class="banner" src="/static/img/wechat_bg.png" lazy-load="false" onError="" onLoad=""></image>
     <view class="title" hover-class="none" hover-stop-propagation="false">
 			租借充电宝
@@ -42,15 +42,15 @@
 			{{info.amount}}元/{{info.time}}{{info.unit}}
     </view>
   </view>
-  <view class="wechatFreeText" hover-class="none" hover-stop-propagation="false" a:if="{{info.wechat_credit=='true'}}">
-		收费标准：租借{{info.free_time}}分钟内免费，日封顶{{info.ceiling}}元，总封顶{{info.deposit}}元押金{{info.deposit}}元，支持免押服务（微信支付分550分及以上可以免押）。
+  <view class="wechatFreeText" hover-class="none" hover-stop-propagation="false" a:if="{{info.alipay_credit=='true'}}">
+		收费标准：租借{{info.free_time}}分钟内免费，日封顶{{info.ceiling}}元，总封顶{{info.deposit}}元押金{{info.deposit}}元，支持免押服务<!--（支付宝芝麻分550分及以上可以免押-->）。
   </view>
-  <button onTap="startFreeLease" class="confirmPayments" hoverClass="none" plain="true" style="border:none" a:if="{{info.wechat_credit=='true'}}">
+  <button onTap="startFreeLease" class="confirmPayments" hoverClass="none" plain="true" style="border:none" a:if="{{info.alipay_credit=='true'}}">
     <view class="largeText">免押金租借</view>
-    <view class="smallText">(恭喜你，微信支付分550及以上有机会)</view>
+    <view class="smallText">(恭喜你，支付宝芝麻分550及以上有机会)</view>
   </button>
   <!-- 委托扣款授权书 -->
-  <view class="agrees" a:if="{{info.wechat_credit=='true'}}">
+  <view class="agrees" a:if="{{info.alipay_credit=='true'}}">
     <checkbox-group onChange="checkboxChange">
       <checkbox checked="{{agreeChecked}}" value="授权"></checkbox>同意
       <text onTap="openAgree" class="green">《委托扣款授权书》</text>
@@ -60,10 +60,10 @@
   <scroll-view
     scrollY class="agreement" a:if="{{agreement}}">
     <view class="heads">委托扣款授权书</view>
-    <view class="txt">本授权书由您向东莞市众云科技有限公司（下称“众云科技”）出具，具有授权之法律效力。请您务必审慎阅读、充分理解本授权书各条款内容，特别是免除或者限制责任的条款，前述条款可能以加粗字体显示，您应重点阅读。除非您已阅读并接受本授权书所有条款，否则您无权使用微信支付的自动续费、自动缴费、自动扣款等服务。您同意本授权书即视为您已授权众云科技代理您向财付通支付科技有限公司（下称“财付通”）申请开通微信支付自动续费和免密支付功能，并自愿承担由此导致的一切法律后果。</view>
-    <view class="txt">您确认并不可撤销地授权众云科技向财付通发出扣款指令，财付通即可在不验证您的支付密码、短信动态码等信息的情况下直接从您的银行账户或微信支付账户中扣划众云科技指定的款项至众云科技指定账户。</view>
-    <view class="txt">在任何情况下，只要众云科技向财付通发出支付指令，财付通就可按照该指令进行资金扣划，财付通对众云科技的支付指令的正确性、合法性、完整性、真实性不承担任何法律责任，相关法律责任由您和众云科技自行承担。</view>
-    <view class="txt">您在扣款账户内必须预留有足够的资金余额，否则因账户余额不足导致无法及时扣款或扣款错误、失败的，一切责任由您自行承担。因不可归责于财付通的事由，导致的不能及时划付款项、划账错误等责任与财付通无关。</view>
-    <view class="txt">您确认，因众云科技的原因导致您遭受经济损失的，由您与众云科技协商解决，与财付通无关。</view>
+    <view class="txt">本授权书由您向海南闪电科技有限公司（下称“闪电科技”）出具，具有授权之法律效力。请您务必审慎阅读、充分理解本授权书各条款内容，特别是免除或者限制责任的条款，前述条款可能以加粗字体显示，您应重点阅读。除非您已阅读并接受本授权书所有条款，否则您无权使用支付宝支付的自动续费、自动缴费、自动扣款等服务。您同意本授权书即视为您已授权闪电科技代理您向支付宝支付科技有限公司（下称“支付宝”）申请开通支付宝支付自动续费和免密支付功能，并自愿承担由此导致的一切法律后果。</view>
+    <view class="txt">您确认并不可撤销地授权闪电科技向支付宝发出扣款指令，支付宝即可在不验证您的支付密码、短信动态码等信息的情况下直接从您的银行账户或支付宝支付账户中扣划闪电科技指定的款项至闪电科技指定账户。</view>
+    <view class="txt">在任何情况下，只要闪电科技向支付宝发出支付指令，支付宝就可按照该指令进行资金扣划，支付宝对闪电科技的支付指令的正确性、合法性、完整性、真实性不承担任何法律责任，相关法律责任由您和闪电科技自行承担。</view>
+    <view class="txt">您在扣款账户内必须预留有足够的资金余额，否则因账户余额不足导致无法及时扣款或扣款错误、失败的，一切责任由您自行承担。因不可归责于支付宝的事由，导致的不能及时划付款项、划账错误等责任与支付宝无关。</view>
+    <view class="txt">您确认，因闪电科技的原因导致您遭受经济损失的，由您与闪电科技协商解决，与支付宝无关。</view>
   </scroll-view>
 </view>
