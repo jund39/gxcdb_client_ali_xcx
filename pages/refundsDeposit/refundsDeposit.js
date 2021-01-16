@@ -17,6 +17,7 @@ Page({
     interval: 5e3,
     agreeChecked: !0,
     agreement: !1,
+    agreeLease: false,
     freezeFailBtn: !1,
     version: 100,
     order_no: ""
@@ -334,9 +335,25 @@ Page({
       agreement: !0
     });
   },
+      // 租赁服务协议弹窗
+    openAgreeLease: function() {
+        let that = this;
+        e.httpRequest("/index/agreement", {
+            type: 'lease'
+        }, function(t) {
+            var str = t.data.content;
+            that.setData({
+                leaseData : str
+            });
+        });
+        this.setData({
+            agreeLease: !this.data.agreeLease
+        });
+    },
   closeAgree: function () {
     this.setData({
-      agreement: !1
+      agreement: !1,
+      agreeLease: false
     });
   }
 });
