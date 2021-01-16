@@ -195,7 +195,7 @@ Page({
             complete: function(e){
               console.log(e['resultCode']);
               if(e['resultCode']==6001){
- 
+
               wx2my.showModal({
                 confirmText: "确认",
                 cancelText: "取消",
@@ -304,7 +304,7 @@ Page({
     }, function () {
       wx2my.hideLoading();
     }) : (wx2my.showToast({
-      title: "[01]订单异常,请联系客服",
+      title: "订单异常,请联系客服",
       duration: 2e3
     }), wx2my.hideLoading());
   },
