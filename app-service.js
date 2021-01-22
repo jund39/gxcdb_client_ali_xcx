@@ -5034,9 +5034,7 @@ define("pages/user/user.js", function (require, module, exports, window, documen
               icon: "none"
             }), t.getUserInfo());
           }, function () {
-            t.setData({
-              isClick: !0
-            });
+
           });
         }
       }));
