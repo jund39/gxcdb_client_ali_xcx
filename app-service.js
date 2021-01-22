@@ -5023,6 +5023,9 @@ define("pages/user/user.js", function (require, module, exports, window, documen
         confirmText: "确认",
         cancelText: "取消",
         success: function (n) {
+           t.setData({
+            isClick: !0
+          });
           n.confirm && e.httpRequest("/payment/refund", {}, function (e) {
             1 == e.code && (t.setData({
               isClick: !0
