@@ -65,6 +65,8 @@ Page({
     })) : wx2my.showModal({
       title: "退款提醒",
       content: "亲,是否退款",
+      confirmText: "确认",
+      cancelText: "取消",
       success: function (n) {
         n.confirm && e.httpRequest("/payment/refund", {}, function (e) {
           1 == e.code && (t.setData({
